@@ -1,0 +1,15 @@
+{
+	"name": "webpack-analyse",
+	"version": "0.0.0",
+	"private": "true",
+	"dependencies": {
+		"webpack": "0.9.x",
+		"css-loader": "0.5.x",
+		"style-loader": "0.5.x",
+		"json-loader": "0.5.x",
+		"bundle-loader": "0.5.x",
+		"imports-loader": "0.5.x",
+		"exports-loader": "0.5.x",
+		"url-loader": "0.5.x"
+	}
+}

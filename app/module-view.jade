@@ -1,0 +1,52 @@
+h2
+	= module.name
+	|  (
+	= module.id
+	| )
+center: svg.module-reasons-graph
+if module.reasons && module.reasons.length > 0
+	h3 Reasons
+	table.table.table-condensed
+		thead
+			tr
+				th Type
+				th Module
+				th Name
+				th Location
+		tbody
+			for reason in module.reasons
+				tr
+					td= reason.type
+					td: a.open-module(href="#", data-module=reason.moduleId)= reason.moduleId
+					splittedModule = reason.module.split("!")
+					td
+						for item, idx in splittedModule
+							div: code= item + (idx != splittedModule.length-1 ? "!" : "")
+					td= reason.loc
+if module.requires && module.requires.length > 0
+	h3 Requires
+	table.table.table-condensed
+		thead
+			tr
+				th Type
+				th Module
+				th Name
+				th Location
+		tbody
+			for require in module.requires
+				tr
+					td= require.type
+					td: a.open-module(href="#", data-module=require.moduleId)= require.moduleId
+					splittedModule = require.module.split("!")
+					td
+						for item, idx in splittedModule
+							div: code= item + (idx != splittedModule.length-1 ? "!" : "")
+					td= require.loc
+h3 Size = 
+	if module.size > 1024
+		= Math.round(module.size/1024) + " KiB"
+	else
+		= module.size + " B"
+if module.source
+	h3 Source
+	pre: code= module.source

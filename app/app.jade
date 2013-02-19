@@ -1,0 +1,29 @@
+style
+	.popover {
+		max-width: inherit;
+	}
+.container
+	.row
+		.span12
+			h1 webpack analyse
+	#step1
+		//- .row
+			//- .span12
+				//- h2 Stats from file
+				//- input#file(type="file")
+		.row
+			.span12
+				h2 Stats from input
+				form.form-inline
+					.input-append
+						input#stats(type="text")
+						button.addon.btn.btn-primary#load-stats Load
+		.row
+			.span12
+				h2 Use example stats
+				button.btn.btn-primary#load-example Load example
+	.row.hide#step1-collapsed
+		form.form-inline
+			button.btn#load-new Load new stats
+	.row.hide#step2
+div(style="height: 200px")

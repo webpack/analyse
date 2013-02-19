@@ -1,0 +1,33 @@
+tr.module-row(class=module.reasons && module.reasons.length > 0?"has-reasons":"")
+	td: a.open-module(href="#", data-module=module.id)= module.id
+	splittedModule = module.name.split("!")
+	td
+		for item, idx in splittedModule
+			div: code= item + (idx != splittedModule.length-1 ? "!" : "")
+	td
+		if module.size > 1024
+			= Math.round(module.size/1024) + " KiB"
+		else
+			= module.size + " B"
+	td
+		if !module.cacheable
+			span.label.label-warning not cacheable
+		if module.reasons && module.reasons.length > 0
+			div.module-reasons.hide
+				table.table.table-condensed
+					thead
+						tr
+							th Type
+							th Module
+							th Name
+							th Location
+					tbody
+						for reason in module.reasons
+							tr
+								td= reason.type
+								td= reason.moduleId
+								splittedModule = reason.module.split("!")
+								td
+									for item, idx in splittedModule
+										div: code= item + (idx != splittedModule.length-1 ? "!" : "")
+								td= reason.loc

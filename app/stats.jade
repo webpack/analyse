@@ -1,0 +1,54 @@
+.span12
+	ul.nav.nav-tabs
+		li.active: a(href="#output-content", data-toggle="tab") Output
+		li: a(href="#assets-content", data-toggle="tab") Assets
+		li: a(href="#chunks-content", data-toggle="tab") Chunks
+		li: a(href="#modules-content", data-toggle="tab") Modules
+		li.hide: a#chunk-view(href="#chunk-view-content", data-toggle="tab") Chunk X
+		li.hide: a#module-view(href="#module-view-content", data-toggle="tab") Module X
+	.tab-content
+		.tab-pane.active#output-content
+			pre: code= statsOutput
+		.tab-pane#assets-content
+			center: svg.assets-graph
+			assetTemplate = require("./asset.jade");
+			table.table.table-bordered
+				thead
+					tr
+						th Asset
+						th Size
+						th Chunks
+						th Names
+				tbody
+					for asset in stats.assets
+						!= assetTemplate({asset: asset})
+		.tab-pane#chunks-content
+			center: svg.chunks-graph
+			chunkTemplate = require("./chunk.jade");
+			table.table.table-bordered
+				thead
+					tr
+						th Chunk
+						th Size
+						th Modules
+						th Names
+						th Files
+				tbody
+					for chunk in stats.chunks
+						!= chunkTemplate({chunk: chunk})
+		.tab-pane#modules-content
+			center: svg.modules-graph
+			moduleTemplate = require("./module.jade");
+			table.table.table-bordered
+				thead
+					tr
+						th Module
+						th Name
+						th Size
+						th Attributes
+				tbody
+					for module in stats.modules
+						!= moduleTemplate({module: module})
+		.tab-pane#chunk-view-content
+		.tab-pane#module-view-content
+	

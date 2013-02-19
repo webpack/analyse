@@ -1,0 +1,15 @@
+tr
+	td: a.open-chunk(href="#", data-chunk=chunk.id)= chunk.id
+	td
+		if chunk.size > 1024
+			= Math.round(chunk.size/1024) + " KiB"
+		else
+			= chunk.size + " B"
+	td= chunk.modules.length
+	td
+		for name in chunk.names
+			div: code= name
+	td
+		for file in chunk.files
+			div: code= file
+	
