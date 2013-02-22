@@ -7,10 +7,13 @@ style
 		.span12
 			h1 webpack analyse
 	#step1
-		//- .row
-			//- .span12
-				//- h2 Stats from file
-				//- input#file(type="file")
+		.row
+			.span12
+				h2 Stats from file
+				form.form-inline
+					input#file(type="file")
+					= " "
+					button.addon.btn.btn-primary#load-stats-from-file Load
 		.row
 			.span12
 				h2 Stats from input

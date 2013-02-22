@@ -12,12 +12,32 @@ $(function($) {
 		file: $("#file"),
 		stats: $("#stats"),
 		loadStats: $("#load-stats"),
+		loadStatsFromFile: $("#load-stats-from-file"),
 		loadExample: $("#load-example"),
 	};
 	var step1collapsed = {
 		loadNew: $("#load-new")
 	};
 	
+	step1.loadStatsFromFile.click(function() {
+		var file = step1.file[0].files[0];
+		if(!file) return false;
+		var fileReader = new FileReader();
+		fileReader.readAsText(file, "utf-8");
+		fileReader.onload  = function(e) {
+			try {
+				stats = JSON.parse(fileReader.result)
+			} catch(e) {
+				alert(e);
+				return;
+			}
+			seqments.step1.addClass("hide");
+			seqments.step1collapsed.removeClass("hide");
+			seqments.step2.removeClass("hide");
+			renderStats(stats, seqments.step2);
+		};
+		return false;
+	});
 	step1.loadStats.click(function() {
 		try {
 			stats = JSON.parse(step1.stats.val());
