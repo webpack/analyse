@@ -30,8 +30,7 @@ if chunk.parents && chunk.parents.length > 0
 		tbody
 			for pcId in chunk.parents
 				- var pc = null;
-				- for(var i = 0; i < stats.chunks.length; i++)
-				-  if(stats.chunks[i].id == pcId) { pc = stats.chunks[i]; break; }
+				- for(var i = 0; i < stats.chunks.length; i++) if(stats.chunks[i].id == pcId) { pc = stats.chunks[i]; break; }
 				if pc
 					!= chunkTemplate({chunk: pc})
 if chunk.childrenChunks && chunk.childrenChunks.length > 0
@@ -48,8 +47,7 @@ if chunk.childrenChunks && chunk.childrenChunks.length > 0
 		tbody
 			for pcId in chunk.childrenChunks
 				- var pc = null;
-				- for(var i = 0; i < stats.chunks.length; i++)
-				-  if(stats.chunks[i].id == pcId) { pc = stats.chunks[i]; break; }
+				- for(var i = 0; i < stats.chunks.length; i++) if(stats.chunks[i].id == pcId) { pc = stats.chunks[i]; break; }
 				if pc
 					!= chunkTemplate({chunk: pc})
 				else
