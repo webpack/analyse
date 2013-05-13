@@ -161,6 +161,126 @@ module.exports = function(stats, element) {
 			chunkView.text("Chunk " + chunk.id).tab("show");
 		});
 	}
+	(function timingGraph() {
+		var width = 800;
+		var barHeight = 10;
+		var timingModules = stats.modules.filter(function(module) {
+			return module.profile;
+		}).map(function(module) {
+			return {
+				identifier: module.identifier,
+				start: 0,
+				childrenOffset: (module.profile.factory || 0) + (module.profile.building || 0),
+				size: (module.profile.factory || 0) + (module.profile.building || 0) + (module.profile.dependencies || 0),
+				fragmentFactory: module.profile.factory || 0,
+				fragmentBuilding: module.profile.building || 0,
+				fragmentDependencies: module.profile.dependencies || 0,
+				issuer: module.issuer,
+				children: [],
+				module: module
+			}
+		});
+		var timingModulesMap = {};
+		timingModules.forEach(function(m) { timingModulesMap[m.identifier] = m; });
+		timingModules.forEach(function(m) {
+			if(m.issuer) {
+				var parent = timingModulesMap[m.issuer];
+				if(!parent) return m.issuer = null;
+				parent.children.push(m);
+			}
+		});
+		function orderFn(a, b) {
+			var diffTSize = b.totalSize - a.totalSize;
+			if(diffTSize != 0) return diffTSize;
+			var diffSize = b.size - a.size;
+			if(diffSize != 0) return diffSize;
+			return b.childrenOffset - a.childrenOffset;
+		}
+		function setPositionReturnCount(m, start, depth) {
+			m.start = start;
+			m.depth = depth;
+			m.totalSize = m.size;
+			m.children.forEach(function(c) {
+				var size = m.childrenOffset + setPositionReturnCount(c, m.childrenOffset + start, depth + 1);
+				if(m.totalSize < size) m.totalSize = size;
+			});
+			m.children.sort(orderFn);
+			return m.totalSize;
+		}
+		var maxTotalSize = 0;
+		timingModules.forEach(function(m) {
+			if(!m.issuer) {
+				var size = setPositionReturnCount(m, 0, 0);
+				if(maxTotalSize < size) maxTotalSize = size;
+			}
+		});
+		timingModules.sort(function(a, b) {
+			if(a.depth > b.depth) return 1;
+			if(a.depth < b.depth) return -1;
+			return orderFn(a, b);
+		});
+		function setYPosition(m, start) {
+			m.y = start;
+			if(m.children.length == 0 || m.fragmentDependencies > 0)
+				start += barHeight;
+			m.children.forEach(function(c) {
+				start += setYPosition(c, start);
+			});
+			return m.height = start - m.y;
+		}
+		var height = 0;
+		timingModules.forEach(function(m) {
+			if(!m.issuer) {
+				height += setYPosition(m, height);
+			}
+		});
+		
+		if(height == 0) return $("#timing-view").addClass("hide");
+		
+		var xAxis = d3.scale.linear().domain([0, maxTotalSize]).range([0, width]);
+		
+		var svg = d3.select(".timing-graph")
+			.attr("width", width + 1)
+			.attr("height", height + 1);
+		var node = svg.selectAll(".bar")
+			.data(timingModules)
+			.enter().append("g")
+			.attr("class", "bar")
+			.attr("transform", function(d) { 
+				return "translate(" + (xAxis(d.start)) + "," + (d.y) + ")";
+			});
+		node.append("rect")
+			.attr("x", "0")
+			.attr("y", "0")
+			.attr("height", function(d) { return d.height; })
+			.attr("width", function(d) { return xAxis(d.fragmentFactory); })
+			.style("fill", "#1f77b4");
+		node.append("rect")
+			.attr("x", function(d) { return xAxis(d.fragmentFactory); })
+			.attr("y", "0")
+			.attr("height", function(d) { return d.height; })
+			.attr("width", function(d) { return xAxis(d.fragmentBuilding); })
+			.style("fill", "#ff7f0e");
+		node.append("rect")
+			.attr("x", function(d) { return xAxis(d.fragmentFactory + d.fragmentBuilding); })
+			.attr("y", "0")
+			.attr("height", barHeight)
+			.attr("width", function(d) { return xAxis(d.fragmentDependencies); })
+			.style("fill", "#8c564b");
+		node.append("rect")
+			.attr("x", "0.5")
+			.attr("y", "0.5")
+			.attr("height", function(d) { return d.height; })
+			.attr("width", function(d) { return xAxis(d.childrenOffset); })
+			.style("stroke", "#333")
+			.style("stroke-width", "1")
+			.style("fill", "transparent");
+		node.append("title")
+			.text(function(d) { return "[" + d.module.id + "] " + d.module.name; });
+		node.on("click", function(d) {
+			loadModule(d.module.id);
+		});
+	}());
 	(function assetsGraph() {
 		var width = 800, height = 600;
 		var color = d3.scale.category10();

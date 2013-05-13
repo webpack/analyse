@@ -7,11 +7,11 @@
 Development:
 
 ``` javascript
-webpack-dev-server --colors --content-page index.html --progress
+webpack-dev-server --colors --content-page index.html --progress -d
 ```
 
 Production:
 
 ``` javascript
-webpack --progress --colors --optimize-minimize
+webpack --progress --colors -p
 ```

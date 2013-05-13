@@ -1,6 +1,7 @@
 .span12
 	ul.nav.nav-tabs
 		li.active: a(href="#output-content", data-toggle="tab") Output
+		li#timing-view: a(href="#timing-content", data-toggle="tab") Timing
 		li: a(href="#assets-content", data-toggle="tab") Assets
 		li: a(href="#chunks-content", data-toggle="tab") Chunks
 		li: a(href="#modules-content", data-toggle="tab") Modules
@@ -10,6 +11,10 @@
 	.tab-content
 		.tab-pane.active#output-content
 			pre: code= statsOutput
+		.tab-pane#timing-content
+			center: svg.timing-graph
+			p The horizonal axis is the build time. Each module is one block. The timings of a module splits in three parts: Resolving (blue), compiling and parsing (orange) and resolving for dependencies that are already done (brown). Modules are positioned after other modules because they were detected in that modules the first time.
+			p A good optimizing strategy is to look at the longest bar and add a module from the middle of this bar to the <code>prefetch</code> option.
 		.tab-pane#assets-content
 			center: svg.assets-graph
 			p The size of each bubble represents the filesize.
@@ -60,7 +65,7 @@
 			p Keep in mind that this are only <strong>hints</strong> and the choice is still up to the developer. Not every hint is a good change.
 			if multiChunks.length > 0
 				h2 Module in multiple chunks
-				p Check if it is a good idea to move modules into a common parent. You may want to use <code>require.include</code> or insert the parents <code>require.ensure</code> array.
+				p Check if it is a good idea to move modules into a common parent. You may want to use <code>require.include</code> or insert them into the parents <code>require.ensure</code> array.
 				table.table.table-bordered
 					thead
 						tr

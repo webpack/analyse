@@ -12,6 +12,8 @@ tr.module-row(class=module.reasons && module.reasons.length > 0?"has-reasons":""
 	td
 		if !module.cacheable
 			span.label.label-warning not cacheable
+		if module.prefetched
+			span.label.label-success prefetched
 		if module.reasons && module.reasons.length > 0
 			div.module-reasons.hide
 				table.table.table-condensed
