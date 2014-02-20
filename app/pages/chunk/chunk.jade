@@ -1,0 +1,65 @@
+.container-fluid
+	.row
+		.col-md-4: .well
+			h4 chunk id
+			= id
+		.col-md-4: .well
+			h4 size
+			= chunk.size + " bytes"
+		.col-md-4: .well
+			h4 names
+			each name in chunk.names
+				code= name
+	.row
+		if chunk.parents.length && chunk.children.length
+			.col-md-3: .well
+				h4 parents
+				each parent in chunk.parents
+					a.btn.btn-info(href="#chunk/#{parent}")= parent
+					= " "
+			.col-md-3: .well
+				h4 children
+				each child in chunk.children
+					a.btn.btn-info(href="#chunk/#{child}")= child
+					= " "
+		else if chunk.parents.length
+			.col-md-6: .well
+				h4 parents
+				each parent in chunk.parents
+					a.btn.btn-info(href="#chunk/#{parent}")= parent
+					= " "
+		else if chunk.children.length
+			.col-md-6: .well
+				h4 children
+				each child in chunk.children
+					a.btn.btn-info(href="#chunk/#{child}")= child
+					= " "
+		.col-md-6: .well
+			h4 files
+			each file in chunk.files
+				a.btn.btn-default(href="#asset/#{encodeURI(file)}")= file
+				= " "
+	.row
+		.col-md-12: .well
+			h4 origins
+			table.table
+				thead
+					tr
+						th reasons
+						th name
+						th module
+						th location
+				tbody
+					each origin in chunk.origins
+						tr
+							td
+								each reason in origin.reasons
+									code= reason
+									= " "
+							td: code= origin.name
+							td
+								a.btn.btn-success(href="#module/#{origin.moduleId}")= origin.moduleId
+								code= origin.module
+							td
+								if origin.loc
+									code= origin.loc

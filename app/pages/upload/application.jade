@@ -1,0 +1,21 @@
+nav.navbar.navbar-default
+	.container-fluid
+		ul.nav.navbar-nav
+			li: a(href="#home") Home
+			li: a(href="#modules") Modules
+			li: a(href="#chunks") Chunks
+			li: a(href="#assets") Assets
+			li: a(href="#warnings") Warnings
+			li: a(href="#errors") Errors
+			li: a(href="#timing") Timing
+.page
+	
+.modal.fade: .modal-dialog: .modal-content
+	.modal-header
+		h4.modal-title Upload webpack stats
+	.modal-body
+		.form-group
+			label(for="file") JSON file
+			input.form-control(type="file", id="file")
+		button(type="btn btn-default", id="example") Use example
+	.modal-footer

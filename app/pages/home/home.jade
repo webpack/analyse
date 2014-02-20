@@ -1,0 +1,65 @@
+.container-fluid
+	.row
+		.col-md-12
+			.page-header
+				h1 webpack analyse
+	.row
+		.col-md-3
+			.well: center
+				h1
+					| webpack
+					br
+					= stats.version
+		.col-md-3
+			.well: center
+				h1
+					= stats.time
+					br
+					| ms
+		.col-md-6
+			.well: center
+				h1
+					| hash
+					br
+					= stats.hash
+	.row
+		.col-md-3
+			.well: center
+				h1: a(href="#modules")
+					= stats.modules.length
+					br
+					| modules
+		.col-md-3
+			.well: center
+				h1: a(href="#chunks")
+					= stats.chunks.length
+					br
+					| chunks
+		.col-md-3
+			.well: center
+				h1: a(href="#assets")
+					= stats.assets.length
+					br
+					| assets
+		.col-md-3
+			.well: center
+				h1
+					if stats.errors.length && stats.warnings.length
+						= stats.warnings.length
+						|  warnings
+						br
+						= stats.errors.length
+						|  errors
+					else if stats.errors.length
+						= stats.errors.length
+						br
+						| errors
+					else if stats.warnings.length
+						= stats.warnings.length
+						br
+						| warnings
+					else
+						| no
+						br
+						| warnings/errors
+	

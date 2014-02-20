@@ -1,6 +1,7 @@
 var path = require("path");
 module.exports = {
-	entry: "./app/app.js",
+	cache: true,
+	entry: "./app/entry.js",
 	output: {
 		path: path.join(__dirname, "assets"),
 		publicPath: "assets/",
@@ -16,16 +17,4 @@ module.exports = {
 			{ test: /\.png$/,  loader: "url-loader?limit=5000&minetype=image/png" }
 		]
 	},
-	provide: {
-		$: "jquery",
-		jQuery: "jquery"
-	},
-	amd: {
-		jQuery: true
-	},
-	cache: true,
-	optimize: {
-		maxChunks: 10,
-		minChunkSize: 10000
-	}
 };

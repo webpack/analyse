@@ -1,0 +1,1 @@
+module.exports = require("imports?this=>window&exports=>undefined&sigma=>{}!exports?sigma!./sigma.min.js");

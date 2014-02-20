@@ -1,0 +1,76 @@
+.container-fluid
+	.row
+		.col-md-6: .well
+			pre: code= module.name.split("!").join("\n")
+		.col-md-3: .well
+			h4 module id
+			= id
+		.col-md-3: .well
+			h4 size
+			= module.size + " bytes"
+	.row
+		.col-md-6: .well
+			h4 flags
+			if module.built
+				span.label.label-success built
+				= " "
+			if !module.cacheable
+				span.label.label-warning not cacheable
+				= " "
+			if module.prefetched
+				span.label.label-success prefetched
+				= " "
+			if module.failed
+				span.label.label-danger failed
+				= " "
+			if module.warnings
+				span.label.label-warning= module.warnings + " warnings"
+				= " "
+			if module.errors
+				span.label.label-danger= module.errors + " errors"
+		.col-md-6: .well
+			h4 issuer
+			code= module.issuer
+	.row
+		.col-md-12: .well
+			h4 reasons
+			table.table
+				thead
+					tr
+						th type
+						th(colspan=2) module
+						th user request
+						th location
+				tbody
+					each reason in module.reasons
+						tr
+							td= reason.type
+							td(style="width: 1px"): a.btn.btn-success(href="#module/#{reason.moduleId}")= reason.moduleId
+							td: pre: code= reason.module.split("!").join("\n")
+							td: pre: code= reason.userRequest.split("!").join("\n")
+							td
+								if reason.loc
+									code= reason.loc
+	.row
+		.col-md-12: .well
+			h4 dependencies
+			table.table
+				thead
+					tr
+						th type
+						th(colspan=2) module
+						th user request
+						th location
+				tbody
+					each dependency in module.dependencies
+						tr
+							td= dependency.type
+							td(style="width: 1px"): a.btn.btn-success(href="#module/#{dependency.moduleId}")= dependency.moduleId
+							td: pre: code= dependency.module.split("!").join("\n")
+							td: pre: code= dependency.userRequest.split("!").join("\n")
+							td
+								if dependency.loc
+									code= dependency.loc
+	.row
+		.col-md-12
+			pre: code= module.source
