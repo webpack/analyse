@@ -1,0 +1,58 @@
+.container-fluid
+	.row
+		.col-md-12
+			if multiChunks.length > 0
+				h2 Module in multiple chunks
+				p Check if it is a good idea to move modules into a common parent. You may want to use <code>require.include</code> or insert them into the parents <code>require.ensure</code> array.
+				table.table.table-bordered
+					thead
+						tr
+							th module
+							th name
+							th count
+							th chunks
+							th saving
+					tbody
+						for item in multiChunks
+							tr
+								td: a.btn.btn-success(href="#module/#{item.module.uid}")= item.module.id
+								splittedModule = item.module.name.split("!")
+								td: pre: code= splittedModule.join("\n")
+								td= item.count
+								td
+									for chunk, idx in item.module.chunks
+										if idx > 0
+											= " "
+										a.btn.btn-info(href="#chunk/#{chunk}")= chunk
+								td= require("../../formatSize")(item.saving);
+			if multiRefs.length > 0
+				h2 Multiple references to the same module
+				p Refactor this:
+				pre: code.
+					var a = require("xyz").a;
+					var b = require("xyz").b;
+					var c = require("xyz").c;
+				p To this:
+				pre: code.
+					var xyz = require("xyz");
+					var a = xyz.a;
+					var a = xyz.b;
+					var c = xyz.c;
+				table.table.table-bordered
+					thead
+						tr
+							th module
+							th name
+							th count
+							th referenced module
+							th referenced name
+							th saving
+					tbody
+						for item in multiRefs
+							tr
+								td: a.btn.btn-success(href="#module/#{item.module.uid}")= item.module.id
+								td: pre: code= item.module.name.split("!").join("\n")
+								td= item.count
+								td: a.btn.btn-success(href="#module/#{item.otherModule.uid}")= item.otherModule.id
+								td: pre: code= item.otherModule.name.split("!").join("\n")
+								td= require("../../formatSize")(item.saving) + "+"

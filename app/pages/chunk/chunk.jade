@@ -5,7 +5,7 @@
 			= id
 		.col-md-4: .well
 			h4 size
-			= chunk.size + " bytes"
+			= require("../../formatSize")(chunk.size)
 		.col-md-4: .well
 			h4 names
 			each name in chunk.names
@@ -37,7 +37,7 @@
 		.col-md-6: .well
 			h4 files
 			each file in chunk.files
-				a.btn.btn-default(href="#asset/#{encodeURI(file)}")= file
+				a.btn.btn-default(href="#assets")= file
 				= " "
 	.row
 		.col-md-12: .well
@@ -47,7 +47,7 @@
 					tr
 						th reasons
 						th name
-						th module
+						th(colspan="2") module
 						th location
 				tbody
 					each origin in chunk.origins
@@ -57,9 +57,47 @@
 									code= reason
 									= " "
 							td: code= origin.name
-							td
-								a.btn.btn-success(href="#module/#{origin.moduleId}")= origin.moduleId
-								code= origin.module
+							td: a.btn.btn-success(href="#module/#{origin.moduleUid}")= origin.moduleId
+							td: pre: code= origin.moduleName.split("!").join("\n");
 							td
 								if origin.loc
 									code= origin.loc
+	.row
+		.col-md-12: .well
+			h4 modules
+			table.table.table-condensed
+				thead
+					tr
+						th id
+						th name
+						th size
+						th chunks
+						th flags
+				tbody
+					each module in chunk.modules
+						tr
+							td: a.btn.btn-success(href="#module/#{module.uid}")= module.id
+							td: pre: code= module.name.split("!").join("\n")
+							td= require("../../formatSize")(module.size)
+							td
+								each chunk in module.chunks
+									a.btn.btn-info(href="#chunk/#{chunk}")= chunk
+									= " "
+							td
+								if module.built
+									span.label.label-success built
+									= " "
+								if !module.cacheable
+									span.label.label-warning not cacheable
+									= " "
+								if module.prefetched
+									span.label.label-success prefetched
+									= " "
+								if module.failed
+									span.label.label-danger failed
+									= " "
+								if module.warnings
+									span.label.label-warning= module.warnings + " warnings"
+									= " "
+								if module.errors
+									span.label.label-danger= module.errors + " errors"

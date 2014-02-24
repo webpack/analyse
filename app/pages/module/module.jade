@@ -1,15 +1,23 @@
 .container-fluid
 	.row
 		.col-md-6: .well
-			pre: code= module.name.split("!").join("\n")
+			table(width="100%"): tbody: tr
+				td: a.btn.btn-success.disabled(href="#module/#{module.uid}")= module.id
+				td: pre: code= module.name.split("!").join("\n")
 		.col-md-3: .well
-			h4 module id
-			= id
+			h4 time
+			if module.time
+				code= module.time + "ms"
+				if module.timestamp
+					= " finished @ "
+					code= module.timestamp + "ms"
+			else
+				| Compile with <code>--profile</code>.
 		.col-md-3: .well
 			h4 size
-			= module.size + " bytes"
+			= require("../../formatSize")(module.size)
 	.row
-		.col-md-6: .well
+		.col-md-3: .well
 			h4 flags
 			if module.built
 				span.label.label-success built
@@ -28,9 +36,16 @@
 				= " "
 			if module.errors
 				span.label.label-danger= module.errors + " errors"
+		.col-md-3: .well
+			h4 chunks
+			each chunk in module.chunks
+				a.btn.btn-info(href="#chunk/#{chunk}")= chunk
 		.col-md-6: .well
-			h4 issuer
-			code= module.issuer
+			if issuer
+				h4 issuer
+				table(width="100%"): tbody: tr
+					td: a.btn.btn-success(href="#module/#{issuer.uid}")= issuer.id
+					td: pre: code= issuer.name.split("!").join("\n")
 	.row
 		.col-md-12: .well
 			h4 reasons
@@ -45,9 +60,11 @@
 					each reason in module.reasons
 						tr
 							td= reason.type
-							td(style="width: 1px"): a.btn.btn-success(href="#module/#{reason.moduleId}")= reason.moduleId
-							td: pre: code= reason.module.split("!").join("\n")
-							td: pre: code= reason.userRequest.split("!").join("\n")
+							td(style="width: 1px"): a.btn.btn-success(href="#module/#{reason.moduleUid}")= reason.moduleId
+							td: if reason.module
+								pre: code= reason.module.split("!").join("\n")
+							td: if reason.userRequest
+								pre: code= reason.userRequest.split("!").join("\n")
 							td
 								if reason.loc
 									code= reason.loc
@@ -65,9 +82,11 @@
 					each dependency in module.dependencies
 						tr
 							td= dependency.type
-							td(style="width: 1px"): a.btn.btn-success(href="#module/#{dependency.moduleId}")= dependency.moduleId
-							td: pre: code= dependency.module.split("!").join("\n")
-							td: pre: code= dependency.userRequest.split("!").join("\n")
+							td(style="width: 1px"): a.btn.btn-success(href="#module/#{dependency.moduleUid}")= dependency.moduleId
+							td: if dependency.module
+								pre: code= dependency.module.split("!").join("\n")
+							td: if dependency.userRequest
+								pre: code= dependency.userRequest.split("!").join("\n")
 							td
 								if dependency.loc
 									code= dependency.loc

@@ -7,9 +7,9 @@
 		.col-md-3
 			.well: center
 				h1
-					| webpack
+					a(href="http://webpack.github.io/") webpack
 					br
-					= stats.version
+					a(href="http://webpack.github.io/docs/changelog.html")= stats.version
 		.col-md-3
 			.well: center
 				h1
@@ -45,19 +45,23 @@
 			.well: center
 				h1
 					if stats.errors.length && stats.warnings.length
-						= stats.warnings.length
-						|  warnings
+						a(href="#warnings")
+							= stats.warnings.length
+							|  warnings
 						br
-						= stats.errors.length
-						|  errors
+						a(href="#errors")
+							= stats.errors.length
+							|  errors
 					else if stats.errors.length
-						= stats.errors.length
-						br
-						| errors
+						a(href="#errors")
+							= stats.errors.length
+							br
+							| errors
 					else if stats.warnings.length
-						= stats.warnings.length
-						br
-						| warnings
+						a(href="#warnings")
+							= stats.warnings.length
+							br
+							| warnings
 					else
 						| no
 						br

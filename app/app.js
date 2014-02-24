@@ -2,34 +2,6 @@ exports.stats = null;
 exports.mapModules = null;
 exports.mapChunks = null;
 
-var lastPage;
-
-function loadPage(name) {
-	if(!name) name = "home";
-	var pageBundle;
-	var args = Array.prototype.slice.call(arguments, 1);
-	if(!exports.stats) {
-		args.unshift(name);
-		name = "upload";
-	}
-	try {
-		pageBundle = require("bundle!./pages/" + name + "/page.js");
-	} catch(err) {
-		pageBundle = function(cb) {
-			cb(require("./pages/error/page.js"));
-		};
-		args.unshift(err, name);
-	}
-	pageBundle(function(page) {
-		$(function() {
-			if(lastPage) lastPage();
-			lastPage = page.apply(null, args);
-		});
-	});
-}
-exports.loadPage = loadPage;
-
-
 function load(stats) {
 	stats.assets.sort(function(a, b) {
 		return b.size - a.size;
@@ -38,8 +10,12 @@ function load(stats) {
 		return a.id - b.id;
 	});
 	var mapModules = {};
-	stats.modules.forEach(function(module) {
+	var mapModulesIdent = {};
+	var mapModulesUid = {};
+	stats.modules.forEach(function(module, idx) {
 		mapModules[module.id] = module;
+		mapModulesIdent["$"+module.identifier] = module;
+		mapModulesUid[module.uid = idx] = module;
 		module.dependencies = [];
 	});
 	var mapChunks = {};
@@ -49,20 +25,39 @@ function load(stats) {
 	});
 	stats.modules.forEach(function(module) {
 		module.reasons.forEach(function(reason) {
-			var m = mapModules[reason.moduleId];
+			var m = mapModulesIdent["$"+reason.moduleIdentifier];
+			reason.moduleUid = m.uid;
 			m.dependencies.push({
 				type: reason.type,
 				moduleId: module.id,
+				moduleUid: module.uid,
 				module: module.name,
 				userRequest: reason.userRequest,
 				loc: reason.loc
 			});
 		});
+		module.issuerUid = mapModulesIdent["$"+module.issuer] && mapModulesIdent["$"+module.issuer].uid;
+		(function setTimestamp(module) {
+			if(typeof module.timestamp === "number") return module.timestamp;
+			if(!module.profile) return;
+			var factory = module.profile.factory || 0;
+			var building = module.profile.building || 0;
+			module.time = factory + building;
+			if(!module.issuer) return module.timestamp = module.time;
+			var issuer = mapModulesIdent["$"+module.issuer];
+			if(!issuer) return module.timestamp = NaN;
+			setTimestamp(issuer);
+			module.timestamp = issuer.timestamp + module.time;
+		}(module));
 	});
 	stats.chunks.forEach(function(chunk) {
 		chunk.parents.forEach(function(parent) {
 			var c = mapChunks[parent];
 			c.children.push(chunk.id);
+		});
+		chunk.origins.forEach(function(origin) {
+			var m = mapModulesIdent["$"+origin.moduleIdentifier];
+			origin.moduleUid = m.uid;
 		});
 	});
 	stats.modules.forEach(function(module) {
@@ -79,8 +74,24 @@ function load(stats) {
 			return 0;
 		});
 	});
+	var maxLength = 0;
+	stats.assets.forEach(function(a) {
+		if(a.name.length > maxLength) maxLength = a.name.length;
+	});
+	stats.assets.forEach(function(a) {
+		a.normalizedName = a.name;
+		while(a.normalizedName.length < maxLength)
+			a.normalizedName = " " + a.normalizedName;
+	});
+	stats.assets.sort(function(a, b) {
+		a = a.normalizedName;
+		b = b.normalizedName;
+		return a < b ? -1 : 1;
+	});
 	exports.stats = stats;
 	exports.mapChunks = mapChunks;
 	exports.mapModules = mapModules;
+	exports.mapModulesUid = mapModulesUid;
+	exports.mapModulesIdent = mapModulesIdent;
 }
 exports.load = load;

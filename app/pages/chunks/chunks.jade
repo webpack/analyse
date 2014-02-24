@@ -1,4 +1,3 @@
-#sigma(style="width: 99%; height: 300px; ")
 table.table.table-condensed
 	thead
 		tr
@@ -17,7 +16,7 @@ table.table.table-condensed
 						code= name
 						= " "
 				td= chunk.modules.length
-				td= chunk.size + " bytes"
+				td= require("../../formatSize")(chunk.size)
 				td
 					each parent in chunk.parents
 						a.btn.btn-info(href="#chunk/#{parent}")= parent
@@ -25,3 +24,9 @@ table.table.table-condensed
 				td
 					if chunk.rendered
 						span.label.label-success rendered
+						= " "
+					if chunk.initial
+						span.label.label-info initial
+						= " "
+					if chunk.entry
+						span.label.label-danger entry

@@ -1,4 +1,3 @@
-#sigma(style="width: 99%; height: 500px; ")
 table.table.table-condensed
 	thead
 		tr
@@ -10,9 +9,9 @@ table.table.table-condensed
 	tbody
 		each module in stats.modules
 			tr
-				td: a.btn.btn-success(href="#module/#{module.id}")= module.id
+				td: a.btn.btn-success(href="#module/#{module.uid}")= module.id
 				td: pre: code= module.name.split("!").join("\n")
-				td= module.size + " bytes"
+				td= require("../../formatSize")(module.size)
 				td
 					each chunk in module.chunks
 						a.btn.btn-info(href="#chunk/#{chunk}")= chunk
