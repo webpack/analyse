@@ -1,0 +1,25 @@
+table.table.table-condensed
+	thead
+		tr
+			th assets
+			th size
+			th chunks
+			th names
+			th flags
+	tbody
+		each asset in stats.assets
+			tr
+				td: pre: code= asset.name
+				td= require("../../formatSize")(asset.size)
+				td
+					each chunk in asset.chunks
+						a.btn.btn-info(href="#chunk/#{chunk}")= chunk
+						= " "
+				td
+					each name in asset.chunkNames
+						code= name
+						= " "
+				td
+					if module.emitted
+						span.label.label-success emitted
+						= " "
