@@ -12,15 +12,19 @@ var maxSize = 0;
 app.stats.chunks.forEach(function(chunk, idx) {
 	if(chunk.size > maxSize) maxSize = chunk.size;
 });
-app.stats.chunks.forEach(function(chunk) {
+app.stats.chunks.forEach(function(chunk, idx) {
 	var color = percentageToColor(Math.pow((chunk.size+1) / (maxSize+1), 1/4));
 	nodes.push({
 		id: "chunk" + chunk.id,
 		chunkId: chunk.id,
-		size: Math.sqrt(chunk.size),
-		label: "" + chunk.id,
-		x: chunk.id * 10,
-		y: Math.abs(chunkCount / 2 - chunk.id),
+		size: Math.ceil(Math.sqrt(chunk.size + 1)),
+		type: "webpack",
+		shortLabel: "" + chunk.id,
+		label: "[" + chunk.id + "] " + chunk.origins.map(function(o) {
+			return o.reasons.concat(o.name).concat(o.moduleName).join(" ");
+		}).join(", "),
+		x: (Math.cos(idx / chunkCount * Math.PI * 2) * chunkCount),
+		y: (Math.sin(idx / chunkCount * Math.PI * 2) * chunkCount),
 		color: color
 	});
 });
@@ -41,7 +45,10 @@ var s = new sigma({
 		nodes: nodes,
 		edges: edges
 	},
-	container: "sigma-chunks",
+	renderer: {
+		type: "canvas",
+		container: element
+	},
 	settings: {
 		edgeColor: "target",
 		maxNodeSize: 20,

@@ -16,30 +16,30 @@ app.stats.modules.forEach(function(module, idx) {
 	if(module.size > maxSize) maxSize = module.size;
 	if(module.timestamp > maxTimestamp) maxTimestamp = module.timestamp;
 });
-app.stats.modules.forEach(function(module) {
+app.stats.modules.forEach(function(module, idx) {
 	var color = percentageToColor(Math.pow((module.size+1) / (maxSize+1), 1/4));
-	var uid = module.uid;
-	nodes.push({
-		id: "module" + module.uid,
-		uid: module.uid,
-		moduleUid: module.uid,
-		moduleId: module.id,
-		module: module,
-		type: "webpack",
-		size: module.size + 1,
-		label: "[" + module.id + "] " + module.name,
-		shortLabel: "" + module.id,
-		x: module.uid * 1,
-		y: Math.abs(moduleCount / 2 - module.uid) * 2,
-		originalColor: color,
-		color: color
-	});
 	var done = {};
 	var uniqueReasons = module.reasons.filter(function(reason) {
 		var parent = reason.module;
 		if(done["$"+parent]) return false;
 		done["$"+parent] = true;
 		return true;
+	});
+	var uid = module.uid;
+	nodes.push({
+		id: "module" + uid,
+		uid: uid,
+		moduleUid: uid,
+		moduleId: module.id,
+		module: module,
+		type: "webpack",
+		size: module.size + 1,
+		label: "[" + module.id + "] " + module.name,
+		shortLabel: "" + module.id,
+		x: Math.cos(idx / moduleCount * Math.PI * 2) * Math.sqrt(uniqueReasons.length + 1) * Math.sqrt(moduleCount),
+		y: Math.sin(idx / moduleCount * Math.PI * 2) * Math.sqrt(uniqueReasons.length + 1) * Math.sqrt(moduleCount),
+		originalColor: color,
+		color: color
 	});
 	var edgeColor = typeof module.timestamp === "number" ? percentageToColor2(module.timestamp / maxTimestamp) : undefined;
 	uniqueReasons.forEach(function(reason) {
@@ -82,13 +82,16 @@ var s = new sigma({
 		nodes: nodes,
 		edges: edges
 	},
-	container: "sigma-modules",
+	renderer: {
+		type: "canvas",
+		container: element
+	},
 	settings: {
 		edgeColor: "target",
 		maxNodeSize: 4,
 		minNodeSize: 4,
 		maxEdgeSize: 2,
-		minEdgeSize: 1
+		minEdgeSize: 0.05
 	}
 });
 
