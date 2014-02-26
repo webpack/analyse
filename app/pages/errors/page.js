@@ -7,6 +7,7 @@ module.exports = function() {
 			str = str.split("\n");
 			var header = str.shift();
 			var footer = str.pop();
+			if(!/^ @/.test(footer)) str.push(footer), footer = "";
 			return {
 				header: header,
 				text: str.join("\n"),
