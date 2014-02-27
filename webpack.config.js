@@ -3,8 +3,8 @@ module.exports = {
 	cache: true,
 	entry: "./app/entry.js",
 	output: {
-		path: path.join(__dirname, "assets"),
-		publicPath: "assets/",
+		path: path.join(__dirname, "dist"),
+		publicPath: "",
 		filename: "web.js",
 		chunkFilename: "[id].[hash].js",
 		jsonpCallback: "a"

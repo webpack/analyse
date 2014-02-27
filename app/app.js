@@ -93,5 +93,22 @@ function load(stats) {
 	exports.mapModules = mapModules;
 	exports.mapModulesUid = mapModulesUid;
 	exports.mapModulesIdent = mapModulesIdent;
+
+	var ga = require("./googleAnalytics");
+	ga('set', 'dimension1', categorize(stats.modules.length) + "");
+	ga('set', 'dimension2', categorize(stats.chunks.length)  + "");
+	ga('set', 'dimension3', categorize(stats.assets.length)  + "");
+	ga('set', 'dimension4', categorize(stats.time)           + "");
 }
 exports.load = load;
+
+function categorize(number) {
+	if(number <= 0) return 0;
+	var factor = 1;
+	do {
+		if(number <= 10) return number * factor;
+		factor *= 10;
+		number = Math.floor(number / 10);
+	} while(number > 0)
+	return "";
+}
