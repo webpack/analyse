@@ -4,6 +4,7 @@ var modulesGraph = require("../../graphs/modules");
 module.exports = function(id) {
 	id = parseInt(id, 10);
 	var m = app.mapModulesUid[id];
+	document.title = "module " + m.id;
 	$(".page").html(require("./module.jade")({
 		stats: app.stats,
 		id: id,

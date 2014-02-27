@@ -1,6 +1,7 @@
 var app = require("../../app");
 
 module.exports = function() {
+	document.title = "errors";
 	$(".page").html(require("./errors.jade")({
 		stats: app.stats,
 		errors: app.stats.errors.map(function(str) {

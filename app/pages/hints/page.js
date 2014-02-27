@@ -2,6 +2,7 @@ var app = require("../../app");
 var findById = require("../../findById");
 
 module.exports = function() {
+	document.title = "hints";
 	var multiRefs = [];
 	app.stats.modules.forEach(function(module) {
 		var requiresSum = {};

@@ -3,6 +3,7 @@ var chunksGraph = require("../../graphs/chunks");
 
 
 module.exports = function() {
+	document.title = "chunks";
 	$(".page").html(require("./chunks.jade")({
 		stats: app.stats
 	}));
