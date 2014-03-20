@@ -56,3 +56,21 @@
 								td: a.btn.btn-success(href="#module/#{item.otherModule.uid}")= item.otherModule.id
 								td: pre: code= item.otherModule.name.split("!").join("\n")
 								td= require("../../formatSize")(item.saving) + "+"
+			if longChains.length > 0
+				h2 Long module build chains
+				p Use prefetching to increase build performance. Prefetch a module from the middle of the chain.
+				for chain in longChains
+					table.table.table-bordered
+						thead
+							tr
+								th module
+								th name
+								th time
+								th finished @
+						tbody
+							for module in chain
+								tr
+									td: a.btn.btn-success(href="#module/#{module.uid}")= module.id
+									td: pre: code= module.name.split("!").join("\n")
+									td= module.time + " ms"
+									td= module.timestamp + " ms"

@@ -27,7 +27,7 @@ module.exports = function() {
 		item.saving = item.count * (2 + refModLength) - 6 - refModLength;
 	});
 	multiRefs = multiRefs.filter(function(item) {
-		return item.saving > 0;
+		return item.saving > 10;
 	});
 	multiRefs.sort(function(a, b) {
 		return b.saving - a.saving;
@@ -43,13 +43,33 @@ module.exports = function() {
 			});
 		}
 	});
+	multiChunks = multiChunks.filter(function(item) {
+		return item.saving > 100;
+	});
 	multiChunks.sort(function(a, b) {
 		return b.saving - a.saving;
+	});
+
+	var modulesByTimestamp = app.stats.modules.filter(function(m) {
+		return typeof m.timestamp === "number";
+	}).sort(function(a, b) {
+		return b.timestamp - a.timestamp;
+	}).slice(0, 10);
+
+	var longChains = modulesByTimestamp.map(function(m) {
+		var chain = [m];
+		while(typeof m.issuerUid === "number") {
+			m = app.mapModulesUid[m.issuerUid];
+			if(!m) break;
+			chain.unshift(m);
+		}
+		return chain;
 	});
 
 	$(".page").html(require("./hints.jade")({
 		stats: app.stats,
 		multiRefs: multiRefs,
-		multiChunks: multiChunks
+		multiChunks: multiChunks,
+		longChains: longChains
 	}));
 };
