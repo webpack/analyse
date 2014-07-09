@@ -1,6 +1,8 @@
 .container-fluid
 	.row
 		.col-md-12
+			if multiChunks.length === 0 && multiRefs.length === 0 && longChains.length === 0
+				h2 Everything seem to be fine.
 			if multiChunks.length > 0
 				h2 Module in multiple chunks
 				p Check if it is a good idea to move modules into a common parent. You may want to use <code>require.include</code> or insert them into the parents <code>require.ensure</code> array.

@@ -62,8 +62,8 @@
 							td
 								if origin.loc
 									code= origin.loc
-	.row
-		.col-md-12: .well
+	if chunk.modules && chunk.modules.length > 0
+		.row: .col-md-12: .well
 			h4 modules
 			table.table.table-condensed
 				thead

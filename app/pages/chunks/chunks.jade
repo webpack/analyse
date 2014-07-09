@@ -15,7 +15,7 @@ table.table.table-condensed
 					each name in chunk.names
 						code= name
 						= " "
-				td= chunk.modules.length
+				td= chunk.modules ? chunk.modules.length : "N/A"
 				td= require("../../formatSize")(chunk.size)
 				td
 					each parent in chunk.parents
