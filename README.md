@@ -6,12 +6,18 @@
 
 Development:
 
-``` javascript
-webpack-dev-server --colors --content-page index.html --progress -d
+``` text
+grunt dev
 ```
 
 Production:
 
-``` javascript
-webpack --progress --colors -p
+``` text
+grunt
+```
+
+Publish:
+
+``` text
+grunt deploy
 ```
