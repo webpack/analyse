@@ -26,6 +26,7 @@ function load(stats) {
 	stats.modules.forEach(function(module) {
 		module.reasons.forEach(function(reason) {
 			var m = mapModulesIdent["$"+reason.moduleIdentifier];
+			if(!m) return;
 			reason.moduleUid = m.uid;
 			m.dependencies.push({
 				type: reason.type,
@@ -57,6 +58,7 @@ function load(stats) {
 		});
 		chunk.origins.forEach(function(origin) {
 			var m = mapModulesIdent["$"+origin.moduleIdentifier];
+			if(!m) return;
 			origin.moduleUid = m.uid;
 		});
 	});

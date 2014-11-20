@@ -44,7 +44,11 @@
 			if issuer
 				h4 issuer
 				table(width="100%"): tbody: tr
-					td: a.btn.btn-success(href="#module/#{issuer.uid}")= issuer.id
+					td
+						if typeof issuer.uid === "number"
+							a.btn.btn-success(href="#module/#{issuer.uid}")= issuer.id
+						else
+							span.btn.btn-success= issuer.id
 					td: pre: code= issuer.name.split("!").join("\n")
 	.row
 		.col-md-12: .well
@@ -60,7 +64,11 @@
 					each reason in module.reasons
 						tr
 							td= reason.type
-							td(style="width: 1px"): a.btn.btn-success(href="#module/#{reason.moduleUid}")= reason.moduleId
+							td(style="width: 1px")
+								if typeof reason.moduleUid === "number"
+									a.btn.btn-success(href="#module/#{reason.moduleUid}")= reason.moduleId
+								else
+									span.btn.btn-success= reason.moduleId
 							td: if reason.module
 								pre: code= reason.module.split("!").join("\n")
 							td: if reason.userRequest
@@ -82,7 +90,11 @@
 					each dependency in module.dependencies
 						tr
 							td= dependency.type
-							td(style="width: 1px"): a.btn.btn-success(href="#module/#{dependency.moduleUid}")= dependency.moduleId
+							td(style="width: 1px")
+								if typeof dependency.moduleUid === "number"
+									a.btn.btn-success(href="#module/#{dependency.moduleUid}")= dependency.moduleId
+								else
+									span.btn.btn-success= dependency.moduleId
 							td: if dependency.module
 								pre: code= dependency.module.split("!").join("\n")
 							td: if dependency.userRequest

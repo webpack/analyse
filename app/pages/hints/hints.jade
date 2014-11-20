@@ -17,7 +17,11 @@
 					tbody
 						for item in multiChunks
 							tr
-								td: a.btn.btn-success(href="#module/#{item.module.uid}")= item.module.id
+								td
+									if typeof item.module.uid === "number"
+										a.btn.btn-success(href="#module/#{item.module.uid}")= item.module.id
+									else
+										span.btn.btn-success= item.module.id
 								splittedModule = item.module.name.split("!")
 								td: pre: code= splittedModule.join("\n")
 								td= item.count
@@ -52,10 +56,18 @@
 					tbody
 						for item in multiRefs
 							tr
-								td: a.btn.btn-success(href="#module/#{item.module.uid}")= item.module.id
+								td
+									if typeof item.module.uid === "number"
+										a.btn.btn-success(href="#module/#{item.module.uid}")= item.module.id
+									else
+										span.btn.btn-success= item.module.id
 								td: pre: code= item.module.name.split("!").join("\n")
 								td= item.count
-								td: a.btn.btn-success(href="#module/#{item.otherModule.uid}")= item.otherModule.id
+								td
+									if typeof item.otherModule.uid === "number"
+										a.btn.btn-success(href="#module/#{item.otherModule.uid}")= item.otherModule.id
+									else
+										span.btn.btn-success= item.otherModule.id
 								td: pre: code= item.otherModule.name.split("!").join("\n")
 								td= require("../../formatSize")(item.saving) + "+"
 			if longChains.length > 0
@@ -72,7 +84,11 @@
 						tbody
 							for module in chain
 								tr
-									td: a.btn.btn-success(href="#module/#{module.uid}")= module.id
+									td
+										if typeof module.uid === "number"
+											a.btn.btn-success(href="#module/#{module.uid}")= module.id
+										else
+											span.btn.btn-success= module.id
 									td: pre: code= module.name.split("!").join("\n")
 									td= module.time + " ms"
 									td= module.timestamp + " ms"

@@ -45,6 +45,7 @@ app.stats.modules.forEach(function(module, idx) {
 	uniqueReasons.forEach(function(reason) {
 		var parentIdent = reason.moduleIdentifier;
 		var parentModule = app.mapModulesIdent["$"+parentIdent];
+		if(!parentModule) return;
 		var weight = 1 / uniqueReasons.length / uniqueReasons.length;
 		var async = !module.chunks.some(function(chunk) {
 			return (function isInChunks(chunks, checked) {

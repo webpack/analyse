@@ -9,7 +9,11 @@ table.table.table-condensed
 	tbody
 		each module in stats.modules
 			tr
-				td: a.btn.btn-success(href="#module/#{module.uid}")= module.id
+				td
+					if typeof module.uid === "number"
+						a.btn.btn-success(href="#module/#{module.uid}")= module.id
+					else
+						span.btn.btn-success= module.id
 				td: pre: code= module.name.split("!").join("\n")
 				td= require("../../formatSize")(module.size)
 				td

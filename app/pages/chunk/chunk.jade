@@ -57,7 +57,11 @@
 									code= reason
 									= " "
 							td: code= origin.name
-							td: a.btn.btn-success(href="#module/#{origin.moduleUid}")= origin.moduleId
+							td
+								if typeof origin.moduleUid === "number"
+									a.btn.btn-success(href="#module/#{origin.moduleUid}")= origin.moduleId
+								else
+									span.btn.btn-success= origin.moduleId
 							td: pre: code= origin.moduleName.split("!").join("\n");
 							td
 								if origin.loc
@@ -76,7 +80,11 @@
 				tbody
 					each module in chunk.modules
 						tr
-							td: a.btn.btn-success(href="#module/#{module.uid}")= module.id
+							td
+								if typeof module.uid === "number"
+									a.btn.btn-success(href="#module/#{module.uid}")= module.id
+								else
+									span.btn.btn-success= module.id
 							td: pre: code= module.name.split("!").join("\n")
 							td= require("../../formatSize")(module.size)
 							td
