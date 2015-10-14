@@ -1,3 +1,6 @@
 table pre {
 	margin-bottom: 0px;
 }
+.sortable-th {
+	cursor: pointer;
+}
