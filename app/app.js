@@ -61,8 +61,20 @@ function load(stats) {
 			if(!m) return;
 			origin.moduleUid = m.uid;
 		});
+		chunk.modules.forEach(function(module) {
+			var m = mapModulesIdent["$"+module.identifier], s;
+			if(!m) return;
+			s = m.dependencies.reduce(function(totalSize, dep) {
+				return totalSize + (mapModules[dep.moduleId].size || 0);
+			}, 0);
+			module.recursiveSize = module.size + s;
+		});
 	});
 	stats.modules.forEach(function(module) {
+		var s = module.dependencies.reduce(function(totalSize, dep) {
+			return totalSize + (mapModules[dep.moduleId].size || 0);
+		}, 0);
+		module.recursiveSize = module.size + s;
 		module.dependencies.sort(function(a, b) {
 			if(!a.loc && !b.loc) return 0;
 			if(!a.loc) return 1;

@@ -4,6 +4,7 @@ table.table.table-condensed
 			th id
 			th name
 			th size
+			th recursive size
 			th chunks
 			th flags
 	tbody
@@ -16,6 +17,7 @@ table.table.table-condensed
 						span.btn.btn-success= module.id
 				td: pre: code= module.name.split("!").join("\n")
 				td= require("../../formatSize")(module.size)
+				td= require("../../formatSize")(module.recursiveSize)
 				td
 					each chunk in module.chunks
 						a.btn.btn-info(href="#chunk/#{chunk}")= chunk
