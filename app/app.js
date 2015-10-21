@@ -19,6 +19,7 @@ function load(stats) {
 		module.dependencies = [];
 	});
 	var mapChunks = {};
+	var dependencySizeCache = {};
 	stats.chunks.forEach(function(chunk) {
 		mapChunks[chunk.id] = chunk;
 		chunk.children = [];
@@ -64,17 +65,11 @@ function load(stats) {
 		chunk.modules.forEach(function(module) {
 			var m = mapModulesIdent["$"+module.identifier], s;
 			if(!m) return;
-			s = m.dependencies.reduce(function(totalSize, dep) {
-				return totalSize + (mapModules[dep.moduleId].size || 0);
-			}, 0);
-			module.recursiveSize = module.size + s;
+			module.recursiveSize = recursiveSize(m, mapModules, dependencySizeCache);
 		});
 	});
 	stats.modules.forEach(function(module) {
-		var s = module.dependencies.reduce(function(totalSize, dep) {
-			return totalSize + (mapModules[dep.moduleId].size || 0);
-		}, 0);
-		module.recursiveSize = module.size + s;
+		module.recursiveSize = recursiveSize(module, mapModules, dependencySizeCache);
 		module.dependencies.sort(function(a, b) {
 			if(!a.loc && !b.loc) return 0;
 			if(!a.loc) return 1;
@@ -125,4 +120,35 @@ function categorize(number) {
 		number = Math.floor(number / 10);
 	} while(number > 0)
 	return "";
+}
+
+
+// Calculate the recrursive dependency size for a module
+// This function has the side effect of updating a passed cache object
+function recursiveSize(m, moduleMap, dependencySizeCache) {
+	var depSize,
+	cachedDepSize = dependencySizeCache[m.uid];
+	if (cachedDepSize) {
+		depSize = cachedDepSize;
+	} else {
+		depSize = calculateDependencySize(m, {}, moduleMap);
+		dependencySizeCache[m.uid] = depSize;
+	}
+	return m.size + depSize;
+}
+
+function calculateDependencySize(m, traversed, moduleMap) {
+	return m.dependencies.reduce(function (depSize, dep) {
+		var depMod = moduleMap[dep.moduleId];
+		if (!traversed[dep.moduleUid]) {
+			// Mark this module as already included in the calculation
+			// to avoid double-counting or circular dependencies
+			traversed[dep.moduleUid] = true;
+			// Add the size of this dependency...
+			depSize  += depMod.size;
+			// ...and all of its dependencies
+			depSize += calculateDependencySize(depMod, traversed, moduleMap);
+		}
+		return depSize;
+	}, 0);
 }
