@@ -8,7 +8,8 @@ module.exports = function(id) {
 	$(".page").html(require("./chunk.jade")({
 		stats: app.stats,
 		id: id,
-		chunk: app.mapChunks[id]
+		chunk: app.mapChunks[id],
+		mapChunks: app.mapChunks
 	}));
 	modulesGraph.show();
 	modulesGraph.setActiveChunk(id);

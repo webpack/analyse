@@ -91,7 +91,7 @@
 							td= require("../../formatSize")(module.recursiveSize)
 							td
 								each chunk in module.chunks
-									a.btn.btn-info(href="#chunk/#{chunk}")= chunk
+									a.btn.btn-info(href="#chunk/#{chunk}", title="#{mapChunks[chunk].names.join(',')}")= chunk
 									= " "
 							td
 								if module.built
