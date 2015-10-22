@@ -123,7 +123,7 @@ function categorize(number) {
 }
 
 
-// Calculate the recrursive dependency size for a module
+// Calculate the recursive dependency size for a module
 // This function has the side effect of updating a passed cache object
 function recursiveSize(m, moduleMap, dependencySizeCache) {
 	var depSize,
