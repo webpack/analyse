@@ -4,7 +4,7 @@
 			table(width="100%"): tbody: tr
 				td: a.btn.btn-success.disabled(href="#module/#{module.uid}")= module.id
 				td: pre: code= module.name.split("!").join("\n")
-		.col-md-3: .well
+		.col-md-2: .well
 			h4 time
 			if module.time
 				code= module.time + "ms"
@@ -13,9 +13,12 @@
 					code= module.timestamp + "ms"
 			else
 				| Compile with <code>--profile</code>.
-		.col-md-3: .well
+		.col-md-2: .well
 			h4 size
 			= require("../../formatSize")(module.size)
+		.col-md-2: .well
+			h4 recursive size
+			= require("../../formatSize")(module.recursiveSize)
 	.row
 		.col-md-3: .well
 			h4 flags
