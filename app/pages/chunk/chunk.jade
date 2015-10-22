@@ -74,7 +74,8 @@
 					tr
 						th id
 						th name
-						th size
+						th: a#size(href='#') size
+						th: a#recursive-size(href='#') recursive size
 						th chunks
 						th flags
 				tbody
@@ -87,9 +88,10 @@
 									span.btn.btn-success= module.id
 							td: pre: code= module.name.split("!").join("\n")
 							td= require("../../formatSize")(module.size)
+							td= require("../../formatSize")(module.recursiveSize)
 							td
 								each chunk in module.chunks
-									a.btn.btn-info(href="#chunk/#{chunk}")= chunk
+									a.btn.btn-info(href="#chunk/#{chunk}", title="#{mapChunks[chunk].names.join(',')}")= chunk
 									= " "
 							td
 								if module.built
