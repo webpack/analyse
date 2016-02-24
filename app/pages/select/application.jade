@@ -1,0 +1,22 @@
+nav.navbar.navbar-default
+	.container-fluid
+		ul.nav.navbar-nav
+			li: a(href="") Open
+			li: a(href="#home") Home
+			li: a(href="#modules") Modules
+			li: a(href="#chunks") Chunks
+			li: a(href="#assets") Assets
+			li: a(href="#warnings") Warnings
+			li: a(href="#errors") Errors
+			li: a(href="#hints") Hints
+#sigma-modules(style="width: 99%; height: 500px; display:none;")
+#sigma-chunks(style="width: 99%; height: 500px; display:none;")
+.page
+
+.modal.fade: .modal-dialog: .modal-content
+	.modal-header
+		h4.modal-title Select webpack compile
+	.modal-body
+		each val, index in children
+			button.js-select.btn.btn-primary.btn-block(data-index=index) #{val.name || ("Compile #" + (index+1))}
+	.modal-footer

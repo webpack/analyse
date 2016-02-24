@@ -23,7 +23,7 @@ function loadPage(name) {
 	if(!name) name = "home";
 	var pageBundle;
 	var args = Array.prototype.slice.call(arguments, 1);
-	if(!app.stats) {
+	if(!app.stats && name != "select") {
 		args.unshift(name);
 		name = "upload";
 	}

@@ -102,7 +102,15 @@ function load(stats) {
 	ga('set', 'dimension3', categorize(stats.assets.length)  + "");
 	ga('set', 'dimension4', categorize(stats.time)           + "");
 }
-exports.load = load;
+
+exports.load = function (stats) {
+	var isMultiCompile = !stats.assets && !stats.modules && stats.children && stats.children.length > 1;
+	if (isMultiCompile) {
+		exports.loadPage("select", stats);
+	} else {
+		load(stats);
+  }
+}
 
 function categorize(number) {
 	if(number <= 0) return 0;
