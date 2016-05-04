@@ -18,4 +18,7 @@ module.exports = {
 			{ test: /\.png$/,  loader: "url-loader?limit=5000&minetype=image/png" }
 		]
 	},
+  node: {
+    fs: "empty"
+  }
 };
