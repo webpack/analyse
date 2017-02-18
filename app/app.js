@@ -3,6 +3,7 @@ exports.mapModules = null;
 exports.mapChunks = null;
 
 function load(stats) {
+	stats.assets = stats.assets || [];
 	stats.assets.sort(function(a, b) {
 		return b.size - a.size;
 	});
@@ -19,11 +20,13 @@ function load(stats) {
 		module.dependencies = [];
 	});
 	var mapChunks = {};
+	stats.chunks = stats.chunks || [];
 	stats.chunks.forEach(function(chunk) {
 		mapChunks[chunk.id] = chunk;
 		chunk.children = [];
 	});
 	stats.modules.forEach(function(module) {
+		module.reasons = module.reasons || [];
 		module.reasons.forEach(function(reason) {
 			var m = mapModulesIdent["$"+reason.moduleIdentifier];
 			if(!m) return;
