@@ -78,6 +78,28 @@
 									code= reason.loc
 	.row
 		.col-md-12: .well
+			h4 reason chain
+			p the shortest path from each chunk entry point to this module
+			each chain in reason_chains
+				p chunk 
+					a.btn.btn-info(href="#chunk/#{chain.chunk}")= chain.chunk
+					|  origin 
+					a.btn.btn-success(href="#module/#{chain.origin}")= chain.origin
+				table.table.table-condensed
+					thead
+						tr
+							th depth from origin
+							th(colspan=2) module
+					tbody
+					each reason, inx in chain.modules
+						tr
+							td= inx
+							td(style="width: 1px")
+								a.btn.btn-success(href="#module/#{reason.uid}")= reason.id
+							td: if reason.name
+								pre: code= reason.name.split("!").join("\n")								
+	.row
+		.col-md-12: .well
 			h4 dependencies
 			table.table
 				thead
