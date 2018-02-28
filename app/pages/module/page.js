@@ -3,14 +3,16 @@ var modulesGraph = require("../../graphs/modules");
 
 /** general breadth first search between start and end */
 function findPathBetween(start, end, getChildren) {
-	const todo = [start];
-	const done = new Set();
-	const parent = new Map();
+	var todo = [start];
+	var done = new Set();
+	var parent = new Map();
 
 	while(todo.length > 0) {
-		const cur = todo.shift();
+		var cur = todo.shift();
 		if(cur === end) return getPath(start, end, parent);
-		for(const child of getChildren(cur)) {
+		var children = getChildren(cur);
+		for(var i = 0; i < children.length; i++) {
+			var child = children[i];
 			if(done.has(child)) continue;
 			if(todo.indexOf(child) < 0) todo.push(child);
 			parent.set(child, cur);
@@ -18,7 +20,7 @@ function findPathBetween(start, end, getChildren) {
 		done.add(cur);
 	}
 	function getPath(start, end, parent) {
-		const path = [end];
+		var path = [end];
 		while(path[0] !== start) {
 			path.unshift(parent.get(path[0]));
 		}
@@ -27,21 +29,23 @@ function findPathBetween(start, end, getChildren) {
 }
 
 function getReasonChains(app, id) {
-	const m = app.mapModulesUid[id];
-	const chains = [];
-	for(const chunkId of m.chunks) {
-		const chunk = app.stats.chunks[chunkId];
+	var m = app.mapModulesUid[id];
+	var chains = [];
+	for(var i = 0; i < m.chunks.length; i++) {
+		var chunkId = m.chunks[i];
+		var chunk = app.stats.chunks[chunkId];
 		console.assert(chunk.id === chunkId);
-		for(const mo of chunk.origins) {
-			const origin = mo.moduleUid;
-			const p = findPathBetween(origin, id, function getChildren(id) {
-				const m = app.mapModulesUid[id];
-				return m.dependencies.filter(p => p.type !== "context element").map(p => p.moduleUid);
+		for(var j = 0; j < chunk.origins.length; j++) {
+			var mo = chunk.origins[j];
+			var origin = mo.moduleUid;
+			var p = findPathBetween(origin, id, function getChildren(id) {
+				var m = app.mapModulesUid[id];
+				return m.dependencies.filter(function(p) {return p.type !== "context element"}).map(function(p) {return p.moduleUid});
 			});
 			chains.push({
 				chunk: chunkId,
-				origin,
-				modules: (p || []).map(x => app.mapModulesUid[x])
+				origin: origin,
+				modules: (p || []).map(function(x) {return app.mapModulesUid[x]})
 			})
 		}
 	}
