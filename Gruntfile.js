@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 		"webpack-dev-server": {
 			development: {
 				contentBase: "dist",
-				port: 8080,
+				port: 3000,
 				keepAlive: true,
 				webpack: merge(require("./webpack.config.js"), {
 					devtool: "eval"
@@ -36,6 +36,12 @@ module.exports = function(grunt) {
 		copy: {
 			main: {
 				src: "index.html",
+				dest: "dist/"
+			},
+			workers: {
+				expand: true,
+				cwd: "./app/workers/",
+				src: "**",
 				dest: "dist/"
 			}
 		},
