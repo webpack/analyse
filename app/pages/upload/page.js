@@ -22,7 +22,7 @@ module.exports = function() {
 		fileReader.readAsText(files[0]);
 		fileReader.onload = function() {
 			var data = fileReader.result;
-			const worker = new Worker('parse-worker.js');
+			const worker = new Worker('parse-json.worker.js');
 			worker.postMessage(data);
 			worker.onmessage = function(event) {
 				const result = event.data;
