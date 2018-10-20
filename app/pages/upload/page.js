@@ -24,7 +24,7 @@ module.exports = function() {
 			var data = fileReader.result;
 			const worker = new Worker('parse-worker.js');
 			worker.postMessage(data);
-			worker.onmessage = event => {
+			worker.onmessage = function(event) {
 				const result = event.data;
 				app.load(result);
 				$(".modal").modal("hide");
