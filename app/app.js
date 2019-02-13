@@ -7,6 +7,7 @@ function load(stats) {
 	stats.assets.sort(function(a, b) {
 		return b.size - a.size;
 	});
+	stats.modules = stats.modules || [];
 	stats.modules.sort(function(a, b) {
 		return a.id - b.id;
 	});
