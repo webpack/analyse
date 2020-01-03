@@ -1,1 +1,0 @@
-module.exports = require("imports?d3=>null!exports?d3!./d3.v3");

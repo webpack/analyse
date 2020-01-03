@@ -1,7 +1,9 @@
 module.exports = function(err, page) {
 	document.title = "error";
-	$(".page").html(require("./error.jade")({
-		err: err,
-		page: page
-	}));
+	$(".page").html(
+		require("./error.pug")({
+			err: err,
+			page: page
+		})
+	);
 };

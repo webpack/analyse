@@ -18,5 +18,5 @@ nav.navbar.navbar-default
 		h4.modal-title Select webpack compile
 	.modal-body
 		each val, index in children
-			button.js-select.btn.btn-primary.btn-block(data-index=index) #{val.name || ("Compile #" + (index+1))}
+			button.js-select.btn.btn-primary.btn-block(data-index=index)= val.name || ("Compile #" + (index+1))
 	.modal-footer

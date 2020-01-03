@@ -15,24 +15,24 @@
 			.col-md-3: .well
 				h4 parents
 				each parent in chunk.parents
-					a.btn.btn-info(href="#chunk/#{parent}")= parent
+					a.btn.btn-info(href=`#chunk/${parent}`)= parent
 					= " "
 			.col-md-3: .well
 				h4 children
 				each child in chunk.children
-					a.btn.btn-info(href="#chunk/#{child}")= child
+					a.btn.btn-info(href=`#chunk/${child}`)= child
 					= " "
 		else if chunk.parents.length
 			.col-md-6: .well
 				h4 parents
 				each parent in chunk.parents
-					a.btn.btn-info(href="#chunk/#{parent}")= parent
+					a.btn.btn-info(href=`#chunk/${parent}`)= parent
 					= " "
 		else if chunk.children.length
 			.col-md-6: .well
 				h4 children
 				each child in chunk.children
-					a.btn.btn-info(href="#chunk/#{child}")= child
+					a.btn.btn-info(href=`#chunk/${child}`)= child
 					= " "
 		.col-md-6: .well
 			h4 files
@@ -59,10 +59,10 @@
 							td: code= origin.name
 							td
 								if typeof origin.moduleUid === "number"
-									a.btn.btn-success(href="#module/#{origin.moduleUid}")= origin.moduleId
+									a.btn.btn-success(href=`#module/${origin.moduleUid}`)= origin.moduleId
 								else
 									span.btn.btn-success= origin.moduleId
-							td: pre: code= origin.moduleName.split("!").join("\n");
+							td: pre: code= origin.moduleName.split("!").join("\n")
 							td
 								if origin.loc
 									code= origin.loc
@@ -82,14 +82,14 @@
 						tr
 							td
 								if typeof module.uid === "number"
-									a.btn.btn-success(href="#module/#{module.uid}")= module.id
+									a.btn.btn-success(href=`#module/${module.uid}`)= module.id
 								else
 									span.btn.btn-success= module.id
 							td: pre: code= module.name.split("!").join("\n")
 							td= require("../../formatSize")(module.size)
 							td
 								each chunk in module.chunks
-									a.btn.btn-info(href="#chunk/#{chunk}")= chunk
+									a.btn.btn-info(href=`#chunk/${chunk}`)= chunk
 									= " "
 							td
 								if module.built

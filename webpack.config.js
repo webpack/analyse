@@ -1,24 +1,45 @@
 var path = require("path");
-module.exports = {
-	cache: true,
-	entry: "./app/entry.js",
+var webpack = require("webpack");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+module.exports = ({ googleAnalytics, longTermCaching } = {}) => ({
+	entry: {
+		web: "./app/entry.js"
+	},
+	cache: {
+		type: "filesystem",
+		buildDependencies: {
+			config: [__filename]
+		}
+	},
+	resolve: {
+		modules: [path.resolve(__dirname, "web_modules"), "node_modules"]
+	},
 	output: {
-		path: path.join(__dirname, "dist"),
 		publicPath: "",
-		filename: "web.js",
-		chunkFilename: "[id].[hash].js",
-		jsonpCallback: "a"
+		filename: "[name].js",
+		chunkFilename: longTermCaching ? "[contenthash].js" : undefined
 	},
 	module: {
-		noParse: /sigma\.min\.js/,
-		loaders: [
-			{ test: /\.json$/, loader: "json-loader" },
-			{ test: /\.jade$/, loader: "jade-loader" },
-			{ test: /\.css$/,  loader: "style-loader!css-loader" },
-			{ test: /\.png$/,  loader: "url-loader?limit=5000&minetype=image/png" }
+		rules: [
+			{ test: /\.pug$/, use: "pug-loader" },
+			{ test: /\.css$/, use: ["style-loader", "css-loader"] },
+			{ test: /\.png$/, type: "asset" }
 		]
 	},
-  node: {
-    fs: "empty"
-  }
-};
+	plugins: [
+		compiler => {
+			// Hack to make html-webpack-plugin work
+			compiler.hooks.thisCompilation.tap("webpack.config.js", compilation => {
+				compilation.fileTimestamps = new Map();
+			});
+		},
+		new HtmlWebpackPlugin({
+			template: "./app/index.html"
+		}),
+		googleAnalytics &&
+			new webpack.DefinePlugin({
+				GA_TRACKING_CODE: JSON.stringify("UA-46921629-1"),
+				GA_TRACKING_CONFIG: JSON.stringify("webpack.github.io")
+			})
+	].filter(Boolean)
+});

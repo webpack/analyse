@@ -10,7 +10,7 @@ table.table.table-condensed
 	tbody
 		each chunk in stats.chunks
 			tr
-				td: a.btn.btn-info(href="#chunk/#{chunk.id}")= chunk.id
+				td: a.btn.btn-info(href=`#chunk/${chunk.id}`)= chunk.id
 				td
 					each name in chunk.names
 						code= name
@@ -19,7 +19,7 @@ table.table.table-condensed
 				td= require("../../formatSize")(chunk.size)
 				td
 					each parent in chunk.parents
-						a.btn.btn-info(href="#chunk/#{parent}")= parent
+						a.btn.btn-info(href=`#chunk/${parent}`)= parent
 						= " "
 				td
 					if chunk.rendered

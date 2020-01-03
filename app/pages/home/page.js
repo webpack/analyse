@@ -2,7 +2,9 @@ var app = require("../../app");
 
 module.exports = function() {
 	document.title = "home";
-	$(".page").html(require("./home.jade")({
-		stats: app.stats
-	}));
+	$(".page").html(
+		require("./home.pug")({
+			stats: app.stats
+		})
+	);
 };

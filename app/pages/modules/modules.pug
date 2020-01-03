@@ -11,14 +11,14 @@ table.table.table-condensed
 			tr
 				td
 					if typeof module.uid === "number"
-						a.btn.btn-success(href="#module/#{module.uid}")= module.id
+						a.btn.btn-success(href=`#module/${module.uid}`)= module.id
 					else
 						span.btn.btn-success= module.id
 				td: pre: code= module.name.split("!").join("\n")
 				td= require("../../formatSize")(module.size)
 				td
 					each chunk in module.chunks
-						a.btn.btn-info(href="#chunk/#{chunk}")= chunk
+						a.btn.btn-info(href=`#chunk/${chunk}`)= chunk
 						= " "
 				td
 					if module.built

@@ -2,7 +2,7 @@
 	.row
 		.col-md-6: .well
 			table(width="100%"): tbody: tr
-				td: a.btn.btn-success.disabled(href="#module/#{module.uid}")= module.id
+				td: a.btn.btn-success.disabled(href=`#module/${module.uid}`)= module.id
 				td: pre: code= module.name.split("!").join("\n")
 		.col-md-3: .well
 			h4 time
@@ -39,14 +39,14 @@
 		.col-md-3: .well
 			h4 chunks
 			each chunk in module.chunks
-				a.btn.btn-info(href="#chunk/#{chunk}")= chunk
+				a.btn.btn-info(href=`#chunk/${chunk}`)= chunk
 		.col-md-6: .well
 			if issuer
 				h4 issuer
 				table(width="100%"): tbody: tr
 					td
 						if typeof issuer.uid === "number"
-							a.btn.btn-success(href="#module/#{issuer.uid}")= issuer.id
+							a.btn.btn-success(href=`#module/${issuer.uid}`)= issuer.id
 						else
 							span.btn.btn-success= issuer.id
 					td: pre: code= issuer.name.split("!").join("\n")
@@ -66,7 +66,7 @@
 							td= reason.type
 							td(style="width: 1px")
 								if typeof reason.moduleUid === "number"
-									a.btn.btn-success(href="#module/#{reason.moduleUid}")= reason.moduleId
+									a.btn.btn-success(href=`#module/${reason.moduleUid}`)= reason.moduleId
 								else
 									span.btn.btn-success= reason.moduleId
 							td: if reason.module
@@ -92,7 +92,7 @@
 							td= dependency.type
 							td(style="width: 1px")
 								if typeof dependency.moduleUid === "number"
-									a.btn.btn-success(href="#module/#{dependency.moduleUid}")= dependency.moduleId
+									a.btn.btn-success(href=`#module/${dependency.moduleUid}`)= dependency.moduleId
 								else
 									span.btn.btn-success= dependency.moduleId
 							td: if dependency.module

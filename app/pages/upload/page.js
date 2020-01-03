@@ -3,8 +3,8 @@ var app = require("../../app");
 module.exports = function() {
 	var nextPage = Array.prototype.slice.call(arguments);
 	document.title = "upload";
-	$("body").html(require("./application.jade")());
-	$(".modal").modal({show: true});
+	$("body").html(require("./application.pug")());
+	$(".modal").modal({ show: true });
 	$("#file").change(loadFromFile);
 	$("#example").click(loadFromExample);
 
