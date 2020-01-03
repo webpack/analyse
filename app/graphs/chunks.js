@@ -28,7 +28,7 @@ app.stats.chunks.forEach(function(chunk, idx) {
 			"] " +
 			chunk.origins
 				.map(function(o) {
-					return o.reasons
+					return (o.reasons || [])
 						.concat(o.name)
 						.concat(o.moduleName)
 						.join(" ");

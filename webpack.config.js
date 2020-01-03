@@ -21,6 +21,12 @@ module.exports = ({ googleAnalytics, longTermCaching } = {}) => ({
 	},
 	module: {
 		rules: [
+			{
+				test: /\.js$/,
+				include: path.resolve(__dirname, "node_modules/sigma"),
+				loader: "imports-loader",
+				options: { this: ">window" }
+			},
 			{ test: /\.pug$/, use: "pug-loader" },
 			{ test: /\.css$/, use: ["style-loader", "css-loader"] },
 			{ test: /\.png$/, type: "asset" }

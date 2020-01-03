@@ -53,9 +53,10 @@
 					each origin in chunk.origins
 						tr
 							td
-								each reason in origin.reasons
-									code= reason
-									= " "
+								if Array.isArray(origin.reasons)
+									each reason in origin.reasons
+										code= reason
+										= " "
 							td: code= origin.name
 							td
 								if typeof origin.moduleUid === "number"

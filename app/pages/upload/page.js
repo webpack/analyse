@@ -6,10 +6,12 @@ module.exports = function() {
 	$("body").html(require("./application.pug")());
 	$(".modal").modal({ show: true });
 	$("#file").change(loadFromFile);
-	$("#example").click(loadFromExample);
+	$("#example1").click(() => loadFromExample(1));
+	$("#example2").click(() => loadFromExample(2));
 
-	function loadFromExample() {
-		require(["./example.json"], function(example) {
+	function loadFromExample(n) {
+		import(`./example${n}.json`).then(function(exampleModule) {
+			var example = exampleModule.default;
 			app.load(example);
 			$(".modal").modal("hide");
 			app.loadPage.apply(app, nextPage);

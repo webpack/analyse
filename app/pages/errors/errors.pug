@@ -2,6 +2,5 @@ if errors.length === 0
 	h2 No errors.
 each error in errors
 	.alert.alert-danger
-		h4= error.header
-		pre= error.text
-		h5= error.footer
+		h4= error.moduleName
+		pre= error.message

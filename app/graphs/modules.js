@@ -121,6 +121,8 @@ exports.show = function() {
 	element.style.display = "block";
 	s.refresh();
 	s.startForceAtlas2();
+	s.forceatlas2.p.adjustSizes = false;
+	s.forceatlas2.p.edgeWeightInfluence = 0.5;
 	s.renderers[0].resize();
 };
 
