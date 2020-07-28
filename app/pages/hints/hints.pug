@@ -29,7 +29,7 @@
 									for chunk, idx in item.module.chunks
 										if idx > 0
 											= " "
-										a.btn.btn-info(href=`#chunk/${chunk}`)= chunk
+										a.btn.btn-info(href=`#chunk/${encodeURIComponent(chunk)}`)= chunk
 								td= require("../../formatSize")(item.saving)
 			if multiRefs.length > 0
 				h2 Multiple references to the same module
