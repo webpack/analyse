@@ -9,10 +9,10 @@ var nodes = [];
 var edges = [];
 var chunkCount = app.stats.chunks.length;
 var maxSize = 0;
-app.stats.chunks.forEach(function(chunk, idx) {
+app.stats.chunks.forEach(function (chunk, idx) {
 	if (chunk.size > maxSize) maxSize = chunk.size;
 });
-app.stats.chunks.forEach(function(chunk, idx) {
+app.stats.chunks.forEach(function (chunk, idx) {
 	var color = percentageToColor(
 		Math.pow((chunk.size + 1) / (maxSize + 1), 1 / 4)
 	);
@@ -27,7 +27,7 @@ app.stats.chunks.forEach(function(chunk, idx) {
 			chunk.id +
 			"] " +
 			chunk.origins
-				.map(function(o) {
+				.map(function (o) {
 					return (o.reasons || [])
 						.concat(o.name)
 						.concat(o.moduleName)
@@ -36,52 +36,52 @@ app.stats.chunks.forEach(function(chunk, idx) {
 				.join(", "),
 		x: Math.cos((idx / chunkCount) * Math.PI * 2) * chunkCount,
 		y: Math.sin((idx / chunkCount) * Math.PI * 2) * chunkCount,
-		color: color
+		color: color,
 	});
 });
-app.stats.chunks.forEach(function(chunk) {
-	chunk.parents.forEach(function(parent) {
+app.stats.chunks.forEach(function (chunk) {
+	chunk.parents.forEach(function (parent) {
 		edges.push({
 			id: "edge" + chunk.id + "-" + parent,
 			source: "chunk" + parent,
 			target: "chunk" + chunk.id,
 			arrow: "target",
 			type: "arrow",
-			size: chunk.parents.length
+			size: chunk.parents.length,
 		});
 	});
 });
 var s = new sigma({
 	graph: {
 		nodes: nodes,
-		edges: edges
+		edges: edges,
 	},
 	renderer: {
 		type: "canvas",
-		container: element
+		container: element,
 	},
 	settings: {
 		edgeColor: "target",
 		maxNodeSize: 20,
 		minNodeSize: 4,
 		maxEdgeSize: 3,
-		minEdgeSize: 1
-	}
+		minEdgeSize: 1,
+	},
 });
-s.bind("clickNode", function(e) {
-	window.location.hash = "#chunk/" + e.data.node.chunkId;
+s.bind("clickNode", function (e) {
+	window.location.hash = "#chunk/" + encodeURIComponent(e.data.node.chunkId);
 });
 
 s.refresh();
 
-exports.show = function() {
+exports.show = function () {
 	element.style.display = "block";
 	s.refresh();
 	s.startForceAtlas2();
 	s.renderers[0].resize();
 };
 
-exports.hide = function() {
+exports.hide = function () {
 	element.style.display = "none";
 	s.stopForceAtlas2();
 };

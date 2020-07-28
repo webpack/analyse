@@ -15,24 +15,24 @@
 			.col-md-3: .well
 				h4 parents
 				each parent in chunk.parents
-					a.btn.btn-info(href=`#chunk/${parent}`)= parent
+					a.btn.btn-info(href=`#chunk/${encodeURIComponent(parent)}`)= parent
 					= " "
 			.col-md-3: .well
 				h4 children
 				each child in chunk.children
-					a.btn.btn-info(href=`#chunk/${child}`)= child
+					a.btn.btn-info(href=`#chunk/${encodeURIComponent(child)}`)= child
 					= " "
 		else if chunk.parents.length
 			.col-md-6: .well
 				h4 parents
 				each parent in chunk.parents
-					a.btn.btn-info(href=`#chunk/${parent}`)= parent
+					a.btn.btn-info(href=`#chunk/${encodeURIComponent(parent)}`)= parent
 					= " "
 		else if chunk.children.length
 			.col-md-6: .well
 				h4 children
 				each child in chunk.children
-					a.btn.btn-info(href=`#chunk/${child}`)= child
+					a.btn.btn-info(href=`#chunk/${encodeURIComponent(child)}`)= child
 					= " "
 		.col-md-6: .well
 			h4 files
@@ -90,7 +90,7 @@
 							td= require("../../formatSize")(module.size)
 							td
 								each chunk in module.chunks
-									a.btn.btn-info(href=`#chunk/${chunk}`)= chunk
+									a.btn.btn-info(href=`#chunk/${encodeURIComponent(chunk)}`)= chunk
 									= " "
 							td
 								if module.built
