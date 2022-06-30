@@ -22,7 +22,7 @@
 										a.btn.btn-success(href=`#module/${item.module.uid}`)= item.module.id
 									else
 										span.btn.btn-success= item.module.id
-								splittedModule = item.module.name.split("!")
+								- splittedModule = item.module.name.split("!") || []
 								td: pre: code= splittedModule.join("\n")
 								td= item.count
 								td

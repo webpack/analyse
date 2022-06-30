@@ -1,6 +1,4 @@
 var ga = require("./googleAnalytics");
-require("./style.css");
-
 var app = require("./app");
 
 var lastHash = "";

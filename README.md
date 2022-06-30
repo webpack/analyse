@@ -1,6 +1,6 @@
 # analyse
 
-[http://webpack.github.com/analyse](http://webpack.github.com/analyse)
+[http://webpack.github.io/analyse](http://webpack.github.io/analyse)
 
 ## Running
 
@@ -11,17 +11,17 @@ You can generate the required JSON file for this tool by running `webpack --prof
 Development:
 
 ``` text
-grunt dev
+npm run dev
 ```
 
 Production:
 
 ``` text
-grunt
+npm run build
 ```
 
 Publish:
 
 ``` text
-grunt deploy
+npm run deploy
 ```
