@@ -32,7 +32,6 @@ function loadPage(name) {
 		var page = pageModule.default;
 		$(function() {
 			if (lastPage) lastPage();
-			//console.log('\n #####: ', pageModule, page.toString());alert(1);
 			lastPage = page.apply(null, args);
 			window.scrollTo(0, 0);
 			if (name !== "upload") {
