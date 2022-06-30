@@ -1,8 +1,5 @@
-require("imports-loader?this=>window&module=>undefined&exports=>undefined!./sigma.min.js");
-
+require("imports-loader?wrapper=window&additionalCode=var%20module=undefined,exports=undefined;!./sigma.min.js");
 require("./patch-force-atlas!./plugins/sigma.layout.forceAtlas2.min.js");
-
-module.exports = sigma;
 
 sigma.canvas.labels.webpack = function(node, context, settings) {
 	var old = node.label;
@@ -28,3 +25,5 @@ sigma.canvas.edges.dashedArrow = function(
 
 sigma.layout.forceatlas2.edgeWeightInfluence = 0.5;
 sigma.layout.forceatlas2.adjustSizes = true;
+
+module.exports = sigma;
