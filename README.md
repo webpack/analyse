@@ -1,6 +1,6 @@
 # analyse
 
-[http://webpack.github.com/analyse](http://webpack.github.com/analyse)
+[http://webpack.github.io/analyse](http://webpack.github.io/analyse)
 
 ## Running
 
