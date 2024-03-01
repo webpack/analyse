@@ -3,10 +3,11 @@ exports.mapModules = null;
 exports.mapChunks = null;
 
 function load(stats) {
-	stats.assets = stats.assets || [];
+	stats.assets = stats.children[0].assets || [];
 	stats.assets.sort(function(a, b) {
 		return b.size - a.size;
 	});
+	stats.modules = stats.children[0].modules || [];
 	stats.modules.sort(function(a, b) {
 		return a.id - b.id;
 	});
@@ -20,7 +21,7 @@ function load(stats) {
 		module.dependencies = [];
 	});
 	var mapChunks = {};
-	stats.chunks = stats.chunks || [];
+	stats.chunks = stats.children[0].chunks || [];
 	stats.chunks.forEach(function(chunk) {
 		mapChunks[chunk.id] = chunk;
 		chunk.children = [];
