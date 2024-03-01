@@ -11,17 +11,17 @@ You can generate the required JSON file for this tool by running `webpack --prof
 Development:
 
 ``` text
-grunt dev
+yarn dev
 ```
 
 Production:
 
 ``` text
-grunt
+yarn build
 ```
 
 Publish:
 
 ``` text
-grunt deploy
+yarn deploy
 ```
