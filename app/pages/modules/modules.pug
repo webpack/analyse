@@ -18,7 +18,7 @@ table.table.table-condensed
 				td= require("../../formatSize")(module.size)
 				td
 					each chunk in module.chunks
-						a.btn.btn-info(href=`#chunk/${chunk}`)= chunk
+						a.btn.btn-info(href=`#chunk/${encodeURIComponent(chunk)}`)= chunk
 						= " "
 				td
 					if module.built
