@@ -39,7 +39,7 @@
 		.col-md-3: .well
 			h4 chunks
 			each chunk in module.chunks
-				a.btn.btn-info(href=`#chunk/${chunk}`)= chunk
+				a.btn.btn-info(href=`#chunk/${encodeURIComponent(chunk)}`)= chunk
 		.col-md-6: .well
 			if issuer
 				h4 issuer

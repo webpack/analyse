@@ -13,7 +13,7 @@ table.table.table-condensed
 				td= require("../../formatSize")(asset.size)
 				td
 					each chunk in asset.chunks
-						a.btn.btn-info(href=`#chunk/${chunk}`)= chunk
+						a.btn.btn-info(href=`#chunk/${encodeURIComponent(chunk)}`)= chunk
 						= " "
 				td
 					each name in asset.chunkNames
