@@ -1,13 +1,15 @@
-sigma.js - v1.0.0
+[![Build Status](https://travis-ci.org/jacomyal/sigma.js.svg)](https://travis-ci.org/jacomyal/sigma.js)
+
+sigma.js - v1.2.1
 =================
 
-Sigma is a JavaScript library dedicated to graph drawing.
+Sigma is a JavaScript library dedicated to graph drawing, mainly developed by [@jacomyal](https://github.com/jacomyal) and [@Yomguithereal](https://github.com/Yomguithereal).
 
 ### Resources
 
 [The website](http://sigmajs.org) provides a global overview of the project, and the documentation is available in the [Github Wiki](https://github.com/jacomyal/sigma.js/wiki).
 
-Also, the `plugins` and `examples` directories contain some various use-cases, that might help you understanding how to use sigma.
+Also, the `plugins` and `examples` directories contain various use-cases that might help you understand how to use sigma.
 
 ### How to use it
 
@@ -19,10 +21,10 @@ git clone git@github.com:jacomyal/sigma.js.git
 
 To build the code:
 
- - Install [Node.js](http://nodejs.org/), [NPM](https://npmjs.org/) and [Grunt](http://gruntjs.com/installing-grunt).
+ - Install [Node.js](http://nodejs.org/).
  - Install [gjslint](https://developers.google.com/closure/utilities/docs/linter_howto?hl=en).
  - Use `npm install` to install sigma development dependencies.
- - Use `grunt uglify` to minify the code with [Uglify](https://github.com/mishoo/UglifyJS). The minified file `sigma.min.js` will then be accessible in the `build/` folder.
+ - Use `npm run build` to minify the code with [Uglify](https://github.com/mishoo/UglifyJS). The minified file `sigma.min.js` will then be accessible in the `build/` folder.
 
 Also, you can customize the build by adding or removing files from the `coreJsFiles` array in `Gruntfile.js` before applying the grunt task.
 

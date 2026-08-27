@@ -120,15 +120,22 @@ s.refresh();
 exports.show = function() {
 	element.style.display = "block";
 	s.refresh();
-	s.startForceAtlas2();
-	s.forceatlas2.p.adjustSizes = false;
-	s.forceatlas2.p.edgeWeightInfluence = 0.5;
+	// sigma 1.2 runs forceAtlas2 in a web worker: settings are passed to
+	// startForceAtlas2 rather than mutated on the removed s.forceatlas2.p.
+	s.startForceAtlas2({
+		adjustSizes: false,
+		edgeWeightInfluence: 0.5
+	});
 	s.renderers[0].resize();
 };
 
 exports.hide = function() {
 	element.style.display = "none";
-	s.stopForceAtlas2();
+	// killForceAtlas2 rather than stopForceAtlas2: sigma 1.2 hands the node
+	// and edge ArrayBuffers to the worker as transferables, so stopping mid
+	// flight leaves them detached and the next startForceAtlas2 throws
+	// DataCloneError. Killing drops the supervisor so show() rebuilds them.
+	s.killForceAtlas2();
 };
 
 exports.setNormal = function() {

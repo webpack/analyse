@@ -77,11 +77,20 @@ s.refresh();
 exports.show = function () {
 	element.style.display = "block";
 	s.refresh();
-	s.startForceAtlas2();
+	// Previously inherited from the sigma.layout.forceatlas2 defaults that the
+	// web_modules shim set; sigma 1.2 removed that namespace.
+	s.startForceAtlas2({
+		adjustSizes: true,
+		edgeWeightInfluence: 0.5
+	});
 	s.renderers[0].resize();
 };
 
 exports.hide = function () {
 	element.style.display = "none";
-	s.stopForceAtlas2();
+	// killForceAtlas2 rather than stopForceAtlas2: sigma 1.2 hands the node
+	// and edge ArrayBuffers to the worker as transferables, so stopping mid
+	// flight leaves them detached and the next startForceAtlas2 throws
+	// DataCloneError. Killing drops the supervisor so show() rebuilds them.
+	s.killForceAtlas2();
 };
