@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build on Node LTS
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # .nvmrc is the single source of truth for the Node version. Bumping that
+      # file (and `engines.node` in package.json) is all it takes to move CI.
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Verify Node version matches .nvmrc
+        run: |
+          expected="v$(tr -d '[:space:]' < .nvmrc)"
+          actual="$(node -v)"
+          echo "expected=$expected actual=$actual"
+          [ "$expected" = "$actual" ] || {
+            echo "::error::Node $actual does not match .nvmrc ($expected)"
+            exit 1
+          }
+
+      # `npm ci` fails if package-lock.json is out of date, and `engine-strict`
+      # in .npmrc aborts the install on a wrong Node version.
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      # `on.push` is restricted to master, so this only ever runs for master.
+      # Pull request runs stop after the build above and never publish.
+      - name: Upload Pages artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: dist
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    if: github.event_name == 'push'
+    runs-on: ubuntu-24.04
+
+    # Job-level so pull request builds are not serialized behind deployments.
+    # Never cancel in progress: a half-replaced Pages site is worse than a queue.
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
