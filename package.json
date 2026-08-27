@@ -13,12 +13,14 @@
   },
   "dependencies": {
     "d3": "^7.0.0",
-    "jquery": "^3.5.0"
+    "graphology": "^0.26.0",
+    "graphology-layout-forceatlas2": "^0.10.1",
+    "jquery": "^3.5.0",
+    "sigma": "^3.0.3"
   },
   "devDependencies": {
     "css-loader": "^5.0.0",
     "html-webpack-plugin": "^5.6.8",
-    "imports-loader": "^0.8.0",
     "pug": "^3.0.3",
     "pug-loader": "^2.4.0",
     "rimraf": "^3.0.0",

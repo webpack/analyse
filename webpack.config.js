@@ -12,9 +12,6 @@ module.exports = ({ googleAnalytics, longTermCaching } = {}, { mode } = {}) => (
 			config: [__filename]
 		}
 	},
-	resolve: {
-		modules: [path.resolve(__dirname, "web_modules"), "node_modules"]
-	},
 	// Ported from the Grunt "webpack-dev-server:development" task, which merged
 	// `devtool: "eval"` into the config for dev builds only.
 	devtool: mode === "development" ? "eval" : false,
@@ -54,12 +51,6 @@ module.exports = ({ googleAnalytics, longTermCaching } = {}, { mode } = {}) => (
 	},
 	module: {
 		rules: [
-			{
-				test: /\.js$/,
-				include: path.resolve(__dirname, "node_modules/sigma"),
-				loader: "imports-loader",
-				options: { this: ">window" }
-			},
 			{ test: /\.pug$/, use: "pug-loader" },
 			{ test: /\.css$/, use: ["style-loader", "css-loader"] },
 			{ test: /\.png$/, type: "asset" }
