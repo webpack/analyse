@@ -1,6 +1,10 @@
 var app = require("../app");
-var sigma = require("sigma.js");
-var findById = require("../findById");
+var Graph = require("graphology");
+var Sigma = require("sigma").Sigma;
+var EdgeArrowProgram = require("sigma/rendering").EdgeArrowProgram;
+var FA2Layout = require("graphology-layout-forceatlas2/worker");
+var forceAtlas2 = require("graphology-layout-forceatlas2");
+var rescale = require("./rescale");
 var percentageToColor = require("../percentageToColor").greenRed;
 
 var element = document.getElementById("sigma-chunks");
@@ -51,37 +55,88 @@ app.stats.chunks.forEach(function (chunk) {
 		});
 	});
 });
-var s = new sigma({
-	graph: {
-		nodes: nodes,
-		edges: edges,
-	},
-	renderer: {
-		type: "canvas",
-		container: element,
-	},
-	settings: {
-		edgeColor: "target",
-		maxNodeSize: 20,
-		minNodeSize: 4,
-		maxEdgeSize: 3,
-		minEdgeSize: 1,
-	},
-});
-s.bind("clickNode", function (e) {
-	window.location.hash = "#chunk/" + encodeURIComponent(e.data.node.chunkId);
+// sigma 3 renders a graphology graph rather than a plain {nodes, edges} literal.
+var graph = new Graph({ type: "directed", multi: true });
+
+// Reproduces sigma 1's minNodeSize/maxNodeSize 4..20 and minEdgeSize/maxEdgeSize
+// 1..3 rescaling, which sigma 3 no longer performs.
+var nodeSize = rescale(
+	nodes.map(function(node) {
+		return node.size;
+	}),
+	4,
+	20
+);
+var edgeSize = rescale(
+	edges.map(function(edge) {
+		return edge.size;
+	}),
+	1,
+	3
+);
+
+nodes.forEach(function(node) {
+	graph.mergeNode(node.id, {
+		x: node.x,
+		y: node.y,
+		size: nodeSize(node.size),
+		color: node.color,
+		originalColor: node.color,
+		label: node.shortLabel,
+		fullLabel: node.label,
+		chunkId: node.chunkId
+	});
 });
 
-s.refresh();
+edges.forEach(function(edge) {
+	// A chunk can list the same parent more than once; merge rather than add so
+	// a repeated key does not throw.
+	graph.mergeEdgeWithKey(edge.id, edge.source, edge.target, {
+		size: edgeSize(edge.size)
+	});
+});
 
-exports.show = function () {
+var s = new Sigma(graph, element, {
+	// The graph container is display:none until show() runs, and sigma 3 throws
+	// on a zero-width container where sigma 1 tolerated it. show() calls resize()
+	// once the element is visible, so the initial invalid size is expected.
+	allowInvalidContainer: true,
+	defaultEdgeType: "arrow",
+	edgeProgramClasses: { arrow: EdgeArrowProgram },
+	renderEdgeLabels: false,
+	nodeReducer: function(node, data) {
+		var display = Object.assign({}, data);
+		if (data.highlighted) display.label = data.fullLabel;
+		return display;
+	},
+	edgeReducer: function(edge, data) {
+		var display = Object.assign({}, data);
+		// sigma 1's `edgeColor: "target"`: these edges carry no explicit colour,
+		// so they take the colour of their target node.
+		if (!display.color)
+			display.color = graph.getNodeAttribute(graph.target(edge), "color");
+		return display;
+	}
+});
+
+var layout = new FA2Layout(graph, {
+	settings: forceAtlas2.inferSettings(graph)
+});
+
+s.on("clickNode", function(e) {
+	window.location.hash =
+		"#chunk/" + encodeURIComponent(graph.getNodeAttribute(e.node, "chunkId"));
+});
+
+exports.show = function() {
 	element.style.display = "block";
+	// Zero-sized while hidden, so re-measure before refreshing.
+	s.resize();
 	s.refresh();
-	s.startForceAtlas2();
-	s.renderers[0].resize();
+	layout.start();
 };
 
-exports.hide = function () {
+exports.hide = function() {
 	element.style.display = "none";
-	s.stopForceAtlas2();
+	layout.stop();
 };
