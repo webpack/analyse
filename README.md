@@ -15,18 +15,33 @@ This project is a lightweight front-end viewer for webpack output generated with
 
 ## Requirements
 
-- Node.js and npm
+- Node.js 24 (the current Active LTS, "Krypton") — pinned in [`.nvmrc`](.nvmrc)
+- npm 11.x (ships with Node 24)
 - A webpack project whose build can emit a stats JSON file
+
+The Node version is enforced: `engines` in `package.json` requires `^24.20.0`,
+and `engine-strict=true` in `.npmrc` makes npm abort the install on a mismatched
+runtime. CI reads the same `.nvmrc`, so bumping that file and `engines.node`
+together is all it takes to move versions.
 
 ## Quick start
 
-1. Install dependencies:
+1. Select the pinned Node version:
 
    ```bash
-   yarn install
+   nvm use
    ```
 
-2. Generate a webpack stats file from your app or library:
+   Run `nvm install` first if you do not have it yet. Both commands read
+   `.nvmrc`, so neither needs a version argument.
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Generate a webpack stats file from your app or library:
 
    ```bash
    npx webpack --profile --json > stats.json
@@ -34,33 +49,31 @@ This project is a lightweight front-end viewer for webpack output generated with
 
    If you are already running webpack in a project, this is the standard output format this tool expects.
 
-3. Start the viewer locally:
+4. Start the viewer locally:
 
    ```bash
-   yarn dev
+   npm run dev
    ```
 
-4. Open the local dev server in your browser and upload the generated `stats.json` file.
+5. Open the local dev server in your browser and upload the generated `stats.json` file.
 
 ## Available scripts
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 Starts the webpack dev server for the analysis UI.
 
 ```bash
-yarn build
+npm run build
 ```
 
 Creates a production bundle for the app.
 
-```bash
-yarn deploy
-```
-
-Builds the site and publishes it to GitHub Pages.
+Deployment is automatic: every push to `master` builds the site and publishes it
+to GitHub Pages via `.github/workflows/ci.yml`. Pull requests build but never
+publish. There is no manual deploy step.
 
 ## Typical workflow
 
