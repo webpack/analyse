@@ -5,6 +5,7 @@ var EdgeArrowProgram = require("sigma/rendering").EdgeArrowProgram;
 var FA2Layout = require("graphology-layout-forceatlas2/worker");
 var forceAtlas2 = require("graphology-layout-forceatlas2");
 var rescale = require("./rescale");
+var theme = require("./theme");
 var percentageToColor = require("../percentageToColor").greenRed;
 var percentageToColor2 = require("../percentageToColor").blue;
 
@@ -96,9 +97,17 @@ app.stats.modules.forEach(function(module, idx) {
 // sigma 3 renders a graphology graph rather than a plain {nodes, edges} literal.
 var graph = new Graph({ type: "directed", multi: true });
 
-// sigma 1 settings were maxNodeSize === minNodeSize === 4, i.e. every module
-// node drew at a constant size regardless of its `size` attribute.
-var NODE_SIZE = 4;
+// sigma 1 drew every module node at a constant size (its minNodeSize and
+// maxNodeSize were both 4), so a 500KB module looked exactly like a 30 byte
+// one. Scale by module size instead, through the same fourth root the colour
+// scale uses, otherwise a couple of huge modules flatten everything else.
+var nodeSize = rescale(
+	nodes.map(function(node) {
+		return Math.pow(node.size, 1 / 4);
+	}),
+	2,
+	10
+);
 var edgeSize = rescale(
 	edges.map(function(edge) {
 		return edge.size;
@@ -111,9 +120,8 @@ nodes.forEach(function(node) {
 	graph.mergeNode(node.id, {
 		x: node.x,
 		y: node.y,
-		size: NODE_SIZE,
-		color: node.color,
-		originalColor: node.originalColor,
+		size: nodeSize(Math.pow(node.size, 1 / 4)),
+		color: node.originalColor,
 		// sigma 1 drew `shortLabel` via the custom canvas.labels.webpack renderer
 		// and the full label only on hover; nodeReducer below reproduces that.
 		label: node.shortLabel,
@@ -131,14 +139,33 @@ edges.forEach(function(edge) {
 		// Read by forceAtlas2 through its default `weight` edge attribute.
 		weight: edge.weight,
 		color: edge.color,
-		originalColor: edge.originalColor,
 		async: edge.type === "dashedArrow",
-		sourceModule: edge.sourceModule,
 		sourceModuleUid: edge.sourceModuleUid,
-		targetModule: edge.targetModule,
 		targetModuleUid: edge.targetModuleUid
 	});
 });
+
+// null when nothing is selected. Otherwise { nodes: {key: role}, edges: {key:
+// role} }. Selection drives appearance through the reducers rather than by
+// overwriting colour attributes, so clearing a selection needs no restore pass
+// and emphasis can touch size, label and stacking order at the same time.
+var selection = null;
+
+// Emphasis has to scale with how much of the graph is selected. Picking a
+// module highlights a handful of nodes, and enlarging them is what makes them
+// findable. Picking a chunk like `main` selects nearly every module, where the
+// same enlargement merges everything into one solid blob and says nothing.
+// Past a quarter of the graph, colour carries the selection on its own.
+function buildSelection(nodeRoles, edgeRoles) {
+	var selected = Object.keys(nodeRoles).length;
+	var dense = graph.order > 0 && selected / graph.order > 0.25;
+	return {
+		nodes: nodeRoles,
+		edges: edgeRoles,
+		dense: dense,
+		emphasis: dense ? { active: 1, related: 1 } : theme.EMPHASIS
+	};
+}
 
 var s = new Sigma(graph, element, {
 	// The graph container is display:none until show() runs, and sigma 3 throws
@@ -148,21 +175,80 @@ var s = new Sigma(graph, element, {
 	defaultEdgeType: "arrow",
 	edgeProgramClasses: { arrow: EdgeArrowProgram },
 	renderEdgeLabels: false,
+	// Lets the selection draw on top of the faded graph instead of being buried
+	// under whichever nodes happen to come later in insertion order.
+	zIndex: true,
+	labelDensity: 0.6,
+	labelRenderedSizeThreshold: 6,
 	nodeReducer: function(node, data) {
 		var display = Object.assign({}, data);
 		if (data.highlighted) display.label = data.fullLabel;
+		if (!selection) return display;
+
+		var role = selection.nodes[node];
+		if (!role) {
+			display.color = theme.FADED_NODE_COLOR;
+			display.size = Math.max(1, data.size * theme.FADED_NODE_SCALE);
+			display.label = null;
+			display.zIndex = 0;
+			return display;
+		}
+		display.color =
+			selection.dense && role === "member"
+				? theme.DENSE_MEMBER_COLOR
+				: theme.ROLE_COLOR[role];
+		display.size =
+			data.size *
+			(role === "active"
+				? selection.emphasis.active
+				: selection.emphasis.related);
+		// The selected neighbourhood is small, so labelling all of it is what
+		// makes the view answer "what depends on this?" at a glance. Short ids
+		// only: the active module's full path is already spelled out in the
+		// detail panel below, and at this zoom it just collides with its
+		// neighbours' labels. Hovering still reveals the full path.
+		display.label = data.label;
+		// Only the active node forces its label. Forcing all of them opts the
+		// whole neighbourhood out of sigma's collision avoidance, and since
+		// forceAtlas2 pulls connected nodes tight together the result is a pile
+		// of overlapping text. The neighbours stay identifiable by colour and
+		// size, and their labels appear as soon as there is room for them.
+		display.forceLabel = role === "active";
+		// Neighbours sit above the active node: it is the largest thing on
+		// screen and would otherwise cover the very nodes being pointed out.
+		display.zIndex = role === "active" ? 2 : 3;
 		return display;
 	},
 	edgeReducer: function(edge, data) {
 		var display = Object.assign({}, data);
 		// sigma 1's `edgeColor: "target"` setting: an explicit edge colour wins,
 		// otherwise the edge takes the colour of its target node.
-		if (!display.color)
-			display.color = graph.getNodeAttribute(graph.target(edge), "color");
+		var color =
+			data.color || graph.getNodeAttribute(graph.target(edge), "color");
 		// sigma 1 drew async edges dashed via canvas.edges.dashedArrow. sigma 3
 		// is WebGL-only and ships no dashed edge program, so async edges are
 		// drawn thinner to keep the distinction visible.
-		if (display.async) display.size = display.size / 2;
+		var size = data.async ? data.size / 2 : data.size;
+
+		if (!selection) {
+			display.color = theme.withAlpha(color, theme.EDGE_ALPHA);
+			display.size = size;
+			display.zIndex = 0;
+			return display;
+		}
+		var role = selection.edges[edge];
+		if (!role) {
+			display.color = theme.withAlpha(color, theme.FADED_EDGE_ALPHA);
+			display.size = size;
+			display.zIndex = 0;
+			return display;
+		}
+		display.color = theme.withAlpha(
+			theme.ROLE_COLOR[role],
+			theme.SELECTED_EDGE_ALPHA
+		);
+		display.size = size * theme.SELECTED_EDGE_SCALE;
+		display.zIndex = 1;
 		return display;
 	}
 });
@@ -199,62 +285,57 @@ exports.hide = function() {
 
 exports.setNormal = function() {
 	activeModuleUid = null;
-	graph.forEachNode(function(node, attributes) {
-		graph.setNodeAttribute(node, "color", attributes.originalColor);
-	});
-	graph.forEachEdge(function(edge, attributes) {
-		graph.setEdgeAttribute(edge, "color", attributes.originalColor);
-	});
+	selection = null;
 	s.refresh();
 };
 
 exports.setActiveModule = function(activeModule) {
 	activeModuleUid = activeModule;
-	var colors = {};
+	var roles = {};
 	var m = app.mapModulesUid[activeModule];
+	// Red for what depends on this module, green for what it depends on: the
+	// same reading the graph has always had, now carried by size and stacking
+	// order too rather than colour alone.
 	m.reasons.forEach(function(r) {
-		colors[r.moduleUid] = "#ff0000";
+		roles[r.moduleUid] = "reason";
 	});
 	m.dependencies.forEach(function(d) {
-		colors[d.moduleUid] = "#00aa00";
+		roles[d.moduleUid] = "dependency";
 	});
-	colors[activeModule] = "#000000";
+	roles[activeModule] = "active";
+
+	var nodeRoles = {};
 	graph.forEachNode(function(node, attributes) {
-		graph.setNodeAttribute(
-			node,
-			"color",
-			colors[attributes.moduleUid] || "#aaaaaa"
-		);
+		var role = roles[attributes.moduleUid];
+		if (role) nodeRoles[node] = role;
 	});
+	var edgeRoles = {};
 	graph.forEachEdge(function(edge, attributes) {
-		var color;
-		if (attributes.targetModuleUid === activeModule) color = "#ff0000";
-		else if (attributes.sourceModuleUid === activeModule) color = "#00aa00";
-		else color = "#aaaaaa";
-		graph.setEdgeAttribute(edge, "color", color);
+		if (attributes.targetModuleUid === activeModule) edgeRoles[edge] = "reason";
+		else if (attributes.sourceModuleUid === activeModule)
+			edgeRoles[edge] = "dependency";
 	});
+	selection = buildSelection(nodeRoles, edgeRoles);
 	s.refresh();
 };
 
 exports.setActiveChunk = function(activeChunk) {
 	activeModuleUid = null;
+	var nodeRoles = {};
+	var inChunk = {};
 	graph.forEachNode(function(node, attributes) {
-		var m = attributes.module;
-		graph.setNodeAttribute(
-			node,
-			"color",
-			m.chunks.indexOf(activeChunk) >= 0 ? "#000000" : "#aaaaaa"
-		);
+		var member = attributes.module.chunks.indexOf(activeChunk) >= 0;
+		inChunk[attributes.moduleUid] = member;
+		if (member) nodeRoles[node] = "member";
 	});
+	var edgeRoles = {};
 	graph.forEachEdge(function(edge, attributes) {
-		var sc = attributes.sourceModule.chunks.indexOf(activeChunk) >= 0;
-		var tc = attributes.targetModule.chunks.indexOf(activeChunk) >= 0;
-		var color;
-		if (sc && tc) color = "#000000";
-		else if (sc) color = "#00aa00";
-		else if (tc) color = "#ff0000";
-		else color = "#aaaaaa";
-		graph.setEdgeAttribute(edge, "color", color);
+		var sc = inChunk[attributes.sourceModuleUid];
+		var tc = inChunk[attributes.targetModuleUid];
+		if (sc && tc) edgeRoles[edge] = "member";
+		else if (sc) edgeRoles[edge] = "dependency";
+		else if (tc) edgeRoles[edge] = "reason";
 	});
+	selection = buildSelection(nodeRoles, edgeRoles);
 	s.refresh();
 };

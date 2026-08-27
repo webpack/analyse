@@ -5,6 +5,7 @@ var EdgeArrowProgram = require("sigma/rendering").EdgeArrowProgram;
 var FA2Layout = require("graphology-layout-forceatlas2/worker");
 var forceAtlas2 = require("graphology-layout-forceatlas2");
 var rescale = require("./rescale");
+var theme = require("./theme");
 var percentageToColor = require("../percentageToColor").greenRed;
 
 var element = document.getElementById("sigma-chunks");
@@ -104,6 +105,8 @@ var s = new Sigma(graph, element, {
 	defaultEdgeType: "arrow",
 	edgeProgramClasses: { arrow: EdgeArrowProgram },
 	renderEdgeLabels: false,
+	zIndex: true,
+	labelDensity: 0.6,
 	nodeReducer: function(node, data) {
 		var display = Object.assign({}, data);
 		if (data.highlighted) display.label = data.fullLabel;
@@ -112,9 +115,11 @@ var s = new Sigma(graph, element, {
 	edgeReducer: function(edge, data) {
 		var display = Object.assign({}, data);
 		// sigma 1's `edgeColor: "target"`: these edges carry no explicit colour,
-		// so they take the colour of their target node.
-		if (!display.color)
-			display.color = graph.getNodeAttribute(graph.target(edge), "color");
+		// so they take the colour of their target node. Held back by the shared
+		// alpha so the chunk nodes stay readable through the fan of edges.
+		var color =
+			data.color || graph.getNodeAttribute(graph.target(edge), "color");
+		display.color = theme.withAlpha(color, theme.SPARSE_EDGE_ALPHA);
 		return display;
 	}
 });
