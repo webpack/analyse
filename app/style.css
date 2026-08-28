@@ -1,3 +1,23 @@
+/* Every page renders into .page, but only some of them bring a Bootstrap
+   .container-fluid of their own; the rest are a bare table and used to sit
+   flush against the window edge. The gutter belongs to .page so that both
+   kinds line up, and a container that carries its own padding gives it up. */
+.page {
+	padding: 0 15px;
+}
+.page > .container-fluid {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/* The graphs live beside .page in the shell rather than inside it, so they
+   need the same gutter to share its left edge. */
+#sigma-modules,
+#sigma-chunks {
+	height: 500px;
+	margin: 0 15px;
+}
+
 table pre {
 	margin-bottom: 0px;
 }
@@ -13,7 +33,7 @@ table pre {
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 4px 18px;
-	margin: 0 0 10px 8px;
+	margin: 0 15px 10px;
 	color: #777;
 	font-size: 12px;
 	line-height: 18px;
@@ -57,4 +77,32 @@ table pre {
 	color: #555;
 	text-align: center;
 	font-size: 14px;
+}
+
+/* Filter bar above the module table (webpack/analyse#11). */
+.module-filter {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px 14px;
+	margin-bottom: 10px;
+}
+.module-filter-label {
+	margin: 0;
+	color: #555;
+}
+.module-filter-query {
+	width: 260px;
+}
+/* Bootstrap makes every label bold and pushes it off its checkbox. */
+.module-filter-option {
+	margin: 0;
+	font-weight: normal;
+}
+.module-filter-summary,
+.module-filter-error {
+	font-size: 12px;
+}
+.module-filter-summary {
+	color: #777;
 }

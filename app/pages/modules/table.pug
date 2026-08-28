@@ -1,0 +1,42 @@
+table.table.table-condensed
+	thead
+		tr
+			th id
+			th name
+			th.sortable-th.size-th size
+			th chunks
+			th flags
+	tbody
+		each module in modules
+			tr
+				td
+					if typeof module.uid === "number"
+						a.btn.btn-success(href=`#module/${module.uid}`)= module.id
+					else
+						span.btn.btn-success= module.id
+				td: pre: code= module.name.split("!").join("\n")
+				td= require("../../formatSize")(module.size)
+				td
+					each chunk in module.chunks
+						a.btn.btn-info(href=`#chunk/${encodeURIComponent(chunk)}`)= chunk
+						= " "
+				td
+					if module.built
+						span.label.label-success built
+						= " "
+					if !module.cacheable
+						span.label.label-warning not cacheable
+						= " "
+					if module.prefetched
+						span.label.label-success prefetched
+						= " "
+					if module.failed
+						span.label.label-danger failed
+						= " "
+					if module.warnings
+						span.label.label-warning= module.warnings + " warnings"
+						= " "
+					if module.errors
+						span.label.label-danger= module.errors + " errors"
+if modules.length === 0
+	p.text-muted No module matches the filter.
