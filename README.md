@@ -11,6 +11,7 @@ This project is a lightweight front-end viewer for webpack output generated with
 - Asset and bundle size breakdowns
 - Filter the module list and graph by name or regexp, or hide `node_modules`
 - Sort any table of modules, chunks or assets by size, name or id
+- Turn the graphs off, for builds too large to lay one out
 - Warning and error inspection
 - Hints for common optimization issues, including circular dependencies
 - Upload a generated stats file directly in the app
@@ -165,6 +166,12 @@ Each one draws a legend underneath itself, and it says the same as this:
 | Edge width | Thinner when many modules require the same module, and thinner again when that module is loaded from an async chunk. In the chunk graph, thicker when a chunk has many parents |
 | Black, red, green (module graph) | With a module open: the module itself, what requires it, and what it requires. With a chunk open: the modules in the chunk, and the edges into and out of it |
 | Grey | Everything outside the current selection |
+
+A graph is only worth drawing while it can be read, and on a very large build
+the force layout can take long enough to look like a hang. The control under
+each graph turns it off and on, the choice is remembered in this browser, and
+a build of more than 5000 modules or chunks starts with the graphs off. With
+them off the graph is never built at all, so the rest of the app stays quick.
 
 ## Typical workflow
 

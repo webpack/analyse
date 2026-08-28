@@ -1,5 +1,5 @@
 var app = require("../../app");
-var modulesGraph = require("../../graphs/modules");
+var modulesGraph = require("../../graphs").modules;
 var moduleFilter = require("../../moduleFilter");
 var formatSize = require("../../formatSize");
 var sortableTable = require("../../sortableTable");

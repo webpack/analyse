@@ -1,5 +1,5 @@
 var app = require("../../app");
-var modulesGraph = require("../../graphs/modules");
+var modulesGraph = require("../../graphs").modules;
 var sortableTable = require("../../sortableTable");
 
 module.exports = function (id) {
