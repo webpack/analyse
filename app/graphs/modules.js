@@ -7,6 +7,7 @@ var forceAtlas2 = require("graphology-layout-forceatlas2");
 var rescale = require("./rescale");
 var theme = require("./theme");
 var legend = require("./legend");
+var moduleFilter = require("../moduleFilter");
 var formatSize = require("../formatSize");
 var percentageToColor = require("../percentageToColor").greenRed;
 var percentageToColor2 = require("../percentageToColor").blue;
@@ -224,11 +225,41 @@ var CHUNK_SELECTION_LEGEND = {
 	]
 };
 
+// The filter is set on the modules page but stays on while browsing single
+// modules and chunks, where there is no filter box in sight. Saying so in the
+// legend is what keeps a half-empty graph from looking like a bug.
+function filterGroup() {
+	if (!moduleFilter.isActive()) return null;
+	var summary = moduleFilter.summary(app.stats.modules);
+	return {
+		title: "filter",
+		items: [
+			{
+				text:
+					"showing " +
+					summary.visible +
+					" of " +
+					summary.total +
+					" modules, set on the modules page"
+			}
+		]
+	};
+}
+
+// The module whose page is open is drawn whether or not it passes the filter:
+// it can be reached from a link on another module or from a chunk, and hiding
+// the very thing the page is about would only look broken.
+function isDrawn(module) {
+	if (!module) return false;
+	return moduleFilter.isVisible(module) || module.uid === activeModuleUid;
+}
+
+var currentSelectionGroup = null;
+
 function showLegend(selectionGroup) {
-	legend.render(
-		legendElement,
-		selectionGroup ? GRAPH_LEGEND.concat(selectionGroup) : GRAPH_LEGEND
-	);
+	currentSelectionGroup = selectionGroup;
+	var groups = GRAPH_LEGEND.concat(selectionGroup || [], filterGroup() || []);
+	legend.render(legendElement, groups);
 }
 
 showLegend(null);
@@ -270,6 +301,10 @@ var s = new Sigma(graph, element, {
 	labelRenderedSizeThreshold: 6,
 	nodeReducer: function(node, data) {
 		var display = Object.assign({}, data);
+		if (!isDrawn(data.module)) {
+			display.hidden = true;
+			return display;
+		}
 		if (data.highlighted) display.label = data.fullLabel;
 		if (!selection) return display;
 
@@ -309,6 +344,14 @@ var s = new Sigma(graph, element, {
 	},
 	edgeReducer: function(edge, data) {
 		var display = Object.assign({}, data);
+		// An edge is only meaningful while both of its modules are on screen.
+		if (
+			!isDrawn(app.mapModulesUid[data.sourceModuleUid]) ||
+			!isDrawn(app.mapModulesUid[data.targetModuleUid])
+		) {
+			display.hidden = true;
+			return display;
+		}
 		// sigma 1's `edgeColor: "target"` setting: an explicit edge colour wins,
 		// otherwise the edge takes the colour of its target node.
 		var color =
@@ -339,6 +382,11 @@ var s = new Sigma(graph, element, {
 		display.zIndex = 1;
 		return display;
 	}
+});
+
+moduleFilter.onChange(function() {
+	showLegend(currentSelectionGroup);
+	s.refresh();
 });
 
 var layout = new FA2Layout(graph, {
