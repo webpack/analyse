@@ -1,5 +1,6 @@
 var app = require("../../app");
 var findById = require("../../findById");
+var findCircularDependencies = require("../../findCircularDependencies");
 
 module.exports = function() {
 	document.title = "hints";
@@ -30,6 +31,8 @@ module.exports = function() {
 	multiRefs.sort(function(a, b) {
 		return b.saving - a.saving;
 	});
+
+	var circularDependencies = findCircularDependencies(app.stats.modules);
 
 	var multiChunks = [];
 	app.stats.modules.forEach(function(module) {
@@ -70,6 +73,7 @@ module.exports = function() {
 	$(".page").html(
 		require("./hints.pug")({
 			stats: app.stats,
+			circularDependencies: circularDependencies,
 			multiRefs: multiRefs,
 			multiChunks: multiChunks,
 			longChains: longChains

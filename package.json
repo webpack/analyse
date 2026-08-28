@@ -9,7 +9,8 @@
   "packageManager": "npm@11.19.0",
   "scripts": {
     "build": "rimraf dist && webpack --mode production --env longTermCaching --env googleAnalytics",
-    "dev": "webpack serve --mode development"
+    "dev": "webpack serve --mode development",
+    "test": "node --test"
   },
   "dependencies": {
     "d3": "^7.0.0",
