@@ -15,8 +15,8 @@ var SELF_REFERENCE_TYPES = {
 	"module decorator": true
 };
 
-var DEFAULT_MAX_CYCLES = 50;
-var DEFAULT_MAX_STEPS = 1000000;
+var DEFAULT_MAX_CYCLES = 4;
+var DEFAULT_MAX_STEPS = 10000;
 
 // Both algorithms below are written with an explicit stack instead of
 // recursion, because the graph can be deeper than the JS call stack allows.

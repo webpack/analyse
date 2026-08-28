@@ -18,7 +18,12 @@ app.load(stats);
 console.log = log;
 
 var modules = app.stats.modules;
-var result = findCircularDependencies(modules);
+
+// Every call passes its limits explicitly. The defaults are what the hints
+// page settles for, not part of what is checked here, so changing them must
+// not decide whether these assertions hold.
+var NO_LIMIT = { maxCycles: 100, maxSteps: 100000 };
+var result = findCircularDependencies(modules, NO_LIMIT);
 
 function moduleByName(name) {
 	return modules.filter(function(module) {
@@ -54,11 +59,12 @@ test("counts the modules and the groups they form", function() {
 
 test("reports the dependency that closes each step of a cycle", function() {
 	result.cycles.forEach(function(cycle) {
+		var names = cycleNames(cycle);
 		cycle.modules.forEach(function(module, idx) {
 			var next = cycle.modules[(idx + 1) % cycle.modules.length];
 			var dependency = cycle.dependencies[idx];
-			assert.strictEqual(dependency.moduleUid, next.uid, cycleNames(cycle));
-			assert.ok(module.dependencies.indexOf(dependency) >= 0, cycleNames(cycle));
+			assert.strictEqual(dependency.moduleUid, next.uid, names);
+			assert.ok(module.dependencies.indexOf(dependency) >= 0, names);
 		});
 	});
 });
@@ -134,7 +140,10 @@ test("leaves out modules that are not part of a cycle", function() {
 });
 
 test("stops after the requested number of cycles", function() {
-	var limited = findCircularDependencies(modules, { maxCycles: 2 });
+	var limited = findCircularDependencies(modules, {
+		maxCycles: 2,
+		maxSteps: NO_LIMIT.maxSteps
+	});
 	assert.strictEqual(limited.cycles.length, 2);
 	assert.strictEqual(limited.truncated, true);
 	// The counts describe the whole graph, not only the reported cycles.
@@ -143,12 +152,15 @@ test("stops after the requested number of cycles", function() {
 });
 
 test("stops when the search budget is used up", function() {
-	var limited = findCircularDependencies(modules, { maxSteps: 1 });
+	var limited = findCircularDependencies(modules, {
+		maxCycles: NO_LIMIT.maxCycles,
+		maxSteps: 1
+	});
 	assert.strictEqual(limited.truncated, true);
 });
 
 test("handles stats without any module", function() {
-	assert.deepStrictEqual(findCircularDependencies([]), {
+	assert.deepStrictEqual(findCircularDependencies([], NO_LIMIT), {
 		cycles: [],
 		truncated: false,
 		moduleCount: 0,
