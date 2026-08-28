@@ -1,0 +1,1386 @@
+{
+  "errors": [
+    "./src/settings.js\nModule not found: Error: Can't resolve './theme' in '/app/src'\n @ ./src/settings.js 2:0-28\n @ ./src/index.js 6:8-63"
+  ],
+  "warnings": [
+    "asset size limit: The following asset(s) exceed the recommended size limit (250 kB).\nThis can impact web performance.\nAssets: \n  vendor.js (318 kB)",
+    "entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (250 kB). This can impact web performance.\nEntrypoints:\n  main (339 kB)\n      vendor.js\n      main.js\n"
+  ],
+  "version": "3.12.0",
+  "hash": "4d8a2f61c093be57a2d1",
+  "time": 3184,
+  "publicPath": "/static/",
+  "assetsByChunkName": {
+    "vendor": "vendor.js",
+    "main": "main.js",
+    "settings": "settings.chunk.js",
+    "editor": "editor.chunk.js"
+  },
+  "assets": [
+    {
+      "name": "vendor.js",
+      "size": 318402,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "vendor"
+      ],
+      "emitted": true,
+      "isOverSizeLimit": true
+    },
+    {
+      "name": "main.js",
+      "size": 21036,
+      "chunks": [
+        1
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "emitted": true,
+      "isOverSizeLimit": false
+    },
+    {
+      "name": "settings.chunk.js",
+      "size": 1284,
+      "chunks": [
+        2
+      ],
+      "chunkNames": [
+        "settings"
+      ],
+      "emitted": true,
+      "isOverSizeLimit": false
+    },
+    {
+      "name": "editor.chunk.js",
+      "size": 1710,
+      "chunks": [
+        3
+      ],
+      "chunkNames": [
+        "editor"
+      ],
+      "emitted": true,
+      "isOverSizeLimit": false
+    }
+  ],
+  "entrypoints": {
+    "main": {
+      "chunks": [
+        0,
+        1
+      ],
+      "assets": [
+        "vendor.js",
+        "main.js"
+      ],
+      "isOverSizeLimit": true
+    }
+  },
+  "chunks": [
+    {
+      "id": 0,
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "extraAsync": false,
+      "names": [
+        "vendor"
+      ],
+      "files": [
+        "vendor.js"
+      ],
+      "hash": "c7f1b6039e2a48d5710c",
+      "parents": [],
+      "origins": [
+        {
+          "moduleId": null,
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "",
+          "name": "vendor",
+          "reasons": []
+        }
+      ],
+      "size": 298650,
+      "modules": [
+        {
+          "id": 8,
+          "identifier": "/app/node_modules/moment/moment.js",
+          "name": "./node_modules/moment/moment.js",
+          "index": 8,
+          "index2": 3,
+          "size": 292430,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "assets": [],
+          "issuer": "/app/src/format.js",
+          "issuerId": 3,
+          "issuerName": "./src/format.js",
+          "profile": {
+            "factory": 74,
+            "building": 512,
+            "dependencies": 96
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 3,
+              "moduleIdentifier": "/app/src/format.js",
+              "module": "./src/format.js",
+              "moduleName": "./src/format.js",
+              "type": "cjs require",
+              "userRequest": "moment",
+              "loc": "3:13-30"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module",
+            "ModuleConcatenation bailout: Module uses injected variables (module, exports)"
+          ],
+          "source": "(function(global, factory) {\n\ttypeof exports === \"object\" && typeof module !== \"undefined\"\n\t\t? (module.exports = factory())\n\t\t: (global.moment = factory());\n})(this, function() {\n\t// 2.22.2\n});\n"
+        },
+        {
+          "id": 9,
+          "identifier": "/app/node_modules/moment/locale sync ^\\.\\/.*$",
+          "name": "./node_modules/moment/locale sync ^\\.\\/.*$",
+          "index": 9,
+          "index2": 2,
+          "size": 230,
+          "cacheable": false,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "assets": [],
+          "issuer": "/app/node_modules/moment/moment.js",
+          "issuerId": 8,
+          "issuerName": "./node_modules/moment/moment.js",
+          "profile": {
+            "factory": 16,
+            "building": 11,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 8,
+              "moduleIdentifier": "/app/node_modules/moment/moment.js",
+              "module": "./node_modules/moment/moment.js",
+              "moduleName": "./node_modules/moment/moment.js",
+              "type": "cjs require context",
+              "userRequest": "./locale",
+              "loc": "1284:12-42"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "source": "var map = {\n\t\"./en-gb\": 10,\n\t\"./nb\": 11\n};\nfunction webpackContext(req) {\n\treturn __webpack_require__(webpackContextResolve(req));\n}\n"
+        },
+        {
+          "id": 10,
+          "identifier": "/app/node_modules/moment/locale/en-gb.js",
+          "name": "./node_modules/moment/locale/en-gb.js",
+          "index": 10,
+          "index2": 1,
+          "size": 3120,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "assets": [],
+          "issuer": "/app/node_modules/moment/locale sync ^\\.\\/.*$",
+          "issuerId": 9,
+          "issuerName": "./node_modules/moment/locale sync ^\\.\\/.*$",
+          "profile": {
+            "factory": 21,
+            "building": 34,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 9,
+              "moduleIdentifier": "/app/node_modules/moment/locale sync ^\\.\\/.*$",
+              "module": "./node_modules/moment/locale sync ^\\.\\/.*$",
+              "moduleName": "./node_modules/moment/locale sync ^\\.\\/.*$",
+              "type": "context element",
+              "userRequest": "./en-gb",
+              "loc": "./en-gb"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "source": "// moment.js locale configuration : British English\nmodule.exports = hooks.defineLocale(\"en-gb\", { week: { dow: 1, doy: 4 } });\n"
+        },
+        {
+          "id": 11,
+          "identifier": "/app/node_modules/moment/locale/nb.js",
+          "name": "./node_modules/moment/locale/nb.js",
+          "index": 11,
+          "index2": 0,
+          "size": 2870,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "assets": [],
+          "issuer": "/app/node_modules/moment/locale sync ^\\.\\/.*$",
+          "issuerId": 9,
+          "issuerName": "./node_modules/moment/locale sync ^\\.\\/.*$",
+          "profile": {
+            "factory": 20,
+            "building": 32,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 9,
+              "moduleIdentifier": "/app/node_modules/moment/locale sync ^\\.\\/.*$",
+              "module": "./node_modules/moment/locale sync ^\\.\\/.*$",
+              "moduleName": "./node_modules/moment/locale sync ^\\.\\/.*$",
+              "type": "context element",
+              "userRequest": "./nb",
+              "loc": "./nb"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "source": "// moment.js locale configuration : Norwegian Bokmål\nmodule.exports = hooks.defineLocale(\"nb\", { week: { dow: 1, doy: 4 } });\n"
+        }
+      ],
+      "filteredModules": 0
+    },
+    {
+      "id": 1,
+      "rendered": true,
+      "initial": true,
+      "entry": false,
+      "extraAsync": false,
+      "names": [
+        "main"
+      ],
+      "files": [
+        "main.js"
+      ],
+      "hash": "2e8d40a19b7c6f35d284",
+      "parents": [
+        0
+      ],
+      "origins": [
+        {
+          "moduleId": null,
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "main",
+          "name": "main",
+          "reasons": []
+        }
+      ],
+      "size": 3550,
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "/app/src/index.js",
+          "name": "./src/index.js",
+          "index": 0,
+          "index2": 11,
+          "size": 690,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "profile": {
+            "factory": 34,
+            "building": 48,
+            "dependencies": 14
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "./src/index.js",
+              "loc": "main"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is an entry point"
+          ],
+          "source": "import { render } from \"./dashboard\";\n\nrender(document.body);\n\ndocument.querySelector(\"#settings\").onclick = function() {\n\treturn import(/* webpackChunkName: \"settings\" */ \"./settings\");\n};\n\ndocument.querySelector(\"#editor\").onclick = function() {\n\treturn import(/* webpackChunkName: \"editor\" */ \"./editor\");\n};\n"
+        },
+        {
+          "id": 1,
+          "identifier": "/app/src/dashboard.js",
+          "name": "./src/dashboard.js",
+          "index": 1,
+          "index2": 10,
+          "size": 840,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/src/index.js",
+          "issuerId": 0,
+          "issuerName": "./src/index.js",
+          "profile": {
+            "factory": 27,
+            "building": 39,
+            "dependencies": 9
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/app/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "type": "harmony import",
+              "userRequest": "./dashboard",
+              "loc": "1:0-37"
+            }
+          ],
+          "usedExports": [
+            "render"
+          ],
+          "providedExports": [
+            "render"
+          ],
+          "optimizationBailout": [],
+          "source": "import { draw } from \"./chart\";\nimport { humanize } from \"./format\";\n\nvar config = require(\"./config.json\");\n\nexport function render(root) {\n\troot.appendChild(draw(config.series));\n\treturn humanize(config.updatedAt);\n}\n"
+        },
+        {
+          "id": 2,
+          "identifier": "/app/src/chart.js",
+          "name": "./src/chart.js",
+          "index": 2,
+          "index2": 9,
+          "size": 1240,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/src/dashboard.js",
+          "issuerId": 1,
+          "issuerName": "./src/dashboard.js",
+          "profile": {
+            "factory": 22,
+            "building": 46,
+            "dependencies": 5
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 1,
+              "moduleIdentifier": "/app/src/dashboard.js",
+              "module": "./src/dashboard.js",
+              "moduleName": "./src/dashboard.js",
+              "type": "harmony import",
+              "userRequest": "./chart",
+              "loc": "1:0-31"
+            },
+            {
+              "moduleId": 3,
+              "moduleIdentifier": "/app/src/format.js",
+              "module": "./src/format.js",
+              "moduleName": "./src/format.js",
+              "type": "harmony import",
+              "userRequest": "./chart",
+              "loc": "1:0-31"
+            },
+            {
+              "moduleId": 3,
+              "moduleIdentifier": "/app/src/format.js",
+              "module": "./src/format.js",
+              "moduleName": "./src/format.js",
+              "type": "harmony import specifier",
+              "userRequest": "./chart",
+              "loc": "4:36-40"
+            }
+          ],
+          "usedExports": [
+            "draw",
+            "axis"
+          ],
+          "providedExports": [
+            "draw",
+            "axis"
+          ],
+          "optimizationBailout": [],
+          "source": "import { humanize } from \"./format\";\n\nexport function draw(series) {\n\tvar node = document.createElement(\"figure\");\n\tnode.textContent = series.map(humanize).join(\" \");\n\treturn node;\n}\n\nexport function axis(range) {\n\treturn range.map(humanize);\n}\n"
+        },
+        {
+          "id": 3,
+          "identifier": "/app/src/format.js",
+          "name": "./src/format.js",
+          "index": 3,
+          "index2": 8,
+          "size": 520,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/src/dashboard.js",
+          "issuerId": 1,
+          "issuerName": "./src/dashboard.js",
+          "profile": {
+            "factory": 19,
+            "building": 31,
+            "dependencies": 4
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 1,
+              "moduleIdentifier": "/app/src/dashboard.js",
+              "module": "./src/dashboard.js",
+              "moduleName": "./src/dashboard.js",
+              "type": "harmony import",
+              "userRequest": "./format",
+              "loc": "2:0-36"
+            },
+            {
+              "moduleId": 2,
+              "moduleIdentifier": "/app/src/chart.js",
+              "module": "./src/chart.js",
+              "moduleName": "./src/chart.js",
+              "type": "harmony import",
+              "userRequest": "./format",
+              "loc": "1:0-36"
+            },
+            {
+              "moduleId": 2,
+              "moduleIdentifier": "/app/src/chart.js",
+              "module": "./src/chart.js",
+              "moduleName": "./src/chart.js",
+              "type": "harmony import specifier",
+              "userRequest": "./format",
+              "loc": "5:32-40"
+            },
+            {
+              "moduleId": 5,
+              "moduleIdentifier": "/app/src/settings.js",
+              "module": "./src/settings.js",
+              "moduleName": "./src/settings.js",
+              "type": "harmony import",
+              "userRequest": "./format",
+              "loc": "1:0-36"
+            }
+          ],
+          "usedExports": [
+            "humanize"
+          ],
+          "providedExports": [
+            "humanize"
+          ],
+          "optimizationBailout": [],
+          "source": "import { axis } from \"./chart\";\n\nvar moment = require(\"moment\");\n\nexport function humanize(value) {\n\tif (Array.isArray(value)) return axis(value).join(\", \");\n\tif (value instanceof Date) return moment(value).fromNow();\n\treturn String(value);\n}\n"
+        },
+        {
+          "id": 4,
+          "identifier": "/app/node_modules/json-loader/index.js!/app/src/config.json",
+          "name": "./node_modules/json-loader/index.js!./src/config.json",
+          "index": 4,
+          "index2": 7,
+          "size": 260,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/src/dashboard.js",
+          "issuerId": 1,
+          "issuerName": "./src/dashboard.js",
+          "profile": {
+            "factory": 23,
+            "building": 15,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 1,
+              "moduleIdentifier": "/app/src/dashboard.js",
+              "module": "./src/dashboard.js",
+              "moduleName": "./src/dashboard.js",
+              "type": "cjs require",
+              "userRequest": "./config.json",
+              "loc": "4:13-38"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "source": "module.exports = {\"series\":[1,3,7],\"updatedAt\":\"2018-04-02T09:00:00Z\"}\n"
+        }
+      ],
+      "filteredModules": 0
+    },
+    {
+      "id": 2,
+      "rendered": true,
+      "initial": false,
+      "entry": false,
+      "extraAsync": false,
+      "names": [
+        "settings"
+      ],
+      "files": [
+        "settings.chunk.js"
+      ],
+      "hash": "5a0c93f7e14b28d6a3f9",
+      "parents": [
+        1
+      ],
+      "origins": [
+        {
+          "moduleId": 0,
+          "module": "./src/index.js",
+          "moduleIdentifier": "/app/src/index.js",
+          "moduleName": "./src/index.js",
+          "loc": "6:8-63",
+          "name": "settings",
+          "reasons": [
+            "import()"
+          ]
+        }
+      ],
+      "size": 610,
+      "modules": [
+        {
+          "id": 5,
+          "identifier": "/app/src/settings.js",
+          "name": "./src/settings.js",
+          "index": 5,
+          "index2": 6,
+          "size": 610,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            2
+          ],
+          "assets": [],
+          "issuer": "/app/src/index.js",
+          "issuerId": 0,
+          "issuerName": "./src/index.js",
+          "profile": {
+            "factory": 25,
+            "building": 37,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 1,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/app/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "type": "import()",
+              "userRequest": "./settings",
+              "loc": "6:8-63"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "default"
+          ],
+          "optimizationBailout": [],
+          "source": "import { humanize } from \"./format\";\nimport theme from \"./theme\";\n\nexport default function open(values) {\n\treturn humanize(values) + theme.name;\n}\n"
+        }
+      ],
+      "filteredModules": 0
+    },
+    {
+      "id": 3,
+      "rendered": true,
+      "initial": false,
+      "entry": false,
+      "extraAsync": false,
+      "names": [
+        "editor"
+      ],
+      "files": [
+        "editor.chunk.js"
+      ],
+      "hash": "b93e17c5028af64d1e7b",
+      "parents": [
+        1
+      ],
+      "origins": [
+        {
+          "moduleId": 0,
+          "module": "./src/index.js",
+          "moduleIdentifier": "/app/src/index.js",
+          "moduleName": "./src/index.js",
+          "loc": "10:8-59",
+          "name": "editor",
+          "reasons": [
+            "import()"
+          ]
+        }
+      ],
+      "size": 1450,
+      "modules": [
+        {
+          "id": 6,
+          "identifier": "/app/src/editor/index.js",
+          "name": "./src/editor/index.js",
+          "index": 6,
+          "index2": 5,
+          "size": 980,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            3
+          ],
+          "assets": [],
+          "issuer": "/app/src/index.js",
+          "issuerId": 0,
+          "issuerName": "./src/index.js",
+          "profile": {
+            "factory": 29,
+            "building": 43,
+            "dependencies": 6
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/app/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "type": "import()",
+              "userRequest": "./editor",
+              "loc": "10:8-59"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "default"
+          ],
+          "optimizationBailout": [],
+          "source": "import { toolbar } from \"./toolbar\";\n\nexport default function open(root) {\n\troot.appendChild(toolbar());\n}\n"
+        },
+        {
+          "id": 7,
+          "identifier": "/app/src/editor/toolbar.js",
+          "name": "./src/editor/toolbar.js",
+          "index": 7,
+          "index2": 4,
+          "size": 470,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            3
+          ],
+          "assets": [],
+          "issuer": "/app/src/editor/index.js",
+          "issuerId": 6,
+          "issuerName": "./src/editor/index.js",
+          "profile": {
+            "factory": 18,
+            "building": 26,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 6,
+              "moduleIdentifier": "/app/src/editor/index.js",
+              "module": "./src/editor/index.js",
+              "moduleName": "./src/editor/index.js",
+              "type": "harmony import",
+              "userRequest": "./toolbar",
+              "loc": "1:0-36"
+            }
+          ],
+          "usedExports": [
+            "toolbar"
+          ],
+          "providedExports": [
+            "toolbar"
+          ],
+          "optimizationBailout": [],
+          "source": "export function toolbar() {\n\treturn document.createElement(\"nav\");\n}\n"
+        }
+      ],
+      "filteredModules": 0
+    }
+  ],
+  "modules": [
+    {
+      "id": 0,
+      "identifier": "/app/src/index.js",
+      "name": "./src/index.js",
+      "index": 0,
+      "index2": 11,
+      "size": 690,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": null,
+      "issuerId": null,
+      "issuerName": null,
+      "profile": {
+        "factory": 34,
+        "building": 48,
+        "dependencies": 14
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": null,
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "type": "single entry",
+          "userRequest": "./src/index.js",
+          "loc": "main"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is an entry point"
+      ],
+      "source": "import { render } from \"./dashboard\";\n\nrender(document.body);\n\ndocument.querySelector(\"#settings\").onclick = function() {\n\treturn import(/* webpackChunkName: \"settings\" */ \"./settings\");\n};\n\ndocument.querySelector(\"#editor\").onclick = function() {\n\treturn import(/* webpackChunkName: \"editor\" */ \"./editor\");\n};\n"
+    },
+    {
+      "id": 1,
+      "identifier": "/app/src/dashboard.js",
+      "name": "./src/dashboard.js",
+      "index": 1,
+      "index2": 10,
+      "size": 840,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 0,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 27,
+        "building": 39,
+        "dependencies": 9
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "harmony import",
+          "userRequest": "./dashboard",
+          "loc": "1:0-37"
+        }
+      ],
+      "usedExports": [
+        "render"
+      ],
+      "providedExports": [
+        "render"
+      ],
+      "optimizationBailout": [],
+      "source": "import { draw } from \"./chart\";\nimport { humanize } from \"./format\";\n\nvar config = require(\"./config.json\");\n\nexport function render(root) {\n\troot.appendChild(draw(config.series));\n\treturn humanize(config.updatedAt);\n}\n"
+    },
+    {
+      "id": 2,
+      "identifier": "/app/src/chart.js",
+      "name": "./src/chart.js",
+      "index": 2,
+      "index2": 9,
+      "size": 1240,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/dashboard.js",
+      "issuerId": 1,
+      "issuerName": "./src/dashboard.js",
+      "profile": {
+        "factory": 22,
+        "building": 46,
+        "dependencies": 5
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 1,
+          "moduleIdentifier": "/app/src/dashboard.js",
+          "module": "./src/dashboard.js",
+          "moduleName": "./src/dashboard.js",
+          "type": "harmony import",
+          "userRequest": "./chart",
+          "loc": "1:0-31"
+        },
+        {
+          "moduleId": 3,
+          "moduleIdentifier": "/app/src/format.js",
+          "module": "./src/format.js",
+          "moduleName": "./src/format.js",
+          "type": "harmony import",
+          "userRequest": "./chart",
+          "loc": "1:0-31"
+        },
+        {
+          "moduleId": 3,
+          "moduleIdentifier": "/app/src/format.js",
+          "module": "./src/format.js",
+          "moduleName": "./src/format.js",
+          "type": "harmony import specifier",
+          "userRequest": "./chart",
+          "loc": "4:36-40"
+        }
+      ],
+      "usedExports": [
+        "draw",
+        "axis"
+      ],
+      "providedExports": [
+        "draw",
+        "axis"
+      ],
+      "optimizationBailout": [],
+      "source": "import { humanize } from \"./format\";\n\nexport function draw(series) {\n\tvar node = document.createElement(\"figure\");\n\tnode.textContent = series.map(humanize).join(\" \");\n\treturn node;\n}\n\nexport function axis(range) {\n\treturn range.map(humanize);\n}\n"
+    },
+    {
+      "id": 3,
+      "identifier": "/app/src/format.js",
+      "name": "./src/format.js",
+      "index": 3,
+      "index2": 8,
+      "size": 520,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/dashboard.js",
+      "issuerId": 1,
+      "issuerName": "./src/dashboard.js",
+      "profile": {
+        "factory": 19,
+        "building": 31,
+        "dependencies": 4
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 1,
+          "moduleIdentifier": "/app/src/dashboard.js",
+          "module": "./src/dashboard.js",
+          "moduleName": "./src/dashboard.js",
+          "type": "harmony import",
+          "userRequest": "./format",
+          "loc": "2:0-36"
+        },
+        {
+          "moduleId": 2,
+          "moduleIdentifier": "/app/src/chart.js",
+          "module": "./src/chart.js",
+          "moduleName": "./src/chart.js",
+          "type": "harmony import",
+          "userRequest": "./format",
+          "loc": "1:0-36"
+        },
+        {
+          "moduleId": 2,
+          "moduleIdentifier": "/app/src/chart.js",
+          "module": "./src/chart.js",
+          "moduleName": "./src/chart.js",
+          "type": "harmony import specifier",
+          "userRequest": "./format",
+          "loc": "5:32-40"
+        },
+        {
+          "moduleId": 5,
+          "moduleIdentifier": "/app/src/settings.js",
+          "module": "./src/settings.js",
+          "moduleName": "./src/settings.js",
+          "type": "harmony import",
+          "userRequest": "./format",
+          "loc": "1:0-36"
+        }
+      ],
+      "usedExports": [
+        "humanize"
+      ],
+      "providedExports": [
+        "humanize"
+      ],
+      "optimizationBailout": [],
+      "source": "import { axis } from \"./chart\";\n\nvar moment = require(\"moment\");\n\nexport function humanize(value) {\n\tif (Array.isArray(value)) return axis(value).join(\", \");\n\tif (value instanceof Date) return moment(value).fromNow();\n\treturn String(value);\n}\n"
+    },
+    {
+      "id": 4,
+      "identifier": "/app/node_modules/json-loader/index.js!/app/src/config.json",
+      "name": "./node_modules/json-loader/index.js!./src/config.json",
+      "index": 4,
+      "index2": 7,
+      "size": 260,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/dashboard.js",
+      "issuerId": 1,
+      "issuerName": "./src/dashboard.js",
+      "profile": {
+        "factory": 23,
+        "building": 15,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 1,
+          "moduleIdentifier": "/app/src/dashboard.js",
+          "module": "./src/dashboard.js",
+          "moduleName": "./src/dashboard.js",
+          "type": "cjs require",
+          "userRequest": "./config.json",
+          "loc": "4:13-38"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "source": "module.exports = {\"series\":[1,3,7],\"updatedAt\":\"2018-04-02T09:00:00Z\"}\n"
+    },
+    {
+      "id": 5,
+      "identifier": "/app/src/settings.js",
+      "name": "./src/settings.js",
+      "index": 5,
+      "index2": 6,
+      "size": 610,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        2
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 0,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 25,
+        "building": 37,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 1,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "import()",
+          "userRequest": "./settings",
+          "loc": "6:8-63"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "default"
+      ],
+      "optimizationBailout": [],
+      "source": "import { humanize } from \"./format\";\nimport theme from \"./theme\";\n\nexport default function open(values) {\n\treturn humanize(values) + theme.name;\n}\n"
+    },
+    {
+      "id": 6,
+      "identifier": "/app/src/editor/index.js",
+      "name": "./src/editor/index.js",
+      "index": 6,
+      "index2": 5,
+      "size": 980,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        3
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 0,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 29,
+        "building": 43,
+        "dependencies": 6
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "import()",
+          "userRequest": "./editor",
+          "loc": "10:8-59"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "default"
+      ],
+      "optimizationBailout": [],
+      "source": "import { toolbar } from \"./toolbar\";\n\nexport default function open(root) {\n\troot.appendChild(toolbar());\n}\n"
+    },
+    {
+      "id": 7,
+      "identifier": "/app/src/editor/toolbar.js",
+      "name": "./src/editor/toolbar.js",
+      "index": 7,
+      "index2": 4,
+      "size": 470,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        3
+      ],
+      "assets": [],
+      "issuer": "/app/src/editor/index.js",
+      "issuerId": 6,
+      "issuerName": "./src/editor/index.js",
+      "profile": {
+        "factory": 18,
+        "building": 26,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 6,
+          "moduleIdentifier": "/app/src/editor/index.js",
+          "module": "./src/editor/index.js",
+          "moduleName": "./src/editor/index.js",
+          "type": "harmony import",
+          "userRequest": "./toolbar",
+          "loc": "1:0-36"
+        }
+      ],
+      "usedExports": [
+        "toolbar"
+      ],
+      "providedExports": [
+        "toolbar"
+      ],
+      "optimizationBailout": [],
+      "source": "export function toolbar() {\n\treturn document.createElement(\"nav\");\n}\n"
+    },
+    {
+      "id": 8,
+      "identifier": "/app/node_modules/moment/moment.js",
+      "name": "./node_modules/moment/moment.js",
+      "index": 8,
+      "index2": 3,
+      "size": 292430,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/format.js",
+      "issuerId": 3,
+      "issuerName": "./src/format.js",
+      "profile": {
+        "factory": 74,
+        "building": 512,
+        "dependencies": 96
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 3,
+          "moduleIdentifier": "/app/src/format.js",
+          "module": "./src/format.js",
+          "moduleName": "./src/format.js",
+          "type": "cjs require",
+          "userRequest": "moment",
+          "loc": "3:13-30"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module",
+        "ModuleConcatenation bailout: Module uses injected variables (module, exports)"
+      ],
+      "source": "(function(global, factory) {\n\ttypeof exports === \"object\" && typeof module !== \"undefined\"\n\t\t? (module.exports = factory())\n\t\t: (global.moment = factory());\n})(this, function() {\n\t// 2.22.2\n});\n"
+    },
+    {
+      "id": 9,
+      "identifier": "/app/node_modules/moment/locale sync ^\\.\\/.*$",
+      "name": "./node_modules/moment/locale sync ^\\.\\/.*$",
+      "index": 9,
+      "index2": 2,
+      "size": 230,
+      "cacheable": false,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/node_modules/moment/moment.js",
+      "issuerId": 8,
+      "issuerName": "./node_modules/moment/moment.js",
+      "profile": {
+        "factory": 16,
+        "building": 11,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 8,
+          "moduleIdentifier": "/app/node_modules/moment/moment.js",
+          "module": "./node_modules/moment/moment.js",
+          "moduleName": "./node_modules/moment/moment.js",
+          "type": "cjs require context",
+          "userRequest": "./locale",
+          "loc": "1284:12-42"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "source": "var map = {\n\t\"./en-gb\": 10,\n\t\"./nb\": 11\n};\nfunction webpackContext(req) {\n\treturn __webpack_require__(webpackContextResolve(req));\n}\n"
+    },
+    {
+      "id": 10,
+      "identifier": "/app/node_modules/moment/locale/en-gb.js",
+      "name": "./node_modules/moment/locale/en-gb.js",
+      "index": 10,
+      "index2": 1,
+      "size": 3120,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/node_modules/moment/locale sync ^\\.\\/.*$",
+      "issuerId": 9,
+      "issuerName": "./node_modules/moment/locale sync ^\\.\\/.*$",
+      "profile": {
+        "factory": 21,
+        "building": 34,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 9,
+          "moduleIdentifier": "/app/node_modules/moment/locale sync ^\\.\\/.*$",
+          "module": "./node_modules/moment/locale sync ^\\.\\/.*$",
+          "moduleName": "./node_modules/moment/locale sync ^\\.\\/.*$",
+          "type": "context element",
+          "userRequest": "./en-gb",
+          "loc": "./en-gb"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "source": "// moment.js locale configuration : British English\nmodule.exports = hooks.defineLocale(\"en-gb\", { week: { dow: 1, doy: 4 } });\n"
+    },
+    {
+      "id": 11,
+      "identifier": "/app/node_modules/moment/locale/nb.js",
+      "name": "./node_modules/moment/locale/nb.js",
+      "index": 11,
+      "index2": 0,
+      "size": 2870,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/node_modules/moment/locale sync ^\\.\\/.*$",
+      "issuerId": 9,
+      "issuerName": "./node_modules/moment/locale sync ^\\.\\/.*$",
+      "profile": {
+        "factory": 20,
+        "building": 32,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 9,
+          "moduleIdentifier": "/app/node_modules/moment/locale sync ^\\.\\/.*$",
+          "module": "./node_modules/moment/locale sync ^\\.\\/.*$",
+          "moduleName": "./node_modules/moment/locale sync ^\\.\\/.*$",
+          "type": "context element",
+          "userRequest": "./nb",
+          "loc": "./nb"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "source": "// moment.js locale configuration : Norwegian Bokmål\nmodule.exports = hooks.defineLocale(\"nb\", { week: { dow: 1, doy: 4 } });\n"
+    }
+  ],
+  "filteredModules": 0,
+  "children": []
+}

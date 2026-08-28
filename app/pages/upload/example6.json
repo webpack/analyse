@@ -1,0 +1,1799 @@
+{
+  "errors": [],
+  "warnings": [
+    "./node_modules/legacy-lib/index.js\nCritical dependency: the request of a dependency is an expression\n @ ./node_modules/legacy-lib/index.js 5:15-28\n @ ./src/app.js 5:0-21\n @ ./src/index.js 2:0-30"
+  ],
+  "version": "4.46.0",
+  "hash": "8c1e5b7f2a0d94e63a1b",
+  "time": 2764,
+  "builtAt": 1596018342517,
+  "publicPath": "/",
+  "outputPath": "/app/dist",
+  "assetsByChunkName": {
+    "vendors~main": "vendors~main.4d2a5c81.js",
+    "main": [
+      "main.3ab7f0e2.css",
+      "main.1f9c74b6.js"
+    ],
+    "about": "about.7c31de40.js",
+    "editor": "editor.9b12ea55.js"
+  },
+  "assets": [
+    {
+      "name": "vendors~main.4d2a5c81.js",
+      "size": 104318,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "vendors~main"
+      ],
+      "emitted": true,
+      "isOverSizeLimit": false
+    },
+    {
+      "name": "main.1f9c74b6.js",
+      "size": 6142,
+      "chunks": [
+        1
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "emitted": true,
+      "isOverSizeLimit": false
+    },
+    {
+      "name": "main.3ab7f0e2.css",
+      "size": 1804,
+      "chunks": [
+        1
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "emitted": true,
+      "isOverSizeLimit": false
+    },
+    {
+      "name": "about.7c31de40.js",
+      "size": 918,
+      "chunks": [
+        2
+      ],
+      "chunkNames": [
+        "about"
+      ],
+      "emitted": true,
+      "isOverSizeLimit": false
+    },
+    {
+      "name": "editor.9b12ea55.js",
+      "size": 1046,
+      "chunks": [
+        3
+      ],
+      "chunkNames": [
+        "editor"
+      ],
+      "emitted": true,
+      "isOverSizeLimit": false
+    },
+    {
+      "name": "logo.4f2a1c8b.png",
+      "size": 12680,
+      "chunks": [],
+      "chunkNames": [],
+      "emitted": true,
+      "isOverSizeLimit": false
+    }
+  ],
+  "entrypoints": {
+    "main": {
+      "chunks": [
+        0,
+        1
+      ],
+      "assets": [
+        "vendors~main.4d2a5c81.js",
+        "main.3ab7f0e2.css",
+        "main.1f9c74b6.js"
+      ],
+      "children": {
+        "prefetch": [
+          {
+            "name": "about",
+            "chunks": [
+              2
+            ],
+            "assets": [
+              "about.7c31de40.js"
+            ]
+          }
+        ]
+      },
+      "childAssets": {
+        "prefetch": [
+          "about.7c31de40.js"
+        ]
+      },
+      "isOverSizeLimit": false
+    }
+  },
+  "namedChunkGroups": {
+    "main": {
+      "chunks": [
+        0,
+        1
+      ],
+      "assets": [
+        "vendors~main.4d2a5c81.js",
+        "main.3ab7f0e2.css",
+        "main.1f9c74b6.js"
+      ],
+      "children": {
+        "prefetch": [
+          {
+            "name": "about",
+            "chunks": [
+              2
+            ],
+            "assets": [
+              "about.7c31de40.js"
+            ]
+          }
+        ]
+      },
+      "childAssets": {
+        "prefetch": [
+          "about.7c31de40.js"
+        ]
+      },
+      "isOverSizeLimit": false
+    },
+    "about": {
+      "chunks": [
+        2
+      ],
+      "assets": [
+        "about.7c31de40.js"
+      ],
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    },
+    "editor": {
+      "chunks": [
+        3
+      ],
+      "assets": [
+        "editor.9b12ea55.js"
+      ],
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    }
+  },
+  "chunks": [
+    {
+      "id": 0,
+      "rendered": true,
+      "initial": true,
+      "entry": false,
+      "reason": "split chunk (cache group: vendors) (name: vendors~main)",
+      "names": [
+        "vendors~main"
+      ],
+      "files": [
+        "vendors~main.4d2a5c81.js"
+      ],
+      "hash": "7e1b0d94a35c62f8710d",
+      "siblings": [
+        1
+      ],
+      "parents": [],
+      "children": [
+        2,
+        3
+      ],
+      "childrenByOrder": {},
+      "origins": [
+        {
+          "moduleId": null,
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "main",
+          "request": "./src/index.js",
+          "reasons": []
+        }
+      ],
+      "size": 99402,
+      "modules": [
+        {
+          "id": 8,
+          "identifier": "/app/node_modules/react/index.js",
+          "name": "./node_modules/react/index.js",
+          "index": 8,
+          "index2": 3,
+          "size": 190,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "assets": [],
+          "issuer": "/app/src/app.js",
+          "issuerId": 1,
+          "issuerName": "./src/app.js",
+          "issuerPath": [
+            {
+              "id": 0,
+              "identifier": "/app/src/index.js",
+              "name": "./src/index.js"
+            },
+            {
+              "id": 1,
+              "identifier": "/app/src/app.js",
+              "name": "./src/app.js"
+            }
+          ],
+          "profile": {
+            "factory": 47,
+            "building": 23,
+            "dependencies": 168
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 1,
+              "moduleIdentifier": "/app/src/app.js",
+              "module": "./src/app.js",
+              "moduleName": "./src/app.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "react",
+              "loc": "1:0-26"
+            },
+            {
+              "moduleId": 1,
+              "moduleIdentifier": "/app/src/app.js",
+              "module": "./src/app.js",
+              "moduleName": "./src/app.js",
+              "type": "harmony import specifier",
+              "userRequest": "react",
+              "loc": "9:8-21"
+            },
+            {
+              "moduleId": 6,
+              "moduleIdentifier": "/app/src/pages/about.js",
+              "module": "./src/pages/about.js",
+              "moduleName": "./src/pages/about.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "react",
+              "loc": "1:0-26"
+            },
+            {
+              "moduleId": 7,
+              "moduleIdentifier": "/app/src/editor/index.js",
+              "module": "./src/editor/index.js",
+              "moduleName": "./src/editor/index.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "react",
+              "loc": "1:0-26"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2,
+          "source": "module.exports = require(\"./cjs/react.production.min.js\");\n"
+        },
+        {
+          "id": 9,
+          "identifier": "/app/node_modules/react/cjs/react.production.min.js",
+          "name": "./node_modules/react/cjs/react.production.min.js",
+          "index": 9,
+          "index2": 2,
+          "size": 96420,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "assets": [],
+          "issuer": "/app/node_modules/react/index.js",
+          "issuerId": 8,
+          "issuerName": "./node_modules/react/index.js",
+          "issuerPath": [
+            {
+              "id": 0,
+              "identifier": "/app/src/index.js",
+              "name": "./src/index.js"
+            },
+            {
+              "id": 1,
+              "identifier": "/app/src/app.js",
+              "name": "./src/app.js"
+            },
+            {
+              "id": 8,
+              "identifier": "/app/node_modules/react/index.js",
+              "name": "./node_modules/react/index.js"
+            }
+          ],
+          "profile": {
+            "factory": 39,
+            "building": 141,
+            "dependencies": 12
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 8,
+              "moduleIdentifier": "/app/node_modules/react/index.js",
+              "module": "./node_modules/react/index.js",
+              "moduleName": "./node_modules/react/index.js",
+              "type": "cjs require",
+              "userRequest": "./cjs/react.production.min.js",
+              "loc": "1:17-56"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module",
+            "ModuleConcatenation bailout: Module uses injected variables (module, exports)"
+          ],
+          "depth": 3,
+          "source": "/** @license React v16.14.0 */\n\"use strict\";\nvar objectAssign = require(\"object-assign\");\nmodule.exports = { createElement: createElement, version: \"16.14.0\" };\n"
+        },
+        {
+          "id": 10,
+          "identifier": "/app/node_modules/object-assign/index.js",
+          "name": "./node_modules/object-assign/index.js",
+          "index": 10,
+          "index2": 1,
+          "size": 2062,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "assets": [],
+          "issuer": "/app/node_modules/react/cjs/react.production.min.js",
+          "issuerId": 9,
+          "issuerName": "./node_modules/react/cjs/react.production.min.js",
+          "issuerPath": [
+            {
+              "id": 0,
+              "identifier": "/app/src/index.js",
+              "name": "./src/index.js"
+            },
+            {
+              "id": 1,
+              "identifier": "/app/src/app.js",
+              "name": "./src/app.js"
+            },
+            {
+              "id": 8,
+              "identifier": "/app/node_modules/react/index.js",
+              "name": "./node_modules/react/index.js"
+            },
+            {
+              "id": 9,
+              "identifier": "/app/node_modules/react/cjs/react.production.min.js",
+              "name": "./node_modules/react/cjs/react.production.min.js"
+            }
+          ],
+          "profile": {
+            "factory": 22,
+            "building": 18,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 9,
+              "moduleIdentifier": "/app/node_modules/react/cjs/react.production.min.js",
+              "module": "./node_modules/react/cjs/react.production.min.js",
+              "moduleName": "./node_modules/react/cjs/react.production.min.js",
+              "type": "cjs require",
+              "userRequest": "object-assign",
+              "loc": "3:19-43"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 4,
+          "source": "\"use strict\";\nvar hasOwnProperty = Object.prototype.hasOwnProperty;\n\nmodule.exports = Object.assign || function(target, source) {};\n"
+        },
+        {
+          "id": 11,
+          "identifier": "/app/node_modules/legacy-lib/index.js",
+          "name": "./node_modules/legacy-lib/index.js",
+          "index": 11,
+          "index2": 0,
+          "size": 730,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "assets": [],
+          "issuer": "/app/src/app.js",
+          "issuerId": 1,
+          "issuerName": "./src/app.js",
+          "issuerPath": [
+            {
+              "id": 0,
+              "identifier": "/app/src/index.js",
+              "name": "./src/index.js"
+            },
+            {
+              "id": 1,
+              "identifier": "/app/src/app.js",
+              "name": "./src/app.js"
+            }
+          ],
+          "profile": {
+            "factory": 26,
+            "building": 31,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 1,
+          "reasons": [
+            {
+              "moduleId": 1,
+              "moduleIdentifier": "/app/src/app.js",
+              "module": "./src/app.js",
+              "moduleName": "./src/app.js",
+              "type": "cjs require",
+              "userRequest": "legacy-lib",
+              "loc": "5:0-21"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2,
+          "source": "var plugins = {};\n\nexports.load = function(name) {\n\tif (!plugins[name]) {\n\t\tplugins[name] = require(name);\n\t}\n\treturn plugins[name];\n};\n"
+        }
+      ],
+      "filteredModules": 0
+    },
+    {
+      "id": 1,
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "names": [
+        "main"
+      ],
+      "files": [
+        "main.3ab7f0e2.css",
+        "main.1f9c74b6.js"
+      ],
+      "hash": "b04c7fa1e93d5628c17e",
+      "siblings": [
+        0
+      ],
+      "parents": [],
+      "children": [
+        2,
+        3
+      ],
+      "childrenByOrder": {
+        "prefetch": [
+          2
+        ]
+      },
+      "origins": [
+        {
+          "moduleId": null,
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "main",
+          "request": "./src/index.js",
+          "reasons": []
+        }
+      ],
+      "size": 3981,
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "/app/src/index.js",
+          "name": "./src/index.js",
+          "index": 0,
+          "index2": 11,
+          "size": 712,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "profile": {
+            "factory": 38,
+            "building": 52,
+            "dependencies": 16
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "./src/index.js",
+              "loc": "main"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is an entry point"
+          ],
+          "depth": 0,
+          "source": "import \"./styles.css\";\nimport { mount } from \"./app\";\n\nmount(document.getElementById(\"root\"));\n\ndocument.querySelector(\"#about\").onclick = function() {\n\treturn import(/* webpackChunkName: \"about\", webpackPrefetch: true */ \"./pages/about\");\n};\n\ndocument.querySelector(\"#editor\").onclick = function() {\n\treturn import(/* webpackChunkName: \"editor\" */ \"./editor\");\n};\n"
+        },
+        {
+          "id": 1,
+          "identifier": "/app/src/app.js",
+          "name": "./src/app.js",
+          "index": 1,
+          "index2": 10,
+          "size": 1140,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/src/index.js",
+          "issuerId": 0,
+          "issuerName": "./src/index.js",
+          "issuerPath": [
+            {
+              "id": 0,
+              "identifier": "/app/src/index.js",
+              "name": "./src/index.js"
+            }
+          ],
+          "profile": {
+            "factory": 31,
+            "building": 47,
+            "dependencies": 21
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/app/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "./app",
+              "loc": "2:0-30"
+            },
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/app/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "type": "harmony import specifier",
+              "userRequest": "./app",
+              "loc": "4:0-5"
+            }
+          ],
+          "usedExports": [
+            "mount"
+          ],
+          "providedExports": [
+            "mount"
+          ],
+          "optimizationBailout": [],
+          "depth": 1,
+          "source": "import React from \"react\";\nimport settings from \"./config.json\";\nimport logo from \"./logo.png\";\n\nrequire(\"legacy-lib\");\n\nexport function mount(root) {\n\troot.innerHTML = '<img src=\"' + logo + '\" alt=\"' + settings.title + '\">';\n\treturn React.createElement(\"main\", null, settings.title);\n}\n"
+        },
+        {
+          "id": 2,
+          "identifier": "/app/src/config.json",
+          "name": "./src/config.json",
+          "index": 2,
+          "index2": 9,
+          "size": 148,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/src/app.js",
+          "issuerId": 1,
+          "issuerName": "./src/app.js",
+          "issuerPath": [
+            {
+              "id": 0,
+              "identifier": "/app/src/index.js",
+              "name": "./src/index.js"
+            },
+            {
+              "id": 1,
+              "identifier": "/app/src/app.js",
+              "name": "./src/app.js"
+            }
+          ],
+          "profile": {
+            "factory": 12,
+            "building": 6,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 1,
+              "moduleIdentifier": "/app/src/app.js",
+              "module": "./src/app.js",
+              "moduleName": "./src/app.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "./config.json",
+              "loc": "2:0-37"
+            },
+            {
+              "moduleId": 1,
+              "moduleIdentifier": "/app/src/app.js",
+              "module": "./src/app.js",
+              "moduleName": "./src/app.js",
+              "type": "harmony import specifier",
+              "userRequest": "./config.json",
+              "loc": "8:47-61"
+            }
+          ],
+          "usedExports": [
+            "title"
+          ],
+          "providedExports": [
+            "title",
+            "api",
+            "default"
+          ],
+          "optimizationBailout": [],
+          "depth": 2,
+          "source": "{\"title\":\"Analyse demo\",\"api\":\"/api/v1\"}\n"
+        },
+        {
+          "id": 3,
+          "identifier": "/app/node_modules/mini-css-extract-plugin/dist/loader.js!/app/node_modules/css-loader/dist/cjs.js!/app/src/styles.css",
+          "name": "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/styles.css",
+          "index": 3,
+          "index2": 8,
+          "size": 39,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/src/index.js",
+          "issuerId": 0,
+          "issuerName": "./src/index.js",
+          "issuerPath": [
+            {
+              "id": 0,
+              "identifier": "/app/src/index.js",
+              "name": "./src/index.js"
+            }
+          ],
+          "profile": {
+            "factory": 58,
+            "building": 112,
+            "dependencies": 3
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/app/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "./styles.css",
+              "loc": "1:0-22"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1,
+          "source": "// extracted by mini-css-extract-plugin\n"
+        },
+        {
+          "id": 4,
+          "identifier": "/app/node_modules/css-loader/dist/cjs.js!/app/src/styles.css",
+          "name": "./node_modules/css-loader/dist/cjs.js!./src/styles.css",
+          "index": 4,
+          "index2": 7,
+          "size": 1860,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/node_modules/mini-css-extract-plugin/dist/loader.js!/app/node_modules/css-loader/dist/cjs.js!/app/src/styles.css",
+          "issuerId": 3,
+          "issuerName": "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/styles.css",
+          "issuerPath": [
+            {
+              "id": 0,
+              "identifier": "/app/src/index.js",
+              "name": "./src/index.js"
+            },
+            {
+              "id": 3,
+              "identifier": "/app/node_modules/mini-css-extract-plugin/dist/loader.js!/app/node_modules/css-loader/dist/cjs.js!/app/src/styles.css",
+              "name": "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/styles.css"
+            }
+          ],
+          "profile": {
+            "factory": 41,
+            "building": 103,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 3,
+              "moduleIdentifier": "/app/node_modules/mini-css-extract-plugin/dist/loader.js!/app/node_modules/css-loader/dist/cjs.js!/app/src/styles.css",
+              "module": "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/styles.css",
+              "moduleName": "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/styles.css",
+              "type": "cjs require",
+              "userRequest": "!!/app/node_modules/css-loader/dist/cjs.js!/app/src/styles.css",
+              "loc": "1:0-0"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2,
+          "source": "exports = module.exports = require(\"../../css-loader/dist/runtime/api.js\")(false);\nexports.push([module.i, \"body{margin:0;font:14px/1.4 system-ui,sans-serif}\", \"\"]);\n"
+        },
+        {
+          "id": 5,
+          "identifier": "/app/node_modules/file-loader/dist/cjs.js!/app/src/logo.png",
+          "name": "./node_modules/file-loader/dist/cjs.js!./src/logo.png",
+          "index": 5,
+          "index2": 6,
+          "size": 82,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [
+            "logo.4f2a1c8b.png"
+          ],
+          "issuer": "/app/src/app.js",
+          "issuerId": 1,
+          "issuerName": "./src/app.js",
+          "issuerPath": [
+            {
+              "id": 0,
+              "identifier": "/app/src/index.js",
+              "name": "./src/index.js"
+            },
+            {
+              "id": 1,
+              "identifier": "/app/src/app.js",
+              "name": "./src/app.js"
+            }
+          ],
+          "profile": {
+            "factory": 34,
+            "building": 77,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 1,
+              "moduleIdentifier": "/app/src/app.js",
+              "module": "./src/app.js",
+              "moduleName": "./src/app.js",
+              "type": "harmony side effect evaluation",
+              "userRequest": "./logo.png",
+              "loc": "3:0-30"
+            },
+            {
+              "moduleId": 1,
+              "moduleIdentifier": "/app/src/app.js",
+              "module": "./src/app.js",
+              "moduleName": "./src/app.js",
+              "type": "harmony import specifier",
+              "userRequest": "./logo.png",
+              "loc": "8:36-40"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2,
+          "source": "module.exports = __webpack_public_path__ + \"logo.4f2a1c8b.png\";\n"
+        }
+      ],
+      "filteredModules": 0
+    },
+    {
+      "id": 2,
+      "rendered": true,
+      "initial": false,
+      "entry": false,
+      "names": [
+        "about"
+      ],
+      "files": [
+        "about.7c31de40.js"
+      ],
+      "hash": "1c6f3a90d47e5b82f0a3",
+      "siblings": [],
+      "parents": [
+        0,
+        1
+      ],
+      "children": [],
+      "childrenByOrder": {},
+      "origins": [
+        {
+          "moduleId": 0,
+          "module": "./src/index.js",
+          "moduleIdentifier": "/app/src/index.js",
+          "moduleName": "./src/index.js",
+          "loc": "7:8-85",
+          "request": "./pages/about",
+          "reasons": [
+            "import()"
+          ]
+        }
+      ],
+      "size": 640,
+      "modules": [
+        {
+          "id": 6,
+          "identifier": "/app/src/pages/about.js",
+          "name": "./src/pages/about.js",
+          "index": 6,
+          "index2": 5,
+          "size": 640,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            2
+          ],
+          "assets": [],
+          "issuer": "/app/src/index.js",
+          "issuerId": 0,
+          "issuerName": "./src/index.js",
+          "issuerPath": [
+            {
+              "id": 0,
+              "identifier": "/app/src/index.js",
+              "name": "./src/index.js"
+            }
+          ],
+          "profile": {
+            "factory": 27,
+            "building": 39,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/app/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "type": "import()",
+              "userRequest": "./pages/about",
+              "loc": "7:8-85"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "default"
+          ],
+          "optimizationBailout": [],
+          "depth": 1,
+          "source": "import React from \"react\";\n\nexport default function About() {\n\treturn React.createElement(\"section\", null, \"About\");\n}\n"
+        }
+      ],
+      "filteredModules": 0
+    },
+    {
+      "id": 3,
+      "rendered": true,
+      "initial": false,
+      "entry": false,
+      "names": [
+        "editor"
+      ],
+      "files": [
+        "editor.9b12ea55.js"
+      ],
+      "hash": "d5a80c37b1e694f2035c",
+      "siblings": [],
+      "parents": [
+        0,
+        1
+      ],
+      "children": [],
+      "childrenByOrder": {},
+      "origins": [
+        {
+          "moduleId": 0,
+          "module": "./src/index.js",
+          "moduleIdentifier": "/app/src/index.js",
+          "moduleName": "./src/index.js",
+          "loc": "11:8-59",
+          "request": "./editor",
+          "reasons": [
+            "import()"
+          ]
+        }
+      ],
+      "size": 1020,
+      "modules": [
+        {
+          "id": 7,
+          "identifier": "/app/src/editor/index.js",
+          "name": "./src/editor/index.js",
+          "index": 7,
+          "index2": 4,
+          "size": 1020,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            3
+          ],
+          "assets": [],
+          "issuer": "/app/src/index.js",
+          "issuerId": 0,
+          "issuerName": "./src/index.js",
+          "issuerPath": [
+            {
+              "id": 0,
+              "identifier": "/app/src/index.js",
+              "name": "./src/index.js"
+            }
+          ],
+          "profile": {
+            "factory": 29,
+            "building": 44,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/app/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "type": "import()",
+              "userRequest": "./editor",
+              "loc": "11:8-59"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "default"
+          ],
+          "optimizationBailout": [],
+          "depth": 1,
+          "source": "import React from \"react\";\n\nexport default function Editor(props) {\n\treturn React.createElement(\"textarea\", props);\n}\n"
+        }
+      ],
+      "filteredModules": 0
+    }
+  ],
+  "modules": [
+    {
+      "id": 0,
+      "identifier": "/app/src/index.js",
+      "name": "./src/index.js",
+      "index": 0,
+      "index2": 11,
+      "size": 712,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": null,
+      "issuerId": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "profile": {
+        "factory": 38,
+        "building": 52,
+        "dependencies": 16
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": null,
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "type": "single entry",
+          "userRequest": "./src/index.js",
+          "loc": "main"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is an entry point"
+      ],
+      "depth": 0,
+      "source": "import \"./styles.css\";\nimport { mount } from \"./app\";\n\nmount(document.getElementById(\"root\"));\n\ndocument.querySelector(\"#about\").onclick = function() {\n\treturn import(/* webpackChunkName: \"about\", webpackPrefetch: true */ \"./pages/about\");\n};\n\ndocument.querySelector(\"#editor\").onclick = function() {\n\treturn import(/* webpackChunkName: \"editor\" */ \"./editor\");\n};\n"
+    },
+    {
+      "id": 1,
+      "identifier": "/app/src/app.js",
+      "name": "./src/app.js",
+      "index": 1,
+      "index2": 10,
+      "size": 1140,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 0,
+      "issuerName": "./src/index.js",
+      "issuerPath": [
+        {
+          "id": 0,
+          "identifier": "/app/src/index.js",
+          "name": "./src/index.js"
+        }
+      ],
+      "profile": {
+        "factory": 31,
+        "building": 47,
+        "dependencies": 21
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "harmony side effect evaluation",
+          "userRequest": "./app",
+          "loc": "2:0-30"
+        },
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "harmony import specifier",
+          "userRequest": "./app",
+          "loc": "4:0-5"
+        }
+      ],
+      "usedExports": [
+        "mount"
+      ],
+      "providedExports": [
+        "mount"
+      ],
+      "optimizationBailout": [],
+      "depth": 1,
+      "source": "import React from \"react\";\nimport settings from \"./config.json\";\nimport logo from \"./logo.png\";\n\nrequire(\"legacy-lib\");\n\nexport function mount(root) {\n\troot.innerHTML = '<img src=\"' + logo + '\" alt=\"' + settings.title + '\">';\n\treturn React.createElement(\"main\", null, settings.title);\n}\n"
+    },
+    {
+      "id": 2,
+      "identifier": "/app/src/config.json",
+      "name": "./src/config.json",
+      "index": 2,
+      "index2": 9,
+      "size": 148,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/app.js",
+      "issuerId": 1,
+      "issuerName": "./src/app.js",
+      "issuerPath": [
+        {
+          "id": 0,
+          "identifier": "/app/src/index.js",
+          "name": "./src/index.js"
+        },
+        {
+          "id": 1,
+          "identifier": "/app/src/app.js",
+          "name": "./src/app.js"
+        }
+      ],
+      "profile": {
+        "factory": 12,
+        "building": 6,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 1,
+          "moduleIdentifier": "/app/src/app.js",
+          "module": "./src/app.js",
+          "moduleName": "./src/app.js",
+          "type": "harmony side effect evaluation",
+          "userRequest": "./config.json",
+          "loc": "2:0-37"
+        },
+        {
+          "moduleId": 1,
+          "moduleIdentifier": "/app/src/app.js",
+          "module": "./src/app.js",
+          "moduleName": "./src/app.js",
+          "type": "harmony import specifier",
+          "userRequest": "./config.json",
+          "loc": "8:47-61"
+        }
+      ],
+      "usedExports": [
+        "title"
+      ],
+      "providedExports": [
+        "title",
+        "api",
+        "default"
+      ],
+      "optimizationBailout": [],
+      "depth": 2,
+      "source": "{\"title\":\"Analyse demo\",\"api\":\"/api/v1\"}\n"
+    },
+    {
+      "id": 3,
+      "identifier": "/app/node_modules/mini-css-extract-plugin/dist/loader.js!/app/node_modules/css-loader/dist/cjs.js!/app/src/styles.css",
+      "name": "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/styles.css",
+      "index": 3,
+      "index2": 8,
+      "size": 39,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 0,
+      "issuerName": "./src/index.js",
+      "issuerPath": [
+        {
+          "id": 0,
+          "identifier": "/app/src/index.js",
+          "name": "./src/index.js"
+        }
+      ],
+      "profile": {
+        "factory": 58,
+        "building": 112,
+        "dependencies": 3
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "harmony side effect evaluation",
+          "userRequest": "./styles.css",
+          "loc": "1:0-22"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 1,
+      "source": "// extracted by mini-css-extract-plugin\n"
+    },
+    {
+      "id": 4,
+      "identifier": "/app/node_modules/css-loader/dist/cjs.js!/app/src/styles.css",
+      "name": "./node_modules/css-loader/dist/cjs.js!./src/styles.css",
+      "index": 4,
+      "index2": 7,
+      "size": 1860,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/node_modules/mini-css-extract-plugin/dist/loader.js!/app/node_modules/css-loader/dist/cjs.js!/app/src/styles.css",
+      "issuerId": 3,
+      "issuerName": "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/styles.css",
+      "issuerPath": [
+        {
+          "id": 0,
+          "identifier": "/app/src/index.js",
+          "name": "./src/index.js"
+        },
+        {
+          "id": 3,
+          "identifier": "/app/node_modules/mini-css-extract-plugin/dist/loader.js!/app/node_modules/css-loader/dist/cjs.js!/app/src/styles.css",
+          "name": "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/styles.css"
+        }
+      ],
+      "profile": {
+        "factory": 41,
+        "building": 103,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 3,
+          "moduleIdentifier": "/app/node_modules/mini-css-extract-plugin/dist/loader.js!/app/node_modules/css-loader/dist/cjs.js!/app/src/styles.css",
+          "module": "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/styles.css",
+          "moduleName": "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/styles.css",
+          "type": "cjs require",
+          "userRequest": "!!/app/node_modules/css-loader/dist/cjs.js!/app/src/styles.css",
+          "loc": "1:0-0"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 2,
+      "source": "exports = module.exports = require(\"../../css-loader/dist/runtime/api.js\")(false);\nexports.push([module.i, \"body{margin:0;font:14px/1.4 system-ui,sans-serif}\", \"\"]);\n"
+    },
+    {
+      "id": 5,
+      "identifier": "/app/node_modules/file-loader/dist/cjs.js!/app/src/logo.png",
+      "name": "./node_modules/file-loader/dist/cjs.js!./src/logo.png",
+      "index": 5,
+      "index2": 6,
+      "size": 82,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [
+        "logo.4f2a1c8b.png"
+      ],
+      "issuer": "/app/src/app.js",
+      "issuerId": 1,
+      "issuerName": "./src/app.js",
+      "issuerPath": [
+        {
+          "id": 0,
+          "identifier": "/app/src/index.js",
+          "name": "./src/index.js"
+        },
+        {
+          "id": 1,
+          "identifier": "/app/src/app.js",
+          "name": "./src/app.js"
+        }
+      ],
+      "profile": {
+        "factory": 34,
+        "building": 77,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 1,
+          "moduleIdentifier": "/app/src/app.js",
+          "module": "./src/app.js",
+          "moduleName": "./src/app.js",
+          "type": "harmony side effect evaluation",
+          "userRequest": "./logo.png",
+          "loc": "3:0-30"
+        },
+        {
+          "moduleId": 1,
+          "moduleIdentifier": "/app/src/app.js",
+          "module": "./src/app.js",
+          "moduleName": "./src/app.js",
+          "type": "harmony import specifier",
+          "userRequest": "./logo.png",
+          "loc": "8:36-40"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 2,
+      "source": "module.exports = __webpack_public_path__ + \"logo.4f2a1c8b.png\";\n"
+    },
+    {
+      "id": 6,
+      "identifier": "/app/src/pages/about.js",
+      "name": "./src/pages/about.js",
+      "index": 6,
+      "index2": 5,
+      "size": 640,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        2
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 0,
+      "issuerName": "./src/index.js",
+      "issuerPath": [
+        {
+          "id": 0,
+          "identifier": "/app/src/index.js",
+          "name": "./src/index.js"
+        }
+      ],
+      "profile": {
+        "factory": 27,
+        "building": 39,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "import()",
+          "userRequest": "./pages/about",
+          "loc": "7:8-85"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "default"
+      ],
+      "optimizationBailout": [],
+      "depth": 1,
+      "source": "import React from \"react\";\n\nexport default function About() {\n\treturn React.createElement(\"section\", null, \"About\");\n}\n"
+    },
+    {
+      "id": 7,
+      "identifier": "/app/src/editor/index.js",
+      "name": "./src/editor/index.js",
+      "index": 7,
+      "index2": 4,
+      "size": 1020,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        3
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 0,
+      "issuerName": "./src/index.js",
+      "issuerPath": [
+        {
+          "id": 0,
+          "identifier": "/app/src/index.js",
+          "name": "./src/index.js"
+        }
+      ],
+      "profile": {
+        "factory": 29,
+        "building": 44,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "import()",
+          "userRequest": "./editor",
+          "loc": "11:8-59"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "default"
+      ],
+      "optimizationBailout": [],
+      "depth": 1,
+      "source": "import React from \"react\";\n\nexport default function Editor(props) {\n\treturn React.createElement(\"textarea\", props);\n}\n"
+    },
+    {
+      "id": 8,
+      "identifier": "/app/node_modules/react/index.js",
+      "name": "./node_modules/react/index.js",
+      "index": 8,
+      "index2": 3,
+      "size": 190,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/app.js",
+      "issuerId": 1,
+      "issuerName": "./src/app.js",
+      "issuerPath": [
+        {
+          "id": 0,
+          "identifier": "/app/src/index.js",
+          "name": "./src/index.js"
+        },
+        {
+          "id": 1,
+          "identifier": "/app/src/app.js",
+          "name": "./src/app.js"
+        }
+      ],
+      "profile": {
+        "factory": 47,
+        "building": 23,
+        "dependencies": 168
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 1,
+          "moduleIdentifier": "/app/src/app.js",
+          "module": "./src/app.js",
+          "moduleName": "./src/app.js",
+          "type": "harmony side effect evaluation",
+          "userRequest": "react",
+          "loc": "1:0-26"
+        },
+        {
+          "moduleId": 1,
+          "moduleIdentifier": "/app/src/app.js",
+          "module": "./src/app.js",
+          "moduleName": "./src/app.js",
+          "type": "harmony import specifier",
+          "userRequest": "react",
+          "loc": "9:8-21"
+        },
+        {
+          "moduleId": 6,
+          "moduleIdentifier": "/app/src/pages/about.js",
+          "module": "./src/pages/about.js",
+          "moduleName": "./src/pages/about.js",
+          "type": "harmony side effect evaluation",
+          "userRequest": "react",
+          "loc": "1:0-26"
+        },
+        {
+          "moduleId": 7,
+          "moduleIdentifier": "/app/src/editor/index.js",
+          "module": "./src/editor/index.js",
+          "moduleName": "./src/editor/index.js",
+          "type": "harmony side effect evaluation",
+          "userRequest": "react",
+          "loc": "1:0-26"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 2,
+      "source": "module.exports = require(\"./cjs/react.production.min.js\");\n"
+    },
+    {
+      "id": 9,
+      "identifier": "/app/node_modules/react/cjs/react.production.min.js",
+      "name": "./node_modules/react/cjs/react.production.min.js",
+      "index": 9,
+      "index2": 2,
+      "size": 96420,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/node_modules/react/index.js",
+      "issuerId": 8,
+      "issuerName": "./node_modules/react/index.js",
+      "issuerPath": [
+        {
+          "id": 0,
+          "identifier": "/app/src/index.js",
+          "name": "./src/index.js"
+        },
+        {
+          "id": 1,
+          "identifier": "/app/src/app.js",
+          "name": "./src/app.js"
+        },
+        {
+          "id": 8,
+          "identifier": "/app/node_modules/react/index.js",
+          "name": "./node_modules/react/index.js"
+        }
+      ],
+      "profile": {
+        "factory": 39,
+        "building": 141,
+        "dependencies": 12
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 8,
+          "moduleIdentifier": "/app/node_modules/react/index.js",
+          "module": "./node_modules/react/index.js",
+          "moduleName": "./node_modules/react/index.js",
+          "type": "cjs require",
+          "userRequest": "./cjs/react.production.min.js",
+          "loc": "1:17-56"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module",
+        "ModuleConcatenation bailout: Module uses injected variables (module, exports)"
+      ],
+      "depth": 3,
+      "source": "/** @license React v16.14.0 */\n\"use strict\";\nvar objectAssign = require(\"object-assign\");\nmodule.exports = { createElement: createElement, version: \"16.14.0\" };\n"
+    },
+    {
+      "id": 10,
+      "identifier": "/app/node_modules/object-assign/index.js",
+      "name": "./node_modules/object-assign/index.js",
+      "index": 10,
+      "index2": 1,
+      "size": 2062,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/node_modules/react/cjs/react.production.min.js",
+      "issuerId": 9,
+      "issuerName": "./node_modules/react/cjs/react.production.min.js",
+      "issuerPath": [
+        {
+          "id": 0,
+          "identifier": "/app/src/index.js",
+          "name": "./src/index.js"
+        },
+        {
+          "id": 1,
+          "identifier": "/app/src/app.js",
+          "name": "./src/app.js"
+        },
+        {
+          "id": 8,
+          "identifier": "/app/node_modules/react/index.js",
+          "name": "./node_modules/react/index.js"
+        },
+        {
+          "id": 9,
+          "identifier": "/app/node_modules/react/cjs/react.production.min.js",
+          "name": "./node_modules/react/cjs/react.production.min.js"
+        }
+      ],
+      "profile": {
+        "factory": 22,
+        "building": 18,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 9,
+          "moduleIdentifier": "/app/node_modules/react/cjs/react.production.min.js",
+          "module": "./node_modules/react/cjs/react.production.min.js",
+          "moduleName": "./node_modules/react/cjs/react.production.min.js",
+          "type": "cjs require",
+          "userRequest": "object-assign",
+          "loc": "3:19-43"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 4,
+      "source": "\"use strict\";\nvar hasOwnProperty = Object.prototype.hasOwnProperty;\n\nmodule.exports = Object.assign || function(target, source) {};\n"
+    },
+    {
+      "id": 11,
+      "identifier": "/app/node_modules/legacy-lib/index.js",
+      "name": "./node_modules/legacy-lib/index.js",
+      "index": 11,
+      "index2": 0,
+      "size": 730,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/app.js",
+      "issuerId": 1,
+      "issuerName": "./src/app.js",
+      "issuerPath": [
+        {
+          "id": 0,
+          "identifier": "/app/src/index.js",
+          "name": "./src/index.js"
+        },
+        {
+          "id": 1,
+          "identifier": "/app/src/app.js",
+          "name": "./src/app.js"
+        }
+      ],
+      "profile": {
+        "factory": 26,
+        "building": 31,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 1,
+      "reasons": [
+        {
+          "moduleId": 1,
+          "moduleIdentifier": "/app/src/app.js",
+          "module": "./src/app.js",
+          "moduleName": "./src/app.js",
+          "type": "cjs require",
+          "userRequest": "legacy-lib",
+          "loc": "5:0-21"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 2,
+      "source": "var plugins = {};\n\nexports.load = function(name) {\n\tif (!plugins[name]) {\n\t\tplugins[name] = require(name);\n\t}\n\treturn plugins[name];\n};\n"
+    }
+  ],
+  "filteredModules": 0,
+  "children": []
+}

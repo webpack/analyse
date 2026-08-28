@@ -6,9 +6,13 @@ module.exports = function() {
 	$("body").html(require("./application.pug")());
 	$(".modal").modal({ show: true });
 	$("#file").change(loadFromFile);
-	$("#example1").click(() => loadFromExample(1));
-	$("#example2").click(() => loadFromExample(2));
-	$("#example3").click(() => loadFromExample(3));
+	// The examples are numbered in the order they were added, not by the
+	// webpack version each one was written for. This is the order the modal
+	// lists them in. example3.json is not listed, it is the fixture the
+	// circular dependency test runs on.
+	[1, 4, 5, 6, 2].forEach(n =>
+		$("#example" + n).click(() => loadFromExample(n))
+	);
 
 	function loadFromExample(n) {
 		import(`./example${n}.json`).then(function(exampleModule) {
