@@ -10,6 +10,7 @@ This project is a lightweight front-end viewer for webpack output generated with
 - Module dependency graph and chunk relationships
 - Asset and bundle size breakdowns
 - Filter the module list and graph by name or regexp, or hide `node_modules`
+- Sort any table of modules, chunks or assets by size, name or id
 - Warning and error inspection
 - Hints for common optimization issues, including circular dependencies
 - Upload a generated stats file directly in the app

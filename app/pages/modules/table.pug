@@ -1,21 +1,21 @@
-table.table.table-condensed
+table.table.table-condensed(data-sort-key="modules")
 	thead
 		tr
-			th id
-			th name
-			th.sortable-th.size-th size
+			th.sortable-th id
+			th.sortable-th name
+			th.sortable-th(data-sort-first="desc") size
 			th chunks
 			th flags
 	tbody
 		each module in modules
 			tr
-				td
+				td(data-sort=module.id)
 					if typeof module.uid === "number"
 						a.btn.btn-success(href=`#module/${module.uid}`)= module.id
 					else
 						span.btn.btn-success= module.id
-				td: pre: code= module.name.split("!").join("\n")
-				td= require("../../formatSize")(module.size)
+				td(data-sort=module.name): pre: code= module.name.split("!").join("\n")
+				td(data-sort=module.size)= require("../../formatSize")(module.size)
 				td
 					each chunk in module.chunks
 						a.btn.btn-info(href=`#chunk/${encodeURIComponent(chunk)}`)= chunk

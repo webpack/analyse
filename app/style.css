@@ -21,8 +21,23 @@
 table pre {
 	margin-bottom: 0px;
 }
+/* A sortable column says so: a faint pair of arrows until it is sorted on,
+   then the direction it is sorted in. */
 .sortable-th {
 	cursor: pointer;
+	white-space: nowrap;
+}
+.sortable-th:after {
+	content: " \2195";
+	opacity: 0.3;
+}
+.sortable-th.sorted-asc:after {
+	content: " \2191";
+	opacity: 1;
+}
+.sortable-th.sorted-desc:after {
+	content: " \2193";
+	opacity: 1;
 }
 
 /* Legend under the module and chunk graphs (webpack/analyse#29). Sits between

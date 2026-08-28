@@ -1,22 +1,22 @@
 table.table.table-condensed
 	thead
 		tr
-			th id
+			th.sortable-th id
 			th names
-			th modules
-			th size
+			th.sortable-th(data-sort-first="desc") modules
+			th.sortable-th(data-sort-first="desc") size
 			th parents
 			th flags
 	tbody
 		each chunk in stats.chunks
 			tr
-				td: a.btn.btn-info(href=`#chunk/${encodeURIComponent(chunk.id)}`)= chunk.id
+				td(data-sort=chunk.id): a.btn.btn-info(href=`#chunk/${encodeURIComponent(chunk.id)}`)= chunk.id
 				td
 					each name in chunk.names
 						code= name
 						= " "
-				td= chunk.modules ? chunk.modules.length : "N/A"
-				td= require("../../formatSize")(chunk.size)
+				td(data-sort=chunk.modules ? chunk.modules.length : "")= chunk.modules ? chunk.modules.length : "N/A"
+				td(data-sort=chunk.size)= require("../../formatSize")(chunk.size)
 				td
 					each parent in chunk.parents
 						a.btn.btn-info(href=`#chunk/${encodeURIComponent(parent)}`)= parent
