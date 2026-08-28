@@ -1,16 +1,16 @@
 table.table.table-condensed
 	thead
 		tr
-			th assets
-			th size
+			th.sortable-th assets
+			th.sortable-th(data-sort-first="desc") size
 			th chunks
 			th names
 			th flags
 	tbody
 		each asset in stats.assets
 			tr
-				td: pre: code= asset.name
-				td= require("../../formatSize")(asset.size)
+				td(data-sort=asset.name): pre: code= asset.name
+				td(data-sort=asset.size)= require("../../formatSize")(asset.size)
 				td
 					each chunk in asset.chunks
 						a.btn.btn-info(href=`#chunk/${encodeURIComponent(chunk)}`)= chunk

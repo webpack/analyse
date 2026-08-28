@@ -2,6 +2,7 @@ var app = require("../../app");
 var modulesGraph = require("../../graphs/modules");
 var moduleFilter = require("../../moduleFilter");
 var formatSize = require("../../formatSize");
+var sortableTable = require("../../sortableTable");
 
 function renderTable() {
 	$(".modules-table").html(
@@ -9,6 +10,8 @@ function renderTable() {
 			modules: app.stats.modules.filter(moduleFilter.isVisible)
 		})
 	);
+	// Filtering redraws the rows, which would otherwise drop the sort.
+	sortableTable.restore($(".modules-table table")[0]);
 }
 
 function renderSummary() {
@@ -34,6 +37,7 @@ function renderSummary() {
 
 module.exports = function() {
 	document.title = "modules";
+	sortableTable.enable();
 	$(".page").html(
 		require("./modules.pug")({
 			query: moduleFilter.query,
@@ -43,14 +47,6 @@ module.exports = function() {
 	renderTable();
 	renderSummary();
 
-	var sortDir;
-	$(document).on("click", ".size-th", function() {
-		sortDir = sortDir === "desc" ? "asc" : "desc";
-		app.stats.modules.sort(function(a, b) {
-			return sortDir === "asc" ? b.size - a.size : a.size - b.size;
-		});
-		renderTable();
-	});
 	// The graph follows the same filter through moduleFilter, so only the table
 	// and the summary are redrawn here.
 	$(document).on("input", ".module-filter-query", function() {
@@ -67,7 +63,6 @@ module.exports = function() {
 	modulesGraph.show();
 	modulesGraph.setNormal();
 	return function() {
-		$(document).off("click", ".size-th");
 		$(document).off("input", ".module-filter-query");
 		$(document).off("change", ".module-filter-third-party");
 		modulesGraph.hide();
