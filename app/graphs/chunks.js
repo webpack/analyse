@@ -6,9 +6,12 @@ var FA2Layout = require("graphology-layout-forceatlas2/worker");
 var forceAtlas2 = require("graphology-layout-forceatlas2");
 var rescale = require("./rescale");
 var theme = require("./theme");
+var legend = require("./legend");
+var formatSize = require("../formatSize");
 var percentageToColor = require("../percentageToColor").greenRed;
 
 var element = document.getElementById("sigma-chunks");
+var legendElement = legend.create(element);
 
 var nodes = [];
 var edges = [];
@@ -124,6 +127,32 @@ var s = new Sigma(graph, element, {
 	}
 });
 
+// Same wording rule as the module graph: every line below describes what the
+// code above actually draws.
+legend.render(legendElement, [
+	{
+		title: "chunk",
+		items: [
+			{
+				shape: "dot",
+				gradient: legend.gradient(percentageToColor),
+				text: "colour and radius: size, 0 to " + formatSize(maxSize)
+			}
+		]
+	},
+	{
+		title: "edge",
+		items: [
+			{ glyph: "\u2192", text: "points from a parent chunk to its child" },
+			{
+				shape: "line",
+				color: "rgba(120,130,140,0.6)",
+				text: "coloured like the child, thicker when it has many parents"
+			}
+		]
+	}
+]);
+
 var layout = new FA2Layout(graph, {
 	settings: forceAtlas2.inferSettings(graph)
 });
@@ -135,6 +164,7 @@ s.on("clickNode", function(e) {
 
 exports.show = function() {
 	element.style.display = "block";
+	legend.show(legendElement);
 	// Zero-sized while hidden, so re-measure before refreshing.
 	s.resize();
 	s.refresh();
@@ -143,5 +173,6 @@ exports.show = function() {
 
 exports.hide = function() {
 	element.style.display = "none";
+	legend.hide(legendElement);
 	layout.stop();
 };

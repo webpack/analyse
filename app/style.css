@@ -4,3 +4,57 @@ table pre {
 .sortable-th {
 	cursor: pointer;
 }
+
+/* Legend under the module and chunk graphs (webpack/analyse#29). Sits between
+   the graph and the page content, so it stays quiet: one line of small text
+   that reads as a caption rather than as another table. */
+.graph-legend {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 18px;
+	margin: 0 0 10px 8px;
+	color: #777;
+	font-size: 12px;
+	line-height: 18px;
+}
+.graph-legend-group {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 10px;
+}
+.graph-legend-title {
+	color: #555;
+	font-weight: bold;
+}
+.graph-legend-title:after {
+	content: ":";
+}
+.graph-legend-item {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	white-space: nowrap;
+}
+.graph-legend-swatch {
+	display: inline-block;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.graph-legend-swatch-dot {
+	width: 26px;
+	height: 10px;
+	border-radius: 5px;
+}
+.graph-legend-swatch-line {
+	width: 26px;
+	height: 4px;
+	border-radius: 2px;
+}
+.graph-legend-glyph {
+	display: inline-block;
+	width: 26px;
+	color: #555;
+	text-align: center;
+	font-size: 14px;
+}

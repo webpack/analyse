@@ -85,6 +85,20 @@ a small hand-written stats file that covers every hint of the hints page and is
 loadable in the app as the "hint test cases" example. CI runs this before the
 build, so a failing test stops the run and nothing is deployed.
 
+## Reading the graphs
+
+The module and chunk graphs carry their meaning in colour, size and direction.
+Each one draws a legend underneath itself, and it says the same as this:
+
+| What you see | What it means |
+| --- | --- |
+| Dot colour and radius | The size of the module or chunk, green for the smallest and red for the largest in the build |
+| Arrow | Points from the module that requires to the module required, and from a parent chunk to the chunk it loads |
+| Edge colour (module graph) | When the module the arrow points at finished building, cyan early through magenta late. Only with `--profile`; without it the edge takes the colour of the module it points at |
+| Edge width | Thinner when many modules require the same module, and thinner again when that module is loaded from an async chunk. In the chunk graph, thicker when a chunk has many parents |
+| Black, red, green (module graph) | With a module open: the module itself, what requires it, and what it requires. With a chunk open: the modules in the chunk, and the edges into and out of it |
+| Grey | Everything outside the current selection |
+
 ## Typical workflow
 
 1. Build your application with webpack in profiling mode.

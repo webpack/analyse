@@ -6,10 +6,13 @@ var FA2Layout = require("graphology-layout-forceatlas2/worker");
 var forceAtlas2 = require("graphology-layout-forceatlas2");
 var rescale = require("./rescale");
 var theme = require("./theme");
+var legend = require("./legend");
+var formatSize = require("../formatSize");
 var percentageToColor = require("../percentageToColor").greenRed;
 var percentageToColor2 = require("../percentageToColor").blue;
 
 var element = document.getElementById("sigma-modules");
+var legendElement = legend.create(element);
 
 var nodes = [];
 var edges = [];
@@ -145,6 +148,91 @@ edges.forEach(function(edge) {
 	});
 });
 
+// What the graph draws, in words. The wording follows the code above: node
+// colour and radius come from the module size, edge colour from the timestamp
+// of the module the edge points at, and edge width from how many modules ask
+// for that same module.
+var GRAPH_LEGEND = [
+	{
+		title: "module",
+		items: [
+			{
+				shape: "dot",
+				gradient: legend.gradient(percentageToColor),
+				text: "colour and radius: size, 0 to " + formatSize(maxSize)
+			}
+		]
+	},
+	{
+		title: "dependency",
+		items: [
+			{ glyph: "\u2192", text: "requires the module it points at" },
+			maxTimestamp > 0
+				? {
+						shape: "line",
+						gradient: legend.gradient(percentageToColor2),
+						text: "finished building, 0 to " + maxTimestamp + " ms"
+					}
+				: {
+						shape: "line",
+						color: "rgba(120,130,140,0.6)",
+						text: "coloured like the module it points at"
+					},
+			{
+				shape: "line",
+				color: "rgba(120,130,140,0.6)",
+				text:
+					"thinner when many modules require the same one, and when it " +
+					"is loaded from an async chunk"
+			}
+		]
+	}
+];
+
+// The roles a module selection paints. A chunk selection paints a different
+// set, so the two are kept apart rather than listing every colour the graph
+// could ever use next to a view that cannot show most of them.
+var MODULE_SELECTION_LEGEND = {
+	title: "selected module",
+	items: [
+		{ shape: "dot", color: theme.ROLE_COLOR.active, text: "the module" },
+		{ shape: "dot", color: theme.ROLE_COLOR.reason, text: "requires it" },
+		{
+			shape: "dot",
+			color: theme.ROLE_COLOR.dependency,
+			text: "required by it"
+		},
+		{ shape: "dot", color: theme.FADED_NODE_COLOR, text: "unrelated" }
+	]
+};
+
+var CHUNK_SELECTION_LEGEND = {
+	title: "selected chunk",
+	items: [
+		{ shape: "dot", color: theme.ROLE_COLOR.member, text: "in the chunk" },
+		{
+			shape: "line",
+			color: theme.ROLE_COLOR.dependency,
+			text: "requires a module outside it"
+		},
+		{
+			shape: "line",
+			color: theme.ROLE_COLOR.reason,
+			text: "required from outside it"
+		},
+		{ shape: "dot", color: theme.FADED_NODE_COLOR, text: "outside the chunk" }
+	]
+};
+
+function showLegend(selectionGroup) {
+	legend.render(
+		legendElement,
+		selectionGroup ? GRAPH_LEGEND.concat(selectionGroup) : GRAPH_LEGEND
+	);
+}
+
+showLegend(null);
+
 // null when nothing is selected. Otherwise { nodes: {key: role}, edges: {key:
 // role} }. Selection drives appearance through the reducers rather than by
 // overwriting colour attributes, so clearing a selection needs no restore pass
@@ -271,6 +359,7 @@ s.on("clickNode", function(e) {
 
 exports.show = function() {
 	element.style.display = "block";
+	legend.show(legendElement);
 	// The container has zero dimensions while hidden, so re-measure before
 	// refreshing or sigma keeps the stale 0x0 viewport.
 	s.resize();
@@ -280,12 +369,14 @@ exports.show = function() {
 
 exports.hide = function() {
 	element.style.display = "none";
+	legend.hide(legendElement);
 	layout.stop();
 };
 
 exports.setNormal = function() {
 	activeModuleUid = null;
 	selection = null;
+	showLegend(null);
 	s.refresh();
 };
 
@@ -316,6 +407,7 @@ exports.setActiveModule = function(activeModule) {
 			edgeRoles[edge] = "dependency";
 	});
 	selection = buildSelection(nodeRoles, edgeRoles);
+	showLegend(MODULE_SELECTION_LEGEND);
 	s.refresh();
 };
 
@@ -337,5 +429,6 @@ exports.setActiveChunk = function(activeChunk) {
 		else if (tc) edgeRoles[edge] = "reason";
 	});
 	selection = buildSelection(nodeRoles, edgeRoles);
+	showLegend(CHUNK_SELECTION_LEGEND);
 	s.refresh();
 };
