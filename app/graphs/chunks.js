@@ -34,7 +34,7 @@ app.stats.chunks.forEach(function (chunk, idx) {
 			"[" +
 			chunk.id +
 			"] " +
-			chunk.origins
+			(chunk.origins || [])
 				.map(function (o) {
 					return (o.reasons || [])
 						.concat(o.name)
@@ -48,7 +48,10 @@ app.stats.chunks.forEach(function (chunk, idx) {
 	});
 });
 app.stats.chunks.forEach(function (chunk) {
+	// app.load fills these in, but the graph is built from whatever the stats
+	// hold: a parent can name a chunk that is not in the file at all.
 	chunk.parents.forEach(function (parent) {
+		if (!app.mapChunks[parent]) return;
 		edges.push({
 			id: "edge" + chunk.id + "-" + parent,
 			source: "chunk" + parent,

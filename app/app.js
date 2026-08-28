@@ -29,6 +29,7 @@ function load(stats) {
 	});
 	stats.modules.forEach(function(module) {
 		module.reasons = module.reasons || [];
+		module.chunks = module.chunks || [];
 		module.reasons.forEach(function(reason) {
 			var m = mapModulesIdent["$" + reason.moduleIdentifier];
 			if (!m) return;
@@ -59,8 +60,15 @@ function load(stats) {
 		})(module);
 	});
 	stats.chunks.forEach(function(chunk) {
+		// Which of these a stats file carries depends on the options it was
+		// written with, and a parent can name a chunk that was left out of it.
+		chunk.parents = chunk.parents || [];
+		chunk.origins = chunk.origins || [];
+		chunk.names = chunk.names || [];
+		chunk.files = chunk.files || [];
 		chunk.parents.forEach(function(parent) {
 			var c = mapChunks[parent];
+			if (!c) return;
 			c.children.push(chunk.id);
 		});
 		chunk.origins.forEach(function(origin) {

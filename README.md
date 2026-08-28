@@ -180,6 +180,49 @@ them off the graph is never built at all, so the rest of the app stays quick.
 3. Open the analyse app and load that file.
 4. Inspect modules, chunks, and assets to find large bundles or suspicious dependency patterns.
 
+## Troubleshooting
+
+### `Cannot read property 'parents' of undefined` when opening the modules tab
+
+The stats file has modules but no chunks. Every module still names the chunk
+ids it belongs to, and the app follows those ids into a chunk list that is not
+there ([#34](https://github.com/webpack/analyse/issues/34)). The chunk views
+are empty for the same reason.
+
+webpack leaves them out when it is configured with `stats: { chunks: false }`,
+and a tool that writes the stats for you can pass a filtered subset of its own.
+The simplest fix is to let webpack write everything:
+
+```bash
+npx webpack --profile --json > stats.json
+```
+
+From the config, keep at least the parts this app reads:
+
+```js
+// webpack.config.js
+module.exports = {
+	stats: {
+		modules: true,
+		reasons: true, // what pulls each module in
+		chunks: true,
+		chunkOrigins: true, // what asked for each chunk
+		assets: true
+	}
+};
+```
+
+`stats: { all: true }` (webpack 5) or the `verbose` preset turns on everything,
+which is more than the app needs but never less. With
+[webpack-stats-plugin](https://github.com/FormidableLabs/webpack-stats-plugin),
+pass the same through its `stats` option, since its default is a small subset.
+
+### The graph never appears, or the tab hangs on a large build
+
+The graphs are off above 5000 modules or chunks, because laying one out that
+big can take the tab down with it. The control under the graph turns them on
+and off, and remembers the choice. See [Reading the graphs](#reading-the-graphs).
+
 ## Notes
 
 - The app expects the webpack stats JSON, not a raw asset bundle.
