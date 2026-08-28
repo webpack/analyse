@@ -1,0 +1,13 @@
+# Everything the image builds for itself, plus anything that would only
+# invalidate the build cache. node_modules is the big one: it is installed from
+# package-lock.json inside the image and must not be copied in from a host with
+# a different platform.
+node_modules
+dist
+.git
+.github
+.claude
+*.log
+.DS_Store
+Dockerfile
+.dockerignore
