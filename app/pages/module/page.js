@@ -1,5 +1,5 @@
 var app = require("../../app");
-var modulesGraph = require("../../graphs/modules");
+var modulesGraph = require("../../graphs").modules;
 
 module.exports = function(id) {
 	id = parseInt(id, 10);

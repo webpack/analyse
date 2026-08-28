@@ -94,6 +94,20 @@ table pre {
 	font-size: 14px;
 }
 
+/* The control that turns a graph off and on (webpack/analyse#38). Sits under
+   the legend, in the same quiet register. */
+.graph-toggle {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 10px;
+	margin: 0 15px 10px;
+	font-size: 12px;
+}
+.graph-toggle-note {
+	color: #777;
+}
+
 /* Filter bar above the module table (webpack/analyse#11). */
 .module-filter {
 	display: flex;
