@@ -1,3 +1,9 @@
+if stats.chunks.length === 0
+	p.text-muted.
+		No chunks in this stats file. webpack leaves them out when it is run
+		with #[code stats.chunks = false], while the modules still name the
+		chunks they belong to; generate the stats again with chunks included
+		to see them here.
 table.table.table-condensed
 	thead
 		tr

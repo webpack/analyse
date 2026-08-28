@@ -76,7 +76,13 @@ app.stats.modules.forEach(function(module, idx) {
 				});
 				if (chunks.length === 0) return false;
 				return chunks.some(function(c) {
-					return isInChunks(app.mapChunks[c].parents, checked.concat(c));
+					// A stats file written with `chunks: false` still names chunk
+					// ids on the modules while leaving the chunks themselves out,
+					// so this lookup can come back empty (webpack/analyse#34).
+					var parent = app.mapChunks[c];
+					return parent
+						? isInChunks(parent.parents || [], checked.concat(c))
+						: false;
 				});
 			})(parentModule.chunks, []);
 		});
