@@ -62,6 +62,10 @@ together is all it takes to move versions.
 
 5. Open the local dev server in your browser and upload the generated `stats.json` file.
 
+   The upload dialog also carries example stats files, one per webpack version
+   from 1 to 5. They are in [`app/pages/upload/`](app/pages/upload) and are
+   enough to look around the app before generating a file of your own.
+
 ## Available scripts
 
 ```bash
@@ -86,9 +90,9 @@ npm test
 
 Runs the unit tests in [`test/`](test). They check the circular dependency
 detection against [`app/pages/upload/example3.json`](app/pages/upload/example3.json),
-a small hand-written stats file that covers every hint of the hints page and is
-loadable in the app as the "hint test cases" example. CI runs this before the
-build, so a failing test stops the run and nothing is deployed.
+a small hand-written stats file that covers every hint of the hints page. CI
+runs this before the build, so a failing test stops the run and nothing is
+deployed.
 
 ## Docker
 

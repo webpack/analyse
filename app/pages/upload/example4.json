@@ -1,0 +1,1355 @@
+{
+  "errors": [],
+  "warnings": [
+    "./src/legacy.js\nCritical dependency: the request of a dependency is an expression\n @ ./src/legacy.js 4:18-31\n @ ./src/index.js 5:0-20"
+  ],
+  "version": "2.7.0",
+  "hash": "9c4b1e7a53f0d268ab14",
+  "time": 1642,
+  "publicPath": "/assets/",
+  "assetsByChunkName": {
+    "vendor": "vendor.js",
+    "main": "main.js"
+  },
+  "assets": [
+    {
+      "name": "vendor.js",
+      "size": 34218,
+      "chunks": [
+        2
+      ],
+      "chunkNames": [
+        "vendor"
+      ],
+      "emitted": true
+    },
+    {
+      "name": "main.js",
+      "size": 18740,
+      "chunks": [
+        1
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "emitted": true
+    },
+    {
+      "name": "0.chunk.js",
+      "size": 1362,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [],
+      "emitted": true
+    }
+  ],
+  "entrypoints": {
+    "main": {
+      "chunks": [
+        2,
+        1
+      ],
+      "assets": [
+        "vendor.js",
+        "main.js"
+      ]
+    }
+  },
+  "chunks": [
+    {
+      "id": 0,
+      "rendered": true,
+      "initial": false,
+      "entry": false,
+      "extraAsync": false,
+      "names": [],
+      "files": [
+        "0.chunk.js"
+      ],
+      "hash": "6b8f1c05d2e4a7930f61",
+      "parents": [
+        1
+      ],
+      "origins": [
+        {
+          "moduleId": 1,
+          "module": "./src/app.js",
+          "moduleIdentifier": "/app/src/app.js",
+          "moduleName": "./src/app.js",
+          "loc": "11:8-38",
+          "name": null,
+          "reasons": [
+            "import()"
+          ]
+        }
+      ],
+      "size": 900,
+      "modules": [
+        {
+          "id": 10,
+          "identifier": "/app/src/pages/settings.js",
+          "name": "./src/pages/settings.js",
+          "index": 10,
+          "index2": 3,
+          "size": 900,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "assets": [],
+          "issuer": "/app/src/app.js",
+          "issuerId": 1,
+          "issuerName": "./src/app.js",
+          "profile": {
+            "factory": 26,
+            "building": 41,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 1,
+              "moduleIdentifier": "/app/src/app.js",
+              "module": "./src/app.js",
+              "moduleName": "./src/app.js",
+              "type": "import()",
+              "userRequest": "./pages/settings",
+              "loc": "11:8-38"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "default"
+          ],
+          "source": "import { formatCell } from \"../utils\";\n\nexport default function render(settings) {\n\treturn Object.keys(settings).map(formatCell);\n}\n"
+        }
+      ],
+      "filteredModules": 0
+    },
+    {
+      "id": 1,
+      "rendered": true,
+      "initial": true,
+      "entry": false,
+      "extraAsync": false,
+      "names": [
+        "main"
+      ],
+      "files": [
+        "main.js"
+      ],
+      "hash": "a1d43f7e9c2b06584d3a",
+      "parents": [
+        2
+      ],
+      "origins": [
+        {
+          "moduleId": null,
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "main",
+          "name": "main",
+          "reasons": []
+        }
+      ],
+      "size": 6425,
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "/app/src/index.js",
+          "name": "./src/index.js",
+          "index": 0,
+          "index2": 13,
+          "size": 620,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "profile": {
+            "factory": 31,
+            "building": 44,
+            "dependencies": 12
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "./src/index.js",
+              "loc": "main"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "source": "import { start } from \"./app\";\nimport \"./styles.css\";\nimport { translate } from \"./i18n\";\n\nrequire(\"./legacy\");\n\nstart(translate(\"title\"));\n"
+        },
+        {
+          "id": 1,
+          "identifier": "/app/src/app.js",
+          "name": "./src/app.js",
+          "index": 1,
+          "index2": 12,
+          "size": 780,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/src/index.js",
+          "issuerId": 0,
+          "issuerName": "./src/index.js",
+          "profile": {
+            "factory": 24,
+            "building": 51,
+            "dependencies": 8
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/app/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "type": "harmony import",
+              "userRequest": "./app",
+              "loc": "1:0-30"
+            }
+          ],
+          "usedExports": [
+            "start"
+          ],
+          "providedExports": [
+            "start"
+          ],
+          "source": "import { formatRow } from \"./utils\";\n\nvar map = require(\"lodash/map\");\n\nexport function start(title) {\n\tdocument.title = title;\n\treturn map([1, 2, 3], formatRow);\n}\n\nexport function openSettings() {\n\treturn import(\"./pages/settings\");\n}\n"
+        },
+        {
+          "id": 2,
+          "identifier": "/app/src/utils.js",
+          "name": "./src/utils.js",
+          "index": 2,
+          "index2": 11,
+          "size": 410,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/src/app.js",
+          "issuerId": 1,
+          "issuerName": "./src/app.js",
+          "profile": {
+            "factory": 18,
+            "building": 29,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 1,
+              "moduleIdentifier": "/app/src/app.js",
+              "module": "./src/app.js",
+              "moduleName": "./src/app.js",
+              "type": "harmony import",
+              "userRequest": "./utils",
+              "loc": "1:0-36"
+            },
+            {
+              "moduleId": 10,
+              "moduleIdentifier": "/app/src/pages/settings.js",
+              "module": "./src/pages/settings.js",
+              "moduleName": "./src/pages/settings.js",
+              "type": "harmony import",
+              "userRequest": "../utils",
+              "loc": "1:0-38"
+            }
+          ],
+          "usedExports": [
+            "formatRow"
+          ],
+          "providedExports": [
+            "formatRow",
+            "formatCell"
+          ],
+          "source": "export function formatRow(value) {\n\treturn formatCell(value) + \"\\n\";\n}\n\nexport function formatCell(value) {\n\treturn String(value);\n}\n"
+        },
+        {
+          "id": 3,
+          "identifier": "/app/node_modules/style-loader/index.js!/app/node_modules/css-loader/index.js!/app/src/styles.css",
+          "name": "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./src/styles.css",
+          "index": 3,
+          "index2": 10,
+          "size": 1080,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/src/index.js",
+          "issuerId": 0,
+          "issuerName": "./src/index.js",
+          "profile": {
+            "factory": 46,
+            "building": 87,
+            "dependencies": 4
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/app/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "type": "harmony import",
+              "userRequest": "./styles.css",
+              "loc": "2:0-22"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "source": "var content = require(\"!!../node_modules/css-loader/index.js!./styles.css\");\nrequire(\"../node_modules/style-loader/addStyles.js\")(content, {});\n"
+        },
+        {
+          "id": 4,
+          "identifier": "/app/node_modules/css-loader/index.js!/app/src/styles.css",
+          "name": "./node_modules/css-loader/index.js!./src/styles.css",
+          "index": 4,
+          "index2": 9,
+          "size": 2140,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/node_modules/style-loader/index.js!/app/node_modules/css-loader/index.js!/app/src/styles.css",
+          "issuerId": 3,
+          "issuerName": "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./src/styles.css",
+          "profile": {
+            "factory": 39,
+            "building": 96,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 3,
+              "moduleIdentifier": "/app/node_modules/style-loader/index.js!/app/node_modules/css-loader/index.js!/app/src/styles.css",
+              "module": "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./src/styles.css",
+              "moduleName": "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./src/styles.css",
+              "type": "cjs require",
+              "userRequest": "!!/app/node_modules/css-loader/index.js!/app/src/styles.css",
+              "loc": "1:14-75"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "source": "exports = module.exports = require(\"./node_modules/css-loader/lib/css-base.js\")();\nexports.push([module.id, \"body { margin: 0; font: 14px/1.4 sans-serif; }\", \"\"]);\n"
+        },
+        {
+          "id": 5,
+          "identifier": "/app/src/i18n.js",
+          "name": "./src/i18n.js",
+          "index": 5,
+          "index2": 8,
+          "size": 460,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/src/index.js",
+          "issuerId": 0,
+          "issuerName": "./src/index.js",
+          "profile": {
+            "factory": 21,
+            "building": 33,
+            "dependencies": 6
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/app/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "type": "harmony import",
+              "userRequest": "./i18n",
+              "loc": "3:0-36"
+            }
+          ],
+          "usedExports": [
+            "translate"
+          ],
+          "providedExports": [
+            "translate"
+          ],
+          "source": "var lang = document.documentElement.lang || \"en\";\nvar messages = require(\"./locales/\" + lang + \".json\");\n\nexport function translate(key) {\n\treturn messages[key] || key;\n}\n"
+        },
+        {
+          "id": 6,
+          "identifier": "/app/src/locales sync ^\\.\\/.*\\.json$",
+          "name": "./src/locales sync ^\\.\\/.*\\.json$",
+          "index": 6,
+          "index2": 7,
+          "size": 210,
+          "cacheable": false,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/src/i18n.js",
+          "issuerId": 5,
+          "issuerName": "./src/i18n.js",
+          "profile": {
+            "factory": 12,
+            "building": 8,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 5,
+              "moduleIdentifier": "/app/src/i18n.js",
+              "module": "./src/i18n.js",
+              "moduleName": "./src/i18n.js",
+              "type": "cjs require context",
+              "userRequest": "./locales",
+              "loc": "2:15-53"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "source": "var map = {\n\t\"./de.json\": 8,\n\t\"./en.json\": 7\n};\nfunction webpackContext(req) {\n\treturn __webpack_require__(webpackContextResolve(req));\n}\n"
+        },
+        {
+          "id": 7,
+          "identifier": "/app/node_modules/json-loader/index.js!/app/src/locales/en.json",
+          "name": "./node_modules/json-loader/index.js!./src/locales/en.json",
+          "index": 7,
+          "index2": 6,
+          "size": 190,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/src/locales sync ^\\.\\/.*\\.json$",
+          "issuerId": 6,
+          "issuerName": "./src/locales sync ^\\.\\/.*\\.json$",
+          "profile": {
+            "factory": 14,
+            "building": 11,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 6,
+              "moduleIdentifier": "/app/src/locales sync ^\\.\\/.*\\.json$",
+              "module": "./src/locales sync ^\\.\\/.*\\.json$",
+              "moduleName": "./src/locales sync ^\\.\\/.*\\.json$",
+              "type": "context element",
+              "userRequest": "./en.json",
+              "loc": "./en.json"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "source": "module.exports = {\"title\":\"Dashboard\",\"empty\":\"Nothing here yet\"}\n"
+        },
+        {
+          "id": 8,
+          "identifier": "/app/node_modules/json-loader/index.js!/app/src/locales/de.json",
+          "name": "./node_modules/json-loader/index.js!./src/locales/de.json",
+          "index": 8,
+          "index2": 5,
+          "size": 195,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/src/locales sync ^\\.\\/.*\\.json$",
+          "issuerId": 6,
+          "issuerName": "./src/locales sync ^\\.\\/.*\\.json$",
+          "profile": {
+            "factory": 13,
+            "building": 10,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 6,
+              "moduleIdentifier": "/app/src/locales sync ^\\.\\/.*\\.json$",
+              "module": "./src/locales sync ^\\.\\/.*\\.json$",
+              "moduleName": "./src/locales sync ^\\.\\/.*\\.json$",
+              "type": "context element",
+              "userRequest": "./de.json",
+              "loc": "./de.json"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "source": "module.exports = {\"title\":\"Übersicht\",\"empty\":\"Noch nichts vorhanden\"}\n"
+        },
+        {
+          "id": 9,
+          "identifier": "/app/src/legacy.js",
+          "name": "./src/legacy.js",
+          "index": 9,
+          "index2": 4,
+          "size": 340,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            1
+          ],
+          "assets": [],
+          "issuer": "/app/src/index.js",
+          "issuerId": 0,
+          "issuerName": "./src/index.js",
+          "profile": {
+            "factory": 16,
+            "building": 27,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 1,
+          "reasons": [
+            {
+              "moduleId": 0,
+              "moduleIdentifier": "/app/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "type": "cjs require",
+              "userRequest": "./legacy",
+              "loc": "5:0-20"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "source": "var name = window.LEGACY_PLUGIN;\n\nif (name) {\n\tmodule.exports = require(name);\n}\n"
+        }
+      ],
+      "filteredModules": 0
+    },
+    {
+      "id": 2,
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "extraAsync": false,
+      "names": [
+        "vendor"
+      ],
+      "files": [
+        "vendor.js"
+      ],
+      "hash": "0f57e3b1a86d4c29b7e0",
+      "parents": [],
+      "origins": [
+        {
+          "moduleId": null,
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "",
+          "name": "vendor",
+          "reasons": []
+        }
+      ],
+      "size": 2520,
+      "modules": [
+        {
+          "id": 11,
+          "identifier": "/app/node_modules/lodash/map.js",
+          "name": "./node_modules/lodash/map.js",
+          "index": 11,
+          "index2": 2,
+          "size": 1720,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            2
+          ],
+          "assets": [],
+          "issuer": "/app/src/app.js",
+          "issuerId": 1,
+          "issuerName": "./src/app.js",
+          "profile": {
+            "factory": 52,
+            "building": 63,
+            "dependencies": 19
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 1,
+              "moduleIdentifier": "/app/src/app.js",
+              "module": "./src/app.js",
+              "moduleName": "./src/app.js",
+              "type": "cjs require",
+              "userRequest": "lodash/map",
+              "loc": "3:10-31"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "source": "var arrayMap = require(\"./_arrayMap\"),\n\tisArray = require(\"./isArray\");\n\nfunction map(collection, iteratee) {\n\tvar func = isArray(collection) ? arrayMap : baseMap;\n\treturn func(collection, iteratee);\n}\n\nmodule.exports = map;\n"
+        },
+        {
+          "id": 12,
+          "identifier": "/app/node_modules/lodash/_arrayMap.js",
+          "name": "./node_modules/lodash/_arrayMap.js",
+          "index": 12,
+          "index2": 1,
+          "size": 480,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            2
+          ],
+          "assets": [],
+          "issuer": "/app/node_modules/lodash/map.js",
+          "issuerId": 11,
+          "issuerName": "./node_modules/lodash/map.js",
+          "profile": {
+            "factory": 17,
+            "building": 12,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 11,
+              "moduleIdentifier": "/app/node_modules/lodash/map.js",
+              "module": "./node_modules/lodash/map.js",
+              "moduleName": "./node_modules/lodash/map.js",
+              "type": "cjs require",
+              "userRequest": "./_arrayMap",
+              "loc": "1:15-37"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "source": "function arrayMap(array, iteratee) {\n\tvar index = -1,\n\t\tlength = array == null ? 0 : array.length,\n\t\tresult = Array(length);\n\n\twhile (++index < length) {\n\t\tresult[index] = iteratee(array[index], index, array);\n\t}\n\treturn result;\n}\n\nmodule.exports = arrayMap;\n"
+        },
+        {
+          "id": 13,
+          "identifier": "/app/node_modules/lodash/isArray.js",
+          "name": "./node_modules/lodash/isArray.js",
+          "index": 13,
+          "index2": 0,
+          "size": 320,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            2
+          ],
+          "assets": [],
+          "issuer": "/app/node_modules/lodash/map.js",
+          "issuerId": 11,
+          "issuerName": "./node_modules/lodash/map.js",
+          "profile": {
+            "factory": 15,
+            "building": 9,
+            "dependencies": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "reasons": [
+            {
+              "moduleId": 11,
+              "moduleIdentifier": "/app/node_modules/lodash/map.js",
+              "module": "./node_modules/lodash/map.js",
+              "moduleName": "./node_modules/lodash/map.js",
+              "type": "cjs require",
+              "userRequest": "./isArray",
+              "loc": "2:11-31"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "source": "var isArray = Array.isArray;\n\nmodule.exports = isArray;\n"
+        }
+      ],
+      "filteredModules": 0
+    }
+  ],
+  "modules": [
+    {
+      "id": 0,
+      "identifier": "/app/src/index.js",
+      "name": "./src/index.js",
+      "index": 0,
+      "index2": 13,
+      "size": 620,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": null,
+      "issuerId": null,
+      "issuerName": null,
+      "profile": {
+        "factory": 31,
+        "building": 44,
+        "dependencies": 12
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": null,
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "type": "single entry",
+          "userRequest": "./src/index.js",
+          "loc": "main"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "source": "import { start } from \"./app\";\nimport \"./styles.css\";\nimport { translate } from \"./i18n\";\n\nrequire(\"./legacy\");\n\nstart(translate(\"title\"));\n"
+    },
+    {
+      "id": 1,
+      "identifier": "/app/src/app.js",
+      "name": "./src/app.js",
+      "index": 1,
+      "index2": 12,
+      "size": 780,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 0,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 24,
+        "building": 51,
+        "dependencies": 8
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "harmony import",
+          "userRequest": "./app",
+          "loc": "1:0-30"
+        }
+      ],
+      "usedExports": [
+        "start"
+      ],
+      "providedExports": [
+        "start"
+      ],
+      "source": "import { formatRow } from \"./utils\";\n\nvar map = require(\"lodash/map\");\n\nexport function start(title) {\n\tdocument.title = title;\n\treturn map([1, 2, 3], formatRow);\n}\n\nexport function openSettings() {\n\treturn import(\"./pages/settings\");\n}\n"
+    },
+    {
+      "id": 2,
+      "identifier": "/app/src/utils.js",
+      "name": "./src/utils.js",
+      "index": 2,
+      "index2": 11,
+      "size": 410,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/app.js",
+      "issuerId": 1,
+      "issuerName": "./src/app.js",
+      "profile": {
+        "factory": 18,
+        "building": 29,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 1,
+          "moduleIdentifier": "/app/src/app.js",
+          "module": "./src/app.js",
+          "moduleName": "./src/app.js",
+          "type": "harmony import",
+          "userRequest": "./utils",
+          "loc": "1:0-36"
+        },
+        {
+          "moduleId": 10,
+          "moduleIdentifier": "/app/src/pages/settings.js",
+          "module": "./src/pages/settings.js",
+          "moduleName": "./src/pages/settings.js",
+          "type": "harmony import",
+          "userRequest": "../utils",
+          "loc": "1:0-38"
+        }
+      ],
+      "usedExports": [
+        "formatRow"
+      ],
+      "providedExports": [
+        "formatRow",
+        "formatCell"
+      ],
+      "source": "export function formatRow(value) {\n\treturn formatCell(value) + \"\\n\";\n}\n\nexport function formatCell(value) {\n\treturn String(value);\n}\n"
+    },
+    {
+      "id": 3,
+      "identifier": "/app/node_modules/style-loader/index.js!/app/node_modules/css-loader/index.js!/app/src/styles.css",
+      "name": "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./src/styles.css",
+      "index": 3,
+      "index2": 10,
+      "size": 1080,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 0,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 46,
+        "building": 87,
+        "dependencies": 4
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "harmony import",
+          "userRequest": "./styles.css",
+          "loc": "2:0-22"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "source": "var content = require(\"!!../node_modules/css-loader/index.js!./styles.css\");\nrequire(\"../node_modules/style-loader/addStyles.js\")(content, {});\n"
+    },
+    {
+      "id": 4,
+      "identifier": "/app/node_modules/css-loader/index.js!/app/src/styles.css",
+      "name": "./node_modules/css-loader/index.js!./src/styles.css",
+      "index": 4,
+      "index2": 9,
+      "size": 2140,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/node_modules/style-loader/index.js!/app/node_modules/css-loader/index.js!/app/src/styles.css",
+      "issuerId": 3,
+      "issuerName": "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./src/styles.css",
+      "profile": {
+        "factory": 39,
+        "building": 96,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 3,
+          "moduleIdentifier": "/app/node_modules/style-loader/index.js!/app/node_modules/css-loader/index.js!/app/src/styles.css",
+          "module": "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./src/styles.css",
+          "moduleName": "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./src/styles.css",
+          "type": "cjs require",
+          "userRequest": "!!/app/node_modules/css-loader/index.js!/app/src/styles.css",
+          "loc": "1:14-75"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "source": "exports = module.exports = require(\"./node_modules/css-loader/lib/css-base.js\")();\nexports.push([module.id, \"body { margin: 0; font: 14px/1.4 sans-serif; }\", \"\"]);\n"
+    },
+    {
+      "id": 5,
+      "identifier": "/app/src/i18n.js",
+      "name": "./src/i18n.js",
+      "index": 5,
+      "index2": 8,
+      "size": 460,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 0,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 21,
+        "building": 33,
+        "dependencies": 6
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "harmony import",
+          "userRequest": "./i18n",
+          "loc": "3:0-36"
+        }
+      ],
+      "usedExports": [
+        "translate"
+      ],
+      "providedExports": [
+        "translate"
+      ],
+      "source": "var lang = document.documentElement.lang || \"en\";\nvar messages = require(\"./locales/\" + lang + \".json\");\n\nexport function translate(key) {\n\treturn messages[key] || key;\n}\n"
+    },
+    {
+      "id": 6,
+      "identifier": "/app/src/locales sync ^\\.\\/.*\\.json$",
+      "name": "./src/locales sync ^\\.\\/.*\\.json$",
+      "index": 6,
+      "index2": 7,
+      "size": 210,
+      "cacheable": false,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/i18n.js",
+      "issuerId": 5,
+      "issuerName": "./src/i18n.js",
+      "profile": {
+        "factory": 12,
+        "building": 8,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 5,
+          "moduleIdentifier": "/app/src/i18n.js",
+          "module": "./src/i18n.js",
+          "moduleName": "./src/i18n.js",
+          "type": "cjs require context",
+          "userRequest": "./locales",
+          "loc": "2:15-53"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "source": "var map = {\n\t\"./de.json\": 8,\n\t\"./en.json\": 7\n};\nfunction webpackContext(req) {\n\treturn __webpack_require__(webpackContextResolve(req));\n}\n"
+    },
+    {
+      "id": 7,
+      "identifier": "/app/node_modules/json-loader/index.js!/app/src/locales/en.json",
+      "name": "./node_modules/json-loader/index.js!./src/locales/en.json",
+      "index": 7,
+      "index2": 6,
+      "size": 190,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/locales sync ^\\.\\/.*\\.json$",
+      "issuerId": 6,
+      "issuerName": "./src/locales sync ^\\.\\/.*\\.json$",
+      "profile": {
+        "factory": 14,
+        "building": 11,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 6,
+          "moduleIdentifier": "/app/src/locales sync ^\\.\\/.*\\.json$",
+          "module": "./src/locales sync ^\\.\\/.*\\.json$",
+          "moduleName": "./src/locales sync ^\\.\\/.*\\.json$",
+          "type": "context element",
+          "userRequest": "./en.json",
+          "loc": "./en.json"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "source": "module.exports = {\"title\":\"Dashboard\",\"empty\":\"Nothing here yet\"}\n"
+    },
+    {
+      "id": 8,
+      "identifier": "/app/node_modules/json-loader/index.js!/app/src/locales/de.json",
+      "name": "./node_modules/json-loader/index.js!./src/locales/de.json",
+      "index": 8,
+      "index2": 5,
+      "size": 195,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/locales sync ^\\.\\/.*\\.json$",
+      "issuerId": 6,
+      "issuerName": "./src/locales sync ^\\.\\/.*\\.json$",
+      "profile": {
+        "factory": 13,
+        "building": 10,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 6,
+          "moduleIdentifier": "/app/src/locales sync ^\\.\\/.*\\.json$",
+          "module": "./src/locales sync ^\\.\\/.*\\.json$",
+          "moduleName": "./src/locales sync ^\\.\\/.*\\.json$",
+          "type": "context element",
+          "userRequest": "./de.json",
+          "loc": "./de.json"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "source": "module.exports = {\"title\":\"Übersicht\",\"empty\":\"Noch nichts vorhanden\"}\n"
+    },
+    {
+      "id": 9,
+      "identifier": "/app/src/legacy.js",
+      "name": "./src/legacy.js",
+      "index": 9,
+      "index2": 4,
+      "size": 340,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 0,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 16,
+        "building": 27,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 1,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "cjs require",
+          "userRequest": "./legacy",
+          "loc": "5:0-20"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "source": "var name = window.LEGACY_PLUGIN;\n\nif (name) {\n\tmodule.exports = require(name);\n}\n"
+    },
+    {
+      "id": 10,
+      "identifier": "/app/src/pages/settings.js",
+      "name": "./src/pages/settings.js",
+      "index": 10,
+      "index2": 3,
+      "size": 900,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/app.js",
+      "issuerId": 1,
+      "issuerName": "./src/app.js",
+      "profile": {
+        "factory": 26,
+        "building": 41,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 1,
+          "moduleIdentifier": "/app/src/app.js",
+          "module": "./src/app.js",
+          "moduleName": "./src/app.js",
+          "type": "import()",
+          "userRequest": "./pages/settings",
+          "loc": "11:8-38"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "default"
+      ],
+      "source": "import { formatCell } from \"../utils\";\n\nexport default function render(settings) {\n\treturn Object.keys(settings).map(formatCell);\n}\n"
+    },
+    {
+      "id": 11,
+      "identifier": "/app/node_modules/lodash/map.js",
+      "name": "./node_modules/lodash/map.js",
+      "index": 11,
+      "index2": 2,
+      "size": 1720,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        2
+      ],
+      "assets": [],
+      "issuer": "/app/src/app.js",
+      "issuerId": 1,
+      "issuerName": "./src/app.js",
+      "profile": {
+        "factory": 52,
+        "building": 63,
+        "dependencies": 19
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 1,
+          "moduleIdentifier": "/app/src/app.js",
+          "module": "./src/app.js",
+          "moduleName": "./src/app.js",
+          "type": "cjs require",
+          "userRequest": "lodash/map",
+          "loc": "3:10-31"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "source": "var arrayMap = require(\"./_arrayMap\"),\n\tisArray = require(\"./isArray\");\n\nfunction map(collection, iteratee) {\n\tvar func = isArray(collection) ? arrayMap : baseMap;\n\treturn func(collection, iteratee);\n}\n\nmodule.exports = map;\n"
+    },
+    {
+      "id": 12,
+      "identifier": "/app/node_modules/lodash/_arrayMap.js",
+      "name": "./node_modules/lodash/_arrayMap.js",
+      "index": 12,
+      "index2": 1,
+      "size": 480,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        2
+      ],
+      "assets": [],
+      "issuer": "/app/node_modules/lodash/map.js",
+      "issuerId": 11,
+      "issuerName": "./node_modules/lodash/map.js",
+      "profile": {
+        "factory": 17,
+        "building": 12,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 11,
+          "moduleIdentifier": "/app/node_modules/lodash/map.js",
+          "module": "./node_modules/lodash/map.js",
+          "moduleName": "./node_modules/lodash/map.js",
+          "type": "cjs require",
+          "userRequest": "./_arrayMap",
+          "loc": "1:15-37"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "source": "function arrayMap(array, iteratee) {\n\tvar index = -1,\n\t\tlength = array == null ? 0 : array.length,\n\t\tresult = Array(length);\n\n\twhile (++index < length) {\n\t\tresult[index] = iteratee(array[index], index, array);\n\t}\n\treturn result;\n}\n\nmodule.exports = arrayMap;\n"
+    },
+    {
+      "id": 13,
+      "identifier": "/app/node_modules/lodash/isArray.js",
+      "name": "./node_modules/lodash/isArray.js",
+      "index": 13,
+      "index2": 0,
+      "size": 320,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        2
+      ],
+      "assets": [],
+      "issuer": "/app/node_modules/lodash/map.js",
+      "issuerId": 11,
+      "issuerName": "./node_modules/lodash/map.js",
+      "profile": {
+        "factory": 15,
+        "building": 9,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 11,
+          "moduleIdentifier": "/app/node_modules/lodash/map.js",
+          "module": "./node_modules/lodash/map.js",
+          "moduleName": "./node_modules/lodash/map.js",
+          "type": "cjs require",
+          "userRequest": "./isArray",
+          "loc": "2:11-31"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "source": "var isArray = Array.isArray;\n\nmodule.exports = isArray;\n"
+    }
+  ],
+  "filteredModules": 0,
+  "children": []
+}
