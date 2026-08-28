@@ -10,7 +10,7 @@ This project is a lightweight front-end viewer for webpack output generated with
 - Module dependency graph and chunk relationships
 - Asset and bundle size breakdowns
 - Warning and error inspection
-- Hints for common optimization issues
+- Hints for common optimization issues, including circular dependencies
 - Upload a generated stats file directly in the app
 
 ## Requirements
@@ -74,6 +74,16 @@ Creates a production bundle for the app.
 Deployment is automatic: every push to `master` builds the site and publishes it
 to GitHub Pages via `.github/workflows/ci.yml`. Pull requests build but never
 publish. There is no manual deploy step.
+
+```bash
+npm test
+```
+
+Runs the unit tests in [`test/`](test). They check the circular dependency
+detection against [`app/pages/upload/example3.json`](app/pages/upload/example3.json),
+a small hand-written stats file that covers every hint of the hints page and is
+loadable in the app as the "hint test cases" example. CI runs this before the
+build, so a failing test stops the run and nothing is deployed.
 
 ## Typical workflow
 

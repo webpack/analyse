@@ -1,0 +1,992 @@
+{
+  "version": "5.94.0",
+  "hash": "3f2a91c7d0be845516ad",
+  "time": 412,
+  "publicPath": "",
+  "outputPath": "/app/dist",
+  "assetsByChunkName": {
+    "main": [
+      "main.js"
+    ],
+    "lazy": [
+      "lazy.js"
+    ]
+  },
+  "assets": [
+    {
+      "name": "main.js",
+      "size": 14820,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "emitted": true
+    },
+    {
+      "name": "lazy.js",
+      "size": 3140,
+      "chunks": [
+        1
+      ],
+      "chunkNames": [
+        "lazy"
+      ],
+      "emitted": true
+    }
+  ],
+  "chunks": [
+    {
+      "id": 0,
+      "names": [
+        "main"
+      ],
+      "size": 8140,
+      "files": [
+        "main.js"
+      ],
+      "hash": "4b1d0f1b9a2c8d5e6f70",
+      "parents": [],
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "origins": [
+        {
+          "moduleIdentifier": null,
+          "module": "",
+          "moduleName": "",
+          "moduleId": null,
+          "loc": "main",
+          "name": "main",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "names": [
+        "lazy"
+      ],
+      "size": 4420,
+      "files": [
+        "lazy.js"
+      ],
+      "hash": "0a7c3e5f2b6d4918c3ab",
+      "parents": [
+        0
+      ],
+      "rendered": true,
+      "initial": false,
+      "entry": false,
+      "origins": [
+        {
+          "moduleIdentifier": "/app/src/lazy-a.js",
+          "module": "./src/lazy-a.js",
+          "moduleName": "./src/lazy-a.js",
+          "moduleId": 8,
+          "loc": "4:8-32",
+          "name": "lazy",
+          "reasons": [
+            "import()"
+          ]
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": 1,
+      "identifier": "/app/src/index.js",
+      "name": "./src/index.js",
+      "index": 0,
+      "index2": 18,
+      "size": 640,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": null,
+      "issuerId": null,
+      "issuerName": null,
+      "profile": {
+        "factory": 21,
+        "building": 38,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "type": "entry",
+          "explanation": "",
+          "userRequest": "./src/index.js",
+          "loc": "main",
+          "moduleId": null
+        }
+      ],
+      "source": "import \"./a\";\nimport \"./lazy-a\";\nimport \"./shared\";\nrequire(\"./c\");\nrequire(\"./hub\");\nrequire(\"./self\");\nrequire(\"./noise-exports\");\nrequire(\"./noise-decorator\");\nrequire(\"./dangling\");\nconst { format } = require(\"./utils\");\nconst { parse } = require(\"./utils\");\nconst { stringify } = require(\"./utils\");\nconst { clone } = require(\"./utils\");\nconst { merge } = require(\"./utils\");\nconst { pick } = require(\"./utils\");"
+    },
+    {
+      "id": 2,
+      "identifier": "/app/src/a.js",
+      "name": "./src/a.js",
+      "index": 1,
+      "index2": 17,
+      "size": 210,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 1,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 14,
+        "building": 26,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "harmony side effect evaluation",
+          "explanation": "",
+          "userRequest": "./a",
+          "loc": "1:0-13",
+          "moduleId": 1
+        },
+        {
+          "moduleIdentifier": "/app/src/b.js",
+          "module": "./src/b.js",
+          "moduleName": "./src/b.js",
+          "type": "harmony import specifier",
+          "explanation": "",
+          "userRequest": "./a",
+          "loc": "1:0-26",
+          "moduleId": 3
+        }
+      ],
+      "source": "import { b } from \"./b\";\n\nexport const a = () => \"a\" + b();\n"
+    },
+    {
+      "id": 3,
+      "identifier": "/app/src/b.js",
+      "name": "./src/b.js",
+      "index": 2,
+      "index2": 16,
+      "size": 180,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/a.js",
+      "issuerId": 2,
+      "issuerName": "./src/a.js",
+      "profile": {
+        "factory": 12,
+        "building": 22,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 1,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/a.js",
+          "module": "./src/a.js",
+          "moduleName": "./src/a.js",
+          "type": "harmony side effect evaluation",
+          "explanation": "",
+          "userRequest": "./b",
+          "loc": "1:0-24",
+          "moduleId": 2
+        }
+      ],
+      "source": "import { a } from \"./a\";\n\nexport const b = () => \"b\" + a();\n"
+    },
+    {
+      "id": 4,
+      "identifier": "/app/src/c.js",
+      "name": "./src/c.js",
+      "index": 3,
+      "index2": 15,
+      "size": 260,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 1,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 16,
+        "building": 31,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./c",
+          "loc": "4:0-16",
+          "moduleId": 1
+        },
+        {
+          "moduleIdentifier": "/app/src/e.js",
+          "module": "./src/e.js",
+          "moduleName": "./src/e.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./c",
+          "loc": "1:10-24",
+          "moduleId": 6
+        }
+      ],
+      "source": "const d = require(\"./d\");\n\nexports.c = () => d.first() + require(\"./d\").second();\n"
+    },
+    {
+      "id": 5,
+      "identifier": "/app/src/d.js",
+      "name": "./src/d.js",
+      "index": 4,
+      "index2": 14,
+      "size": 240,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/c.js",
+      "issuerId": 4,
+      "issuerName": "./src/c.js",
+      "profile": {
+        "factory": 15,
+        "building": 29,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/c.js",
+          "module": "./src/c.js",
+          "moduleName": "./src/c.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./d",
+          "loc": "1:10-24",
+          "moduleId": 4
+        },
+        {
+          "moduleIdentifier": "/app/src/c.js",
+          "module": "./src/c.js",
+          "moduleName": "./src/c.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./d",
+          "loc": "3:31-45",
+          "moduleId": 4
+        }
+      ],
+      "source": "const e = require(\"./e\");\n\nexports.first = () => e.value;\nexports.second = () => 2;\n"
+    },
+    {
+      "id": 6,
+      "identifier": "/app/src/e.js",
+      "name": "./src/e.js",
+      "index": 5,
+      "index2": 13,
+      "size": 190,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/d.js",
+      "issuerId": 5,
+      "issuerName": "./src/d.js",
+      "profile": {
+        "factory": 13,
+        "building": 24,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/d.js",
+          "module": "./src/d.js",
+          "moduleName": "./src/d.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./e",
+          "loc": "1:10-24",
+          "moduleId": 5
+        }
+      ],
+      "source": "const c = require(\"./c\");\n\nexports.value = c.c;\n"
+    },
+    {
+      "id": 7,
+      "identifier": "/app/src/self.js",
+      "name": "./src/self.js",
+      "index": 6,
+      "index2": 12,
+      "size": 150,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 1,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 11,
+        "building": 18,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./self",
+          "loc": "6:0-19",
+          "moduleId": 1
+        },
+        {
+          "moduleIdentifier": "/app/src/self.js",
+          "module": "./src/self.js",
+          "moduleName": "./src/self.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./self",
+          "loc": "2:17-38",
+          "moduleId": 7
+        }
+      ],
+      "source": "exports.late = function() {\n\treturn require(\"./self\").late;\n};\n"
+    },
+    {
+      "id": 8,
+      "identifier": "/app/src/lazy-a.js",
+      "name": "./src/lazy-a.js",
+      "index": 7,
+      "index2": 11,
+      "size": 300,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 1,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 18,
+        "building": 34,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "harmony side effect evaluation",
+          "explanation": "",
+          "userRequest": "./lazy-a",
+          "loc": "2:0-19",
+          "moduleId": 1
+        },
+        {
+          "moduleIdentifier": "/app/src/lazy-b.js",
+          "module": "./src/lazy-b.js",
+          "moduleName": "./src/lazy-b.js",
+          "type": "harmony import specifier",
+          "explanation": "",
+          "userRequest": "./lazy-a",
+          "loc": "1:0-36",
+          "moduleId": 9
+        }
+      ],
+      "source": "export const name = \"lazy-a\";\n\nexport function open() {\n\treturn import(\"./lazy-b\");\n}\n"
+    },
+    {
+      "id": 9,
+      "identifier": "/app/src/lazy-b.js",
+      "name": "./src/lazy-b.js",
+      "index": 8,
+      "index2": 10,
+      "size": 220,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/lazy-a.js",
+      "issuerId": 8,
+      "issuerName": "./src/lazy-a.js",
+      "profile": {
+        "factory": 17,
+        "building": 27,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/lazy-a.js",
+          "module": "./src/lazy-a.js",
+          "moduleName": "./src/lazy-a.js",
+          "type": "import()",
+          "explanation": "",
+          "userRequest": "./lazy-b",
+          "loc": "4:8-32",
+          "moduleId": 8
+        }
+      ],
+      "source": "import { name } from \"./lazy-a\";\nimport \"./shared\";\n\nexport default name + \"/lazy-b\";\n"
+    },
+    {
+      "id": 10,
+      "identifier": "/app/src/hub.js",
+      "name": "./src/hub.js",
+      "index": 9,
+      "index2": 9,
+      "size": 340,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 1,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 19,
+        "building": 36,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./hub",
+          "loc": "5:0-18",
+          "moduleId": 1
+        },
+        {
+          "moduleIdentifier": "/app/src/alpha.js",
+          "module": "./src/alpha.js",
+          "moduleName": "./src/alpha.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./hub",
+          "loc": "1:12-28",
+          "moduleId": 11
+        },
+        {
+          "moduleIdentifier": "/app/src/gamma.js",
+          "module": "./src/gamma.js",
+          "moduleName": "./src/gamma.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./hub",
+          "loc": "1:12-28",
+          "moduleId": 13
+        }
+      ],
+      "source": "exports.alpha = require(\"./alpha\");\nexports.beta = require(\"./beta\");\n"
+    },
+    {
+      "id": 11,
+      "identifier": "/app/src/alpha.js",
+      "name": "./src/alpha.js",
+      "index": 10,
+      "index2": 8,
+      "size": 170,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/hub.js",
+      "issuerId": 10,
+      "issuerName": "./src/hub.js",
+      "profile": {
+        "factory": 12,
+        "building": 21,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/hub.js",
+          "module": "./src/hub.js",
+          "moduleName": "./src/hub.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./alpha",
+          "loc": "1:16-34",
+          "moduleId": 10
+        }
+      ],
+      "source": "const hub = require(\"./hub\");\n\nexports.run = () => hub.beta;\n"
+    },
+    {
+      "id": 12,
+      "identifier": "/app/src/beta.js",
+      "name": "./src/beta.js",
+      "index": 11,
+      "index2": 7,
+      "size": 175,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/hub.js",
+      "issuerId": 10,
+      "issuerName": "./src/hub.js",
+      "profile": {
+        "factory": 12,
+        "building": 23,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/hub.js",
+          "module": "./src/hub.js",
+          "moduleName": "./src/hub.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./beta",
+          "loc": "2:15-32",
+          "moduleId": 10
+        }
+      ],
+      "source": "const gamma = require(\"./gamma\");\n\nexports.run = () => gamma.run();\n"
+    },
+    {
+      "id": 13,
+      "identifier": "/app/src/gamma.js",
+      "name": "./src/gamma.js",
+      "index": 12,
+      "index2": 6,
+      "size": 165,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/beta.js",
+      "issuerId": 12,
+      "issuerName": "./src/beta.js",
+      "profile": {
+        "factory": 11,
+        "building": 20,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/beta.js",
+          "module": "./src/beta.js",
+          "moduleName": "./src/beta.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./gamma",
+          "loc": "1:14-34",
+          "moduleId": 12
+        }
+      ],
+      "source": "const hub = require(\"./hub\");\n\nexports.run = () => hub.alpha;\n"
+    },
+    {
+      "id": 14,
+      "identifier": "/app/src/utils.js",
+      "name": "./src/utils.js",
+      "index": 13,
+      "index2": 5,
+      "size": 480,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 1,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 15,
+        "building": 25,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./utils",
+          "loc": "10:22-40",
+          "moduleId": 1
+        },
+        {
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./utils",
+          "loc": "11:21-39",
+          "moduleId": 1
+        },
+        {
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./utils",
+          "loc": "12:25-43",
+          "moduleId": 1
+        },
+        {
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./utils",
+          "loc": "13:21-39",
+          "moduleId": 1
+        },
+        {
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./utils",
+          "loc": "14:21-39",
+          "moduleId": 1
+        },
+        {
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./utils",
+          "loc": "15:20-38",
+          "moduleId": 1
+        }
+      ],
+      "source": "exports.format = () => {};\nexports.parse = () => {};\nexports.stringify = () => {};\nexports.clone = () => {};\nexports.merge = () => {};\nexports.pick = () => {};\n"
+    },
+    {
+      "id": 15,
+      "identifier": "/app/src/shared.js",
+      "name": "./src/shared.js",
+      "index": 14,
+      "index2": 4,
+      "size": 4200,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0,
+        1
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 1,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 24,
+        "building": 61,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "harmony side effect evaluation",
+          "explanation": "",
+          "userRequest": "./shared",
+          "loc": "3:0-18",
+          "moduleId": 1
+        },
+        {
+          "moduleIdentifier": "/app/src/lazy-b.js",
+          "module": "./src/lazy-b.js",
+          "moduleName": "./src/lazy-b.js",
+          "type": "harmony side effect evaluation",
+          "explanation": "",
+          "userRequest": "./shared",
+          "loc": "2:0-18",
+          "moduleId": 9
+        }
+      ],
+      "source": "export const table = new Array(64).fill(\"shared\");\n"
+    },
+    {
+      "id": 16,
+      "identifier": "/app/src/noise-exports.js",
+      "name": "./src/noise-exports.js",
+      "index": 15,
+      "index2": 3,
+      "size": 140,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 1,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 10,
+        "building": 17,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./noise-exports",
+          "loc": "7:0-29",
+          "moduleId": 1
+        },
+        {
+          "moduleIdentifier": "/app/src/noise-exports.js",
+          "module": "./src/noise-exports.js",
+          "moduleName": "./src/noise-exports.js",
+          "type": "cjs self exports reference",
+          "explanation": "",
+          "userRequest": null,
+          "loc": "1:0-14",
+          "moduleId": 16
+        }
+      ],
+      "source": "exports.value = 42;\n"
+    },
+    {
+      "id": 17,
+      "identifier": "/app/src/noise-decorator.js",
+      "name": "./src/noise-decorator.js",
+      "index": 16,
+      "index2": 2,
+      "size": 145,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 1,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 10,
+        "building": 16,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./noise-decorator",
+          "loc": "8:0-31",
+          "moduleId": 1
+        },
+        {
+          "moduleIdentifier": "/app/src/noise-decorator.js",
+          "module": "./src/noise-decorator.js",
+          "moduleName": "./src/noise-decorator.js",
+          "type": "module decorator",
+          "explanation": "",
+          "userRequest": null,
+          "loc": "1:0-33",
+          "moduleId": 17
+        }
+      ],
+      "source": "module.exports = { value: 43 };\n"
+    },
+    {
+      "id": 18,
+      "identifier": "/app/src/dangling.js",
+      "name": "./src/dangling.js",
+      "index": 17,
+      "index2": 1,
+      "size": 155,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "/app/src/index.js",
+      "issuerId": 1,
+      "issuerName": "./src/index.js",
+      "profile": {
+        "factory": 10,
+        "building": 19,
+        "dependencies": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleIdentifier": "/app/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./dangling",
+          "loc": "9:0-24",
+          "moduleId": 1
+        },
+        {
+          "moduleIdentifier": "/app/src/removed.js",
+          "module": "./src/removed.js",
+          "moduleName": "./src/removed.js",
+          "type": "cjs require",
+          "explanation": "",
+          "userRequest": "./dangling",
+          "loc": "3:12-33",
+          "moduleId": null
+        }
+      ],
+      "source": "exports.value = 44;\n"
+    }
+  ],
+  "errors": [],
+  "errorsCount": 0,
+  "warnings": [
+    {
+      "moduleName": "./src/b.js",
+      "moduleIdentifier": "/app/src/b.js",
+      "moduleId": 3,
+      "loc": "1:0-24",
+      "message": "export 'a' (imported as 'a') was not found in './a' (module has no exports)\nThe import is part of a circular dependency, so './a' has not finished evaluating yet."
+    }
+  ],
+  "warningsCount": 1
+}

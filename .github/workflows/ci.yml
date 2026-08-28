@@ -40,6 +40,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Runs before the build so a broken analysis fails the run without
+      # producing a Pages artifact from it.
+      - name: Test
+        run: npm test
+
       - name: Build
         run: npm run build
 

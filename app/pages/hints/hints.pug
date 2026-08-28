@@ -1,8 +1,46 @@
 .container-fluid
 	.row
 		.col-md-12
-			if multiChunks.length === 0 && multiRefs.length === 0 && longChains.length === 0
+			if circularDependencies.cycles.length === 0 && multiChunks.length === 0 && multiRefs.length === 0 && longChains.length === 0
 				h2 Everything seem to be fine.
+			if circularDependencies.cycles.length > 0
+				h2 Circular dependencies
+				p These modules require each other in a loop. One of them is evaluated before the module it depends on has finished evaluating, so it may read an export that is still <code>undefined</code>. Break the loop by moving the shared part into a module of its own, or by moving the access to the export into a function that runs later.
+				p
+					= `${circularDependencies.moduleCount} modules are part of ${circularDependencies.componentCount} group${circularDependencies.componentCount === 1 ? "" : "s"} of modules that (indirectly) require each other.`
+					if circularDependencies.truncated
+						= ` Only the first ${circularDependencies.cycles.length} cycles are listed, fix these and check again.`
+				for cycle in circularDependencies.cycles
+					table.table.table-bordered
+						thead
+							tr
+								th module
+								th name
+								th type
+								th user request
+								th location
+								th requires
+						tbody
+							for module, idx in cycle.modules
+								- var dependency = cycle.dependencies[idx]
+								- var next = cycle.modules[(idx + 1) % cycle.modules.length]
+								tr
+									td
+										if typeof module.uid === "number"
+											a.btn.btn-success(href=`#module/${module.uid}`)= module.id
+										else
+											span.btn.btn-success= module.id
+									td: pre: code= module.name.split("!").join("\n")
+									td= dependency.type
+									td: if dependency.userRequest
+										pre: code= dependency.userRequest.split("!").join("\n")
+									td: if dependency.loc
+										code= dependency.loc
+									td
+										if typeof next.uid === "number"
+											a.btn.btn-success(href=`#module/${next.uid}`)= next.id
+										else
+											span.btn.btn-success= next.id
 			if multiChunks.length > 0
 				h2 Module in multiple chunks
 				p Check if it is a good idea to move modules into a common parent. You may want to use <code>require.include</code> or insert them into the parents <code>require.ensure</code> array.

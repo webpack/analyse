@@ -8,6 +8,7 @@ module.exports = function() {
 	$("#file").change(loadFromFile);
 	$("#example1").click(() => loadFromExample(1));
 	$("#example2").click(() => loadFromExample(2));
+	$("#example3").click(() => loadFromExample(3));
 
 	function loadFromExample(n) {
 		import(`./example${n}.json`).then(function(exampleModule) {
