@@ -18,6 +18,8 @@ This project is a lightweight front-end viewer for webpack output generated with
 - Node.js 24 (the current Active LTS, "Krypton") — pinned in [`.nvmrc`](.nvmrc)
 - npm 11.x (ships with Node 24)
 - A webpack project whose build can emit a stats JSON file
+- Or Docker on its own, if you would rather not install Node at all — Docker
+  Desktop on macOS and Windows, Docker Engine on Linux. See [Docker](#docker)
 
 The Node version is enforced: `engines` in `package.json` requires `^24.20.0`,
 and `engine-strict=true` in `.npmrc` makes npm abort the install on a mismatched
@@ -84,6 +86,69 @@ detection against [`app/pages/upload/example3.json`](app/pages/upload/example3.j
 a small hand-written stats file that covers every hint of the hints page and is
 loadable in the app as the "hint test cases" example. CI runs this before the
 build, so a failing test stops the run and nothing is deployed.
+
+## Docker
+
+The [`Dockerfile`](Dockerfile) builds two things from this repository: the
+production site behind nginx, and the webpack dev server for working on the app.
+
+These commands talk to a Docker daemon, so one has to be running first. On macOS
+and Windows that means [Docker Desktop][docker-desktop] — installing it is not
+enough, it has to be launched, or `docker build` fails with `Cannot connect to
+the Docker daemon`. On Linux, Docker Engine with a running `docker` service does
+the same job. Check with:
+
+```bash
+docker info
+```
+
+Serve the built site:
+
+```bash
+docker build -t webpack-analyse .
+```
+
+```bash
+docker run --rm -p 8080:80 webpack-analyse
+```
+
+Then open <http://localhost:8080> and upload a `stats.json`. The file is read in
+the browser and never reaches the container, so nothing needs to be mounted to
+analyze a build. Node only exists in the build stage; the image that runs is
+nginx serving the static `dist/`, with the content-hashed bundles marked
+immutable and `index.html` and `web.js` marked `no-cache` so a redeploy is never
+served half from cache.
+
+Work on the app instead, with the source mounted and live rebuilds:
+
+```bash
+docker build -t webpack-analyse-dev --target dev .
+```
+
+```bash
+docker run --rm -p 8080:8080 -v "$PWD:/app" -v /app/node_modules -e WATCHPACK_POLLING=true webpack-analyse-dev
+```
+
+Two details in that command are worth knowing. The bare `-v /app/node_modules`
+keeps the dependencies that were installed inside the image, so the mount of the
+host directory over `/app` cannot hide them or replace them with binaries built
+for a different platform. `WATCHPACK_POLLING=true` makes webpack poll for
+changes, because file system events from a bind mount do not reliably reach a
+container on macOS or Windows; on Linux it can be dropped.
+
+The image builds the site the same way the GitHub Pages deploy does, analytics
+snippet included. For a self-hosted copy that should not report to webpack's
+analytics property, build it without that flag:
+
+```bash
+docker build --build-arg WEBPACK_ENV="--env longTermCaching" -t webpack-analyse .
+```
+
+The Node version is pinned by the `NODE_VERSION` build argument, which tracks
+[`.nvmrc`](.nvmrc) and `engines.node`. Because `engine-strict=true` is set in
+`.npmrc`, a mismatch fails the install rather than building something untested.
+
+[docker-desktop]: https://www.docker.com/products/docker-desktop/
 
 ## Reading the graphs
 
