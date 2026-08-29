@@ -80,7 +80,7 @@ npm run build
 
 Creates a production bundle for the app.
 
-Deployment is automatic: every push to `master` builds the site and publishes it
+Deployment is automatic: every push to `main` builds the site and publishes it
 to GitHub Pages via `.github/workflows/ci.yml`. Pull requests build but never
 publish. There is no manual deploy step.
 
