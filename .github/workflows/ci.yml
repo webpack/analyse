@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
 permissions:
   contents: read
@@ -48,7 +48,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      # `on.push` is restricted to master, so this only ever runs for master.
+      # `on.push` is restricted to main, so this only ever runs for main.
       # Pull request runs stop after the build above and never publish.
       - name: Upload Pages artifact
         if: github.event_name == 'push'
