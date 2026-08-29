@@ -2,6 +2,7 @@ var path = require("path");
 var webpack = require("webpack");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var TerserPlugin = require("terser-webpack-plugin");
+
 module.exports = ({ googleAnalytics, longTermCaching } = {}, { mode } = {}) => ({
 	entry: {
 		web: "./app/entry.js"
