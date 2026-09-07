@@ -135,3 +135,16 @@ table pre {
 .module-filter-summary {
 	color: #777;
 }
+
+/* Deprecation notice above the navbar, on every page. Bootstrap 3 has no
+   colour for "retired", so this borrows the warning palette a shade darker. */
+.deprecation-banner {
+	padding: 10px 15px;
+	border-bottom: 1px solid #f0c36d;
+	background: #fcf5d8;
+	color: #7a5b13;
+}
+.deprecation-banner a {
+	color: #7a5b13;
+	text-decoration: underline;
+}

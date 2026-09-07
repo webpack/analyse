@@ -1,5 +1,24 @@
 # analyse
 
+> [!WARNING]
+> **webpack analyse is deprecated.** It is no longer maintained and will not
+> gain new features. Use
+> [webpack-bundle-analyzer](https://github.com/webpack/webpack-bundle-analyzer)
+> instead: it reads the same `stats.json`, runs as a webpack plugin or from the
+> command line, and is where the work continues. The features this app has that
+> bundle-analyzer does not yet are tracked in
+> [webpack-bundle-analyzer#737](https://github.com/webpack/webpack-bundle-analyzer/issues/737).
+>
+> Moving over:
+>
+> ```bash
+> npm install --save-dev webpack-bundle-analyzer
+> npx webpack-bundle-analyzer stats.json
+> ```
+>
+> The site stays up and the repository stays open so existing links keep
+> working, but expect fixes only for what breaks outright.
+
 A browser-based dashboard for exploring webpack bundle statistics. It reads a webpack stats JSON file and visualizes modules, chunks, assets, warnings, errors, and optimization hints so you can understand bundle size and dependency structure.
 
 This project is a lightweight front-end viewer for webpack output generated with `--profile --json`.
